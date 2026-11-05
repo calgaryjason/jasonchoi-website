@@ -85,6 +85,10 @@ function offering(p) {
   return "property";
 }
 
+if (!process.env.DDF_USERNAME || !process.env.DDF_PASSWORD) {
+  console.log("DDF login is not set up yet (DDF_USERNAME / DDF_PASSWORD secrets). Skipping – nothing changed.");
+  process.exit(0);
+}
 const token = await getToken();
 const raw = await getAll(token);
 const out = [];
