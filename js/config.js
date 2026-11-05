@@ -19,7 +19,7 @@ window.SITE = {
 
   /* Free form key from https://web3forms.com – messages go to CalgaryJason@gmail.com.
      Empty = preview mode (forms only show a thank-you message). */
-  formAccessKey: "",
+  formAccessKey: "f5c5f3c1-9ea2-4a7c-9b5f-9179bd184062",
 
   /* Maximum photos per listing. */
   maxPhotos: 5,
