@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Listing Studio – Jason Choi Real Estate</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Noto+Sans+KR:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,"Noto Sans KR",sans-serif;background:#f3f3f4;color:#17181b}
+header{background:#17181b;color:#fff;padding:14px 24px;display:flex;align-items:center;gap:14px}
+header img{height:40px;background:#fff;border-radius:4px;padding:3px 6px}
+header h1{font-family:Montserrat;font-size:18px}
+header a{margin-left:auto;color:#ccc;font-size:14px}
+.wrap{max-width:1280px;margin:24px auto;padding:0 24px;display:grid;grid-template-columns:360px 1fr;gap:24px;align-items:start}
+.panel{background:#fff;border:1px solid #e3e4e7;border-radius:10px;padding:20px}
+.panel h2{font-size:15px;margin-bottom:14px;font-family:Montserrat}
+label{display:block;font-size:11.5px;font-weight:700;color:#666;text-transform:uppercase;letter-spacing:.05em;margin:12px 0 5px}
+select,textarea,input{width:100%;padding:10px;border:1px solid #d3d5d9;border-radius:6px;font:inherit;font-size:14px}
+textarea{min-height:190px;resize:vertical}
+.btn{display:inline-flex;justify-content:center;width:100%;padding:12px;border-radius:6px;border:0;background:#C8282B;color:#fff;font-weight:700;font-size:15px;cursor:pointer;margin-top:14px;font-family:inherit}
+.btn.out{background:#fff;color:#17181b;border:2px solid #17181b}
+.preview{display:flex;justify-content:center;align-items:flex-start;background:#e7e8ea;border-radius:10px;padding:20px;min-height:600px}
+canvas{max-width:100%;max-height:78vh;box-shadow:0 10px 30px rgba(0,0,0,.18);border-radius:4px;background:#fff}
+.tip{font-size:13px;color:#555;margin-top:12px;line-height:1.5}
+.tip b{color:#C8282B}
+.msg{font-size:13px;color:#1e6b2d;margin-top:8px;min-height:18px}
+@media(max-width:900px){.wrap{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header><img src="assets/logo.jpg" alt=""><h1>Listing Studio · 매물 SNS 이미지 만들기</h1><a href="index.html">← Website</a></header>
+<div class="wrap">
+  <div>
+    <div class="panel">
+      <h2>1. Listing · 매물 선택</h2>
+      <label>Listing · 매물</label><select id="sel"></select>
+      <label>Format · 크기</label>
+      <select id="fmt">
+        <option value="1080x1350">Instagram / Facebook Post (4:5) · 피드</option>
+        <option value="1080x1080">Square (1:1) · 정사각형</option>
+        <option value="1080x1920">Story / Reel cover (9:16) · 스토리</option>
+        <option value="1200x630">Facebook link / Threads (1.91:1) · 가로형</option>
+      </select>
+      <label>Headline · 헤드라인</label>
+      <select id="head">
+        <option value="auto">Automatic · 자동</option>
+        <option>JUST LISTED</option><option>FOR LEASE</option><option>BUSINESS FOR SALE</option><option>INVESTMENT OPPORTUNITY</option>
+        <option>PRICE REDUCED</option><option>OPEN HOUSE</option><option>SOLD</option><option>LEASED</option>
+      </select>
+      <label>Language · 언어</label>
+      <select id="lng"><option value="en">English</option><option value="ko">한국어</option><option value="both">English + 한국어</option></select>
+      <label>Photo · 사진</label><select id="ph"></select>
+      <button class="btn" id="dl">Download Image · 이미지 다운로드</button>
+    </div>
+    <div class="panel" style="margin-top:16px">
+      <h2>2. Caption · 게시글 문구</h2>
+      <textarea id="cap"></textarea>
+      <button class="btn out" id="cp">Copy Caption · 문구 복사</button>
+      <div class="msg" id="msg"></div>
+      <p class="tip"><b>How to post · 게시 방법:</b> Download the image, then post it in the Instagram, Facebook or Threads app with the caption. To post to Instagram and Facebook at the same time, use the free <b>Meta Business Suite</b>.<br>이미지를 다운로드한 후, 인스타그램·페이스북·쓰레드 앱에서 문구와 함께 올리세요. 무료 <b>Meta Business Suite</b>를 쓰면 인스타그램과 페이스북에 한 번에 올릴 수 있습니다.</p>
+    </div>
+  </div>
+  <div class="preview"><canvas id="cv"></canvas></div>
+</div>
+
+<script id="fallback-data" type="application/json">[]</script>
+<script src="js/config.js"></script>
+<script>
+const SITE = window.SITE || {};
+const RED = "#C8282B", INK = "#17181B";
+const CAT = {"restaurant":["Restaurant","레스토랑"],"gas-station":["Gas Station","주유소"],"hotel":["Hotel & Motel","호텔 & 모텔"],"liquor-store":["Liquor Store","리커스토어"],
+ "car-wash":["Car Wash","세차장"],"retail-office":["Retail & Office","상가 & 오피스"],"industrial":["Industrial","산업용"],"land":["Land","토지"],"multi-family":["Multi-Family","다세대 주택"],"other-business":["Business","비즈니스"]};
+const TYPE = {"residential":["House","단독 주택"],"condo":["Condo","콘도"],"townhome":["Townhome","타운하우스"],"land":["Land","토지"]};
+const HEAD_KO = {"JUST LISTED":"신규 매물","FOR LEASE":"리스 매물","BUSINESS FOR SALE":"비즈니스 매매","INVESTMENT OPPORTUNITY":"투자 매물","PRICE REDUCED":"가격 인하","OPEN HOUSE":"오픈 하우스","SOLD":"판매 완료","LEASED":"리스 완료"};
+let L = [], imgs = {};
+const $ = id => document.getElementById(id);
+const money = n => "$" + Math.round(n).toLocaleString("en-CA");
+const load = src => new Promise(r => { if (!src) return r(null); if (imgs[src]) return r(imgs[src]); const i = new Image(); i.onload = () => { imgs[src] = i; r(i); }; i.onerror = () => r(null); i.src = src; });
+const isCom = l => l.type === "commercial" || l.type === "business";
+const catName = (l, k) => isCom(l) ? (CAT[l.category] || CAT["other-business"])[k] : (TYPE[l.type] || ["Residential","주거용"])[k];
+function autoHead(l) {
+  if (l.status === "sold") return l.deal === "lease" ? "LEASED" : "SOLD";
+  if (l.deal === "lease") return "FOR LEASE";
+  if (isCom(l) && l.offering === "property") return "INVESTMENT OPPORTUNITY";
+  if (isCom(l)) return "BUSINESS FOR SALE";
+  return "JUST LISTED";
+}
+const priceLine = l => l.price ? money(l.price) : (l.leaseRate ? "$" + l.leaseRate + " /sq.ft./yr" : "");
+function facts(l) {
+  const f = [];
+  if (l.beds != null) f.push(l.beds + " Beds"); if (l.baths != null) f.push(l.baths + " Baths");
+  if (l.sqft) f.push(Number(l.sqft).toLocaleString("en-CA") + " sq.ft.");
+  if (l.seats) f.push(l.seats + " Seats"); if (l.rooms) f.push(l.rooms + " Rooms");
+  if (l.capRate) f.push(l.capRate + "% Cap"); if (l.annualSales) f.push(money(l.annualSales) + " Sales");
+  if (l.landSize) f.push(l.landSize);
+  return f.slice(0, 3);
+}
+function cover(ctx, img, x, y, w, h) {
+  const r = Math.max(w / img.width, h / img.height), iw = img.width * r, ih = img.height * r;
+  ctx.drawImage(img, x + (w - iw) / 2, y + (h - ih) / 2, iw, ih);
+}
+function wrapText(ctx, text, x, y, maxW, lh, maxLines = 2) {
+  const words = text.split(" "); let line = "", lines = [];
+  for (const w of words) { const test = line ? line + " " + w : w; if (ctx.measureText(test).width > maxW && line) { lines.push(line); line = w; } else line = test; }
+  lines.push(line); lines = lines.slice(0, maxLines);
+  lines.forEach((ln, i) => ctx.fillText(ln, x, y + i * lh)); return lines.length * lh;
+}
+async function draw() {
+  const l = L[$("sel").value]; if (!l) return;
+  const [W, H] = $("fmt").value.split("x").map(Number), cv = $("cv"), ctx = cv.getContext("2d");
+  cv.width = W; cv.height = H;
+  const lng = $("lng").value, head = $("head").value === "auto" ? autoHead(l) : $("head").value;
+  const wide = W > H, s = W / 1080;
+  const photo = await load((l.photos || [])[+$("ph").value || 0]);
+  const logo = await load("assets/logo.jpg"), face = await load("assets/jason-choi.jpg");
+  const photoH = wide ? H : Math.round(H * (H > 1500 ? .55 : .58)), photoW = wide ? Math.round(W * .52) : W;
+  // background
+  ctx.fillStyle = "#fff"; ctx.fillRect(0, 0, W, H);
+  if (photo) cover(ctx, photo, 0, 0, photoW, photoH);
+  else { const g = ctx.createLinearGradient(0, 0, photoW, photoH); g.addColorStop(0, "#2a2c32"); g.addColorStop(1, "#4a2224"); ctx.fillStyle = g; ctx.fillRect(0, 0, photoW, photoH);
+    ctx.fillStyle = "rgba(255,255,255,.5)"; ctx.font = `600 ${28 * s}px Inter`; ctx.textAlign = "center"; ctx.fillText("Add listing photos", photoW / 2, photoH / 2); ctx.textAlign = "left"; }
+  // headline ribbon
+  const hText = lng === "ko" ? HEAD_KO[head] : head;
+  ctx.font = `800 ${(wide ? 30 : 40) * s}px Montserrat, "Noto Sans KR"`;
+  const hw = ctx.measureText(hText).width + 60 * s, hh = (wide ? 64 : 78) * s;
+  ctx.fillStyle = RED; ctx.fillRect(0, 40 * s, hw, hh);
+  ctx.fillStyle = "#fff"; ctx.textBaseline = "middle"; ctx.fillText(hText, 30 * s, 40 * s + hh / 2);
+  if (lng === "both") { ctx.font = `700 ${24 * s}px "Noto Sans KR"`; ctx.fillStyle = INK; const kw = ctx.measureText(HEAD_KO[head]).width + 40 * s;
+    ctx.fillStyle = "#fff"; ctx.fillRect(0, 40 * s + hh, kw, 46 * s); ctx.fillStyle = INK; ctx.fillText(HEAD_KO[head], 20 * s, 40 * s + hh + 23 * s); }
+  ctx.textBaseline = "alphabetic";
+  // info area
+  const ix = wide ? photoW + 50 * s : 60 * s, iy = wide ? 70 * s : photoH + 70 * s, iw = wide ? W - photoW - 90 * s : W - 120 * s;
+  ctx.fillStyle = RED; ctx.font = `700 ${(wide ? 22 : 26) * s}px Montserrat, "Noto Sans KR"`;
+  const cat = lng === "ko" ? catName(l, 1) : lng === "both" ? catName(l, 0) + " · " + catName(l, 1) : catName(l, 0);
+  ctx.fillText(cat.toUpperCase(), ix, iy);
+  ctx.fillStyle = INK; ctx.font = `800 ${(wide ? 54 : 72) * s}px Montserrat`;
+  ctx.fillText(priceLine(l), ix, iy + (wide ? 70 : 90) * s);
+  ctx.font = `600 ${(wide ? 26 : 32) * s}px Inter, "Noto Sans KR"`;
+  let y = iy + (wide ? 118 : 150) * s;
+  const ttl = lng === "ko" && l.title_ko ? l.title_ko : (l.title_en || l.address);
+  y += wrapText(ctx, ttl, ix, y, iw, (wide ? 34 : 42) * s, 2);
+  ctx.fillStyle = "#666a72"; ctx.font = `500 ${(wide ? 22 : 26) * s}px Inter`;
+  ctx.fillText(l.city || "", ix, y + 6 * s); y += 50 * s;
+  // fact chips
+  let fx = ix; ctx.font = `700 ${(wide ? 20 : 24) * s}px Inter`;
+  for (const f of facts(l)) { const fw = ctx.measureText(f).width + 36 * s; if (fx + fw > ix + iw) break;
+    ctx.strokeStyle = "#d9dbdf"; ctx.lineWidth = 2 * s; ctx.strokeRect(fx, y, fw, 46 * s); ctx.fillStyle = INK; ctx.fillText(f, fx + 18 * s, y + 31 * s); fx += fw + 12 * s; }
+  // footer band
+  const fh = (wide ? 120 : 150) * s, fy = H - fh, fx0 = wide ? photoW : 0, fw0 = W - fx0;
+  ctx.fillStyle = INK; ctx.fillRect(fx0, fy, fw0, fh);
+  ctx.fillStyle = RED; ctx.fillRect(fx0, fy, fw0, 6 * s);
+  const r = fh * .34, cx = fx0 + 40 * s + r, cy = fy + fh / 2 + 3 * s;
+  if (face) { ctx.save(); ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.clip(); const fs = face.width / (r * 2);
+    ctx.drawImage(face, 0, face.height * .02, face.width, face.width, cx - r, cy - r, r * 2, r * 2); ctx.restore(); }
+  ctx.fillStyle = "#fff"; ctx.font = `800 ${(wide ? 24 : 30) * s}px Montserrat`;
+  ctx.fillText("JASON CHOI", cx + r + 22 * s, cy - 8 * s);
+  ctx.font = `600 ${(wide ? 20 : 24) * s}px Inter`; ctx.fillStyle = "#ff8a8c";
+  ctx.fillText("(403) 399-8124", cx + r + 22 * s, cy + 26 * s);
+  if (logo) { const lh = fh * .62, lw = lh * logo.width / logo.height, lx = fx0 + fw0 - lw - 40 * s, ly = fy + (fh - lh) / 2 + 3 * s;
+    ctx.fillStyle = "#fff"; ctx.fillRect(lx - 10 * s, ly - 8 * s, lw + 20 * s, lh + 16 * s); ctx.drawImage(logo, lx, ly, lw, lh); }
+  ctx.fillStyle = "#9a9ca1"; ctx.font = `500 ${15 * s}px Inter`;
+  ctx.fillText("First Place Realty", ix, fy - 20 * s);
+  caption(l, head);
+}
+function caption(l, head) {
+  const lng = $("lng").value, f = facts(l).join(" · "), url = (SITE.siteUrl || location.origin).replace(/\/$/, "") + "/#" + l.id;
+  const tags = isCom(l) ? "#CalgaryCommercial #BusinessForSale #CalgaryBusiness #CommercialRealEstate #AlbertaBusiness #캘거리 #캘거리비즈니스 #캘거리부동산"
+                        : "#CalgaryRealEstate #CalgaryHomes #YYCRealEstate #JustListed #캘거리부동산 #캘거리집";
+  const en = `${head} – ${catName(l, 0)}\n${l.title_en || l.address}\n📍 ${l.address}, ${l.city || ""}\n💲 ${priceLine(l)}${f ? "\n📐 " + f : ""}${l.nda ? "\n🔒 Financials available with a signed NDA." : ""}\n\nCall or text Jason Choi: (403) 399-8124\nDetails: ${url}`;
+  const ko = `${HEAD_KO[head]} – ${catName(l, 1)}\n${l.title_ko || l.title_en || l.address}\n📍 ${l.address}, ${l.city || ""}\n💲 ${priceLine(l)}${f ? "\n📐 " + f : ""}${l.nda ? "\n🔒 재무 자료는 NDA 서명 후 제공됩니다." : ""}\n\n문의: Jason Choi 최재봉 (403) 399-8124\n자세히 보기: ${url}`;
+  $("cap").value = (lng === "en" ? en : lng === "ko" ? ko : en + "\n\n—\n\n" + ko) + "\n\nFirst Place Realty\n\n" + tags;
+}
+function fillPhotos() {
+  const l = L[$("sel").value], p = (l.photos || []).slice(0, SITE.maxPhotos || 5);
+  $("ph").innerHTML = p.length ? p.map((_, i) => `<option value="${i}">Photo ${i + 1}</option>`).join("") : `<option value="0">No photo yet · 사진 없음</option>`;
+}
+$("dl").onclick = () => { const l = L[$("sel").value]; const a = document.createElement("a"); a.download = `${l.id}-${$("fmt").value}.png`; a.href = $("cv").toDataURL("image/png"); a.click(); };
+$("cp").onclick = async () => { try { await navigator.clipboard.writeText($("cap").value); $("msg").textContent = "Copied! · 복사되었습니다"; } catch (e) { $("cap").select(); $("msg").textContent = "Press Ctrl+C / Cmd+C to copy"; } };
+$("sel").onchange = () => { fillPhotos(); draw(); };
+["fmt","head","lng","ph"].forEach(id => $(id).onchange = draw);
+(async () => {
+  try { const r = await fetch("data/listings.json", { cache: "no-cache" }); if (!r.ok) throw 0; L = await r.json(); }
+  catch (e) { L = JSON.parse(document.getElementById("fallback-data").textContent || "[]"); }
+  L = L.filter(l => l.status !== "hidden");
+  $("sel").innerHTML = L.map((l, i) => `<option value="${i}">${l.address} – ${priceLine(l)}</option>`).join("");
+  await Promise.all([document.fonts.load("800 40px Montserrat"), document.fonts.load("700 30px 'Noto Sans KR'"), document.fonts.load("600 30px Inter")]).catch(() => {});
+  fillPhotos(); draw();
+})();
+</script>
+</body>
+</html>

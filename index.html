@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jason Choi Real Estate | Commercial REALTOR® Calgary – Business Sales, Leasing & Investment</title>
+<meta name="description" content="Jason Choi, REALTOR® since 2007. Business sales, commercial leasing and investment properties in Calgary, Alberta and British Columbia. English and Korean service.">
+<meta property="og:title" content="Jason Choi Real Estate – Commercial REALTOR® Since 2007">
+<meta property="og:description" content="Business sales, commercial leasing and investment properties in Calgary, Alberta and British Columbia.">
+<meta property="og:image" content="assets/jason-choi.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Noto+Sans+KR:wght@400;500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ===================== TOP BAR ===================== -->
+<div class="topbar">
+  <div class="wrap">
+    <div class="tb-left">
+      <a href="tel:4033998124">☎ (403) 399-8124</a>
+      <span class="hide-sm">|</span>
+      <a class="hide-sm" href="mailto:CalgaryJason@gmail.com">CalgaryJason@gmail.com</a>
+    </div>
+    <div class="tb-right">
+      <div class="social-mini" id="socialTop"></div>
+      <div class="lang" role="group" aria-label="Language">
+        <button data-lang="en" class="on">EN</button><button data-lang="ko">한국어</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== HEADER ===================== -->
+<header class="main">
+  <div class="wrap">
+    <a href="#home" class="brand"><img src="assets/logo.jpg" alt="Jason Choi Real Estate"></a>
+    <button class="burger" aria-label="Menu" onclick="document.querySelector('nav.menu').classList.toggle('open')">☰</button>
+    <nav class="menu">
+      <a href="#business" data-nav="business" data-ko="비즈니스 매매">Business for Sale</a>
+      <a href="#leasing" data-nav="leasing" data-ko="리스">Leasing</a>
+      <a href="#investment" data-nav="investment" data-ko="투자 부동산">Investment</a>
+      <a href="#sell-business" data-nav="sell-business" data-ko="비즈니스 판매">Sell Your Business</a>
+      <a href="#residential" data-nav="residential" data-ko="주거용">Residential</a>
+      <div class="dd">
+        <button class="dd-btn" data-ko="자료 ▾">Resources ▾</button>
+        <div class="dd-menu">
+          <a href="#mortgage" data-ko="모기지 계산기">Mortgage Calculator</a>
+          <a href="#leasing-calc" data-ko="리스 비용 계산기">Lease Cost Calculator</a>
+          <a href="#cap-calc" data-ko="Cap Rate 계산기">Cap Rate Calculator</a>
+          <a href="#home-evaluation" data-ko="주택 가치 평가">Home Evaluation</a>
+          <a href="#guides" data-ko="무료 가이드">Free Guides</a>
+        </div>
+      </div>
+      <a href="#about" data-nav="about" data-ko="소개">About</a>
+      <a href="#contact" class="btn btn-red" data-ko="상담 문의">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<!-- ======================================================
+     HOME
+     ====================================================== -->
+<section class="view" id="view-home">
+  <div class="hero">
+    <div class="hero-grid-bg"></div>
+    <div class="wrap hero-wrap">
+      <div class="hero-text">
+        <div class="eyebrow light" data-ko="상업용 부동산 & 비즈니스 매매 · 2007년부터">Commercial Real Estate & Business Sales · Since 2007</div>
+        <h1 data-ko="2007년부터 함께해 온 상업용 부동산 전문가">Your Commercial Real Estate Advisor Since 2007</h1>
+        <p class="lead" data-ko="캘거리, 앨버타, BC주의 비즈니스 매매, 상업용 리스, 투자 부동산을 전문으로 합니다. 영어와 한국어로 상담해 드립니다.">Business sales, commercial leasing and investment properties across Calgary, Alberta and British Columbia. Service in English and Korean.</p>
+        <div class="hero-actions">
+          <a href="#business" class="btn btn-red btn-lg" data-ko="비즈니스 매물 보기">Browse Businesses for Sale</a>
+          <a href="#sell-business" class="btn btn-ghost btn-lg" data-ko="비공개 비즈니스 가치 평가">Confidential Business Valuation</a>
+        </div>
+        <div class="hero-quick">
+          <a href="#business-restaurant" data-ko="레스토랑">Restaurants</a>
+          <a href="#business-gas-station" data-ko="주유소">Gas Stations</a>
+          <a href="#business-hotel" data-ko="호텔 & 모텔">Hotels & Motels</a>
+          <a href="#business-liquor-store" data-ko="리커스토어">Liquor Stores</a>
+          <a href="#business-car-wash" data-ko="세차장">Car Washes</a>
+          <a href="#leasing" data-ko="리스 공간">Lease Space</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <img src="assets/jason-choi.jpg" alt="Jason Choi, REALTOR®">
+        <div class="hero-card-body">
+          <b>Jason Choi <span class="kr">최재봉</span></b>
+          <span>REALTOR® · Alberta & British Columbia</span>
+        </div>
+      </div>
+    </div>
+    <div class="stats-strip">
+      <div class="wrap stats">
+        <div class="stat"><b><span class="yrs"></span>+</b><span data-ko="년 업계 경력 (2007년부터)">Years in Real Estate (Since 2007)</span></div>
+        <div class="stat"><b>AB · BC</b><span data-ko="2개 주 면허 보유">Licensed in Two Provinces</span></div>
+        <div class="stat"><b id="statActive">0</b><span data-ko="현재 등록 매물">Active Listings</span></div>
+        <div class="stat"><b>EN · 한</b><span data-ko="영어 · 한국어 상담">English · Korean Service</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Three service pillars -->
+  <div class="section">
+    <div class="wrap">
+      <div class="center-head">
+        <div class="eyebrow" data-ko="전문 분야">What I Do</div>
+        <h2 data-ko="상업용 부동산의 모든 단계를 함께합니다">Commercial Real Estate Services</h2>
+        <p class="muted" data-ko="비즈니스를 사고팔 때, 매장을 임대할 때, 투자 부동산을 찾을 때 – 처음부터 클로징까지 도와드립니다.">Buying or selling a business, leasing a space or investing in property – I guide you from the first meeting to closing.</p>
+      </div>
+      <div class="pillars">
+        <a class="pillar" href="#business">
+          <div class="pillar-ic" data-icon="other-business"></div>
+          <h3 data-ko="비즈니스 매매">Business Sales</h3>
+          <ul>
+            <li data-ko="레스토랑, 주유소, 리커스토어, 호텔, 세차장">Restaurants, gas stations, liquor stores, hotels, car washes</li>
+            <li data-ko="자산 매매 및 주식 매매 (Asset / Share)">Asset and share purchases</li>
+            <li data-ko="NDA 기반 비공개 마케팅">Confidential marketing with NDA</li>
+            <li data-ko="셀러 파이낸싱(VTB) 구조 상담">Seller financing (VTB) structuring</li>
+          </ul>
+          <span class="pillar-link" data-ko="비즈니스 매물 보기 →">View Businesses →</span>
+        </a>
+        <a class="pillar" href="#leasing">
+          <div class="pillar-ic" data-icon="retail-office"></div>
+          <h3 data-ko="상업용 리스">Commercial Leasing</h3>
+          <ul>
+            <li data-ko="임차인 대리: 매장 찾기, 비교, 협상">Tenant representation: find, compare, negotiate</li>
+            <li data-ko="임대인 대리: 공실 마케팅, 임차인 소개">Landlord representation: market your vacancy</li>
+            <li data-ko="LOI 작성, 무료 임대 기간, 인테리어 지원 협상">LOI, free rent and tenant improvement negotiation</li>
+            <li data-ko="리스 양도 (Lease Assignment)">Lease assignments</li>
+          </ul>
+          <span class="pillar-link" data-ko="리스 공간 보기 →">View Lease Space →</span>
+        </a>
+        <a class="pillar" href="#investment">
+          <div class="pillar-ic" data-icon="multi-family"></div>
+          <h3 data-ko="투자 부동산">Investment Properties</h3>
+          <ul>
+            <li data-ko="상가 건물, 산업용, 다세대 주택, 토지">Retail plazas, industrial, multi-family, land</li>
+            <li data-ko="NOI, Cap Rate, 임대 현황 분석">NOI, cap rate and rent roll analysis</li>
+            <li data-ko="공시지가 대비 매매가 검토">Assessment vs. asking price review</li>
+            <li data-ko="투자자 우선 매물 안내 리스트">Investor list – hear about deals first</li>
+          </ul>
+          <span class="pillar-link" data-ko="투자 매물 보기 →">View Investments →</span>
+        </a>
+      </div>
+      <p class="res-line"><span data-ko="주거용 부동산도 도와드립니다:">Also helping with residential real estate:</span>
+        <a href="#residential" data-ko="주거용 매물">Residential Listings</a> · <a href="#mortgage" data-ko="모기지 계산기">Mortgage Calculator</a> · <a href="#home-evaluation" data-ko="주택 가치 평가">Home Evaluation</a></p>
+    </div>
+  </div>
+
+  <!-- Industries / categories -->
+  <div class="section section-alt">
+    <div class="wrap">
+      <div class="section-head">
+        <div><div class="eyebrow" data-ko="업종별 매물">Browse by Industry</div><h2 data-ko="카테고리별 매물 보기">Find the Right Business or Property</h2></div>
+        <a href="#business" class="btn btn-outline" data-ko="전체 비즈니스 매물 →">All Businesses →</a>
+      </div>
+      <div class="cats" id="homeCats"></div>
+    </div>
+  </div>
+
+  <!-- Featured -->
+  <div class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <div><div class="eyebrow" data-ko="추천 매물">Featured</div><h2 data-ko="추천 매물">Featured Listings</h2></div>
+        <div class="tabs" id="featTabs"></div>
+      </div>
+      <div class="grid" id="featuredGrid"></div>
+    </div>
+  </div>
+
+  <!-- 20-year advantage -->
+  <div class="section dark-section">
+    <div class="wrap adv">
+      <div class="adv-left">
+        <div class="eyebrow light" data-ko="경험의 차이">The Experience Advantage</div>
+        <h2><span class="yrs"></span><span data-ko="년 이상의 경험, 수많은 시장의 변화를 함께 겪었습니다">+ Years. Every Market Cycle.</span></h2>
+        <p data-ko="2007년부터 금융위기, 유가 하락, 팬데믹을 모두 현장에서 겪었습니다. 좋은 시장과 어려운 시장에서 모두 거래를 성사시켜 온 경험이 고객님의 가장 큰 보호막이 됩니다.">Since 2007, I have worked through the financial crisis, the oil price downturn and the pandemic. Closing deals in both strong and difficult markets is the experience that protects my clients.</p>
+        <a href="#about" class="btn btn-ghost" data-ko="Jason Choi 소개 →">About Jason →</a>
+      </div>
+      <div class="adv-grid">
+        <div class="adv-item"><b data-ko="복잡한 비즈니스 거래">Complex Business Deals</b><p data-ko="자산/주식 매매, 재고 정산, 장비 목록, 리스 양도, 프랜차이즈 승인까지 꼼꼼하게 진행합니다.">Asset vs. share purchases, inventory counts, equipment lists, lease assignments and franchise approvals.</p></div>
+        <div class="adv-item"><b data-ko="비공개 마케팅">Confidential Marketing</b><p data-ko="NDA와 구매자 자격 확인으로 직원과 고객이 모르게 비즈니스를 판매합니다.">NDA and buyer qualification keep your sale private from staff and customers.</p></div>
+        <div class="adv-item"><b data-ko="창의적인 거래 구조">Creative Deal Structures</b><p data-ko="셀러 파이낸싱(VTB), 단계별 인수, 조건부 오퍼로 거래가 성사되도록 돕습니다.">Seller financing (VTB), staged takeovers and smart conditions that help deals close.</p></div>
+        <div class="adv-item"><b data-ko="검증된 전문가 네트워크">Trusted Professional Network</b><p data-ko="은행, 회계사, 변호사, 인스펙터 등 오랜 기간 함께 일한 전문가를 연결해 드립니다.">Lenders, accountants, lawyers and inspectors I have worked with for years.</p></div>
+        <div class="adv-item"><b data-ko="앨버타 & BC 면허">Alberta & BC Licensed</b><p data-ko="두 개 주에서 매물과 고객을 연결합니다.">Connecting buyers and sellers across two provinces.</p></div>
+        <div class="adv-item"><b data-ko="영어 · 한국어 상담">Bilingual Service</b><p data-ko="한인 비즈니스 커뮤니티와의 폭넓은 네트워크를 갖추고 있습니다.">Strong connections with the Korean business community, plus English service for all clients.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Industries served -->
+  <div class="section">
+    <div class="wrap">
+      <div class="center-head">
+        <div class="eyebrow" data-ko="경험 업종">Industries I Have Worked With</div>
+        <h2 data-ko="다양한 업종의 거래 경험">Real Experience Across Many Industries</h2>
+      </div>
+      <div class="industries">
+        <span data-ko="주유소 & 편의점">Gas Stations & C-Stores</span><span data-ko="리커스토어">Liquor Stores</span><span data-ko="레스토랑 & 카페">Restaurants & Cafés</span>
+        <span data-ko="디저트 프랜차이즈">Dessert Franchises</span><span data-ko="세탁소">Dry Cleaners</span><span data-ko="미용실">Hair Salons</span>
+        <span data-ko="실내 골프">Indoor Golf</span><span data-ko="구두 수선 & 수선집">Shoe Repair & Alterations</span><span data-ko="상가 건물">Retail Plazas</span>
+        <span data-ko="식품 가공 시설">Food Processing</span><span data-ko="상업용 리스">Commercial Leasing</span><span data-ko="주거용 부동산">Residential Homes</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Process -->
+  <div class="section section-alt">
+    <div class="wrap">
+      <div class="center-head">
+        <div class="eyebrow" data-ko="비즈니스 판매 절차">How I Sell a Business</div>
+        <h2 data-ko="체계적인 7단계 판매 절차">A Proven 7-Step Process</h2>
+      </div>
+      <ol class="timeline">
+        <li><b data-ko="가치 평가">Valuation</b><span data-ko="재무 자료와 시장 비교로 적정 가격을 정합니다.">Review financials and comparable sales to set the right price.</span></li>
+        <li><b data-ko="자료 준비">Preparation</b><span data-ko="리스, 장비 목록, 매출 자료를 정리합니다.">Organize the lease, equipment list and sales records.</span></li>
+        <li><b data-ko="비공개 마케팅">Confidential Marketing</b><span data-ko="MLS®, 웹사이트, 구매자 네트워크에 노출합니다.">Market on MLS®, this website and my buyer network.</span></li>
+        <li><b data-ko="구매자 확인">Buyer Screening</b><span data-ko="NDA 서명과 자금 능력을 확인합니다.">Signed NDA and proof of funds before any details.</span></li>
+        <li><b data-ko="오퍼 & 협상">Offer & Negotiation</b><span data-ko="가격, 조건, 융자, 인수 인계를 협상합니다.">Negotiate price, conditions, financing and training.</span></li>
+        <li><b data-ko="실사 & 리스 양도">Due Diligence & Lease</b><span data-ko="재무 확인, 건물주 승인, 라이선스 이전을 진행합니다.">Financial review, landlord consent and licence transfers.</span></li>
+        <li><b data-ko="클로징">Closing</b><span data-ko="재고 정산 후 열쇠를 넘깁니다.">Inventory count, final adjustments and handover.</span></li>
+      </ol>
+      <div style="text-align:center;margin-top:28px"><a href="#sell-business" class="btn btn-red" data-ko="내 비즈니스 가치 알아보기">Find Out What Your Business Is Worth</a></div>
+    </div>
+  </div>
+
+  <!-- Testimonials -->
+  <div class="section">
+    <div class="wrap">
+      <div class="center-head"><div class="eyebrow" data-ko="고객 후기">Testimonials</div><h2 data-ko="고객님들의 이야기">What My Clients Say</h2></div>
+      <div class="quotes">
+        <div class="quote"><div class="stars">★★★★★</div><p data-ko="샘플 후기입니다. 실제 고객 후기로 바꿔 주세요. 비즈니스 매매 과정을 처음부터 끝까지 꼼꼼하게 챙겨 주셨습니다.">Sample review – replace with a real one. Jason handled every detail of our business sale from start to finish.</p><cite data-ko="— 비즈니스 매도인">— Business Seller</cite></div>
+        <div class="quote"><div class="stars">★★★★★</div><p data-ko="샘플 후기입니다. 실제 고객 후기로 바꿔 주세요. 좋은 위치의 매장을 찾고 리스 조건도 잘 협상해 주셨습니다.">Sample review – replace with a real one. He found us a great location and negotiated a better lease.</p><cite data-ko="— 상업용 임차인">— Commercial Tenant</cite></div>
+        <div class="quote"><div class="stars">★★★★★</div><p data-ko="샘플 후기입니다. 실제 고객 후기로 바꿔 주세요. 투자 분석을 알기 쉽게 설명해 주셨습니다.">Sample review – replace with a real one. His investment analysis was clear and easy to understand.</p><cite data-ko="— 투자자">— Investor</cite></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Social -->
+  <div class="section section-alt social-band">
+    <div class="wrap">
+      <div class="center-head" style="margin-bottom:24px">
+        <div class="eyebrow" data-ko="SNS">Follow Along</div>
+        <h2 data-ko="새 매물을 SNS에서 가장 먼저 받아보세요">Get New Listings First on Social Media</h2>
+      </div>
+      <div class="social-cards" id="socialCards"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================
+     BUSINESS FOR SALE
+     ====================================================== -->
+<section class="view" id="view-business">
+  <div class="page-head"><div class="wrap">
+    <div class="eyebrow light" data-ko="비즈니스 매매">Business Sales</div>
+    <h1 id="bizTitle" data-ko="비즈니스 매물">Businesses for Sale</h1>
+    <p data-ko="레스토랑, 주유소, 호텔, 리커스토어, 세차장 등 – 캘거리, 앨버타, BC">Restaurants, gas stations, hotels, liquor stores, car washes and more – Calgary, Alberta and BC</p>
+  </div></div>
+  <div class="section pt-sm">
+    <div class="wrap">
+      <div class="cats cats-sm" id="bizCats"></div>
+      <div class="filter-bar">
+        <div class="field"><label data-ko="매매 형태">Offering</label>
+          <select id="bOffer"><option value="all" data-ko="전체">All</option><option value="business" data-ko="비즈니스만">Business Only</option><option value="business_property" data-ko="비즈니스 + 건물">Business + Property</option></select></div>
+        <div class="field"><label data-ko="지역">Region</label><select id="bRegion" class="region-sel"></select></div>
+        <div class="field"><label data-ko="최대 가격">Max Price</label><select id="bMax" class="price-sel"></select></div>
+        <div class="field"><label data-ko="정렬">Sort</label><select id="bSort" class="sort-sel"></select></div>
+      </div>
+      <div class="section-head mt"><div><div class="eyebrow" data-ko="Jason Choi 등록 매물">Exclusive Listings</div><h2 data-ko="내 비즈니스 매물">My Business Listings</h2></div></div>
+      <div class="grid" id="bizMine"></div>
+      <div class="section-head mt-lg">
+        <div><div class="eyebrow" data-ko="MLS® 매물 · 매일 자동 업데이트">MLS® Listings · Updated Daily</div><h2 data-ko="다른 비즈니스 매물">More Businesses for Sale</h2>
+        <p class="muted small-mt" data-ko="REALTOR.ca DDF®를 통해 자동으로 업데이트되는 다른 브로커리지의 매물입니다. 관심 있는 매물은 저에게 연락 주세요.">Listings from other brokerages, updated through REALTOR.ca DDF®. Contact me to view any of them.</p></div>
+        <span class="ddf-logo">REALTOR.ca DDF®</span>
+      </div>
+      <div class="grid" id="bizDdf"></div>
+      <div class="more-wrap"><button class="btn btn-outline more-btn" data-target="biz" data-ko="더 보기">Show More</button></div>
+
+      <div class="cta-split mt-lg">
+        <div class="cta-box dark">
+          <h3 data-ko="비즈니스를 구매하시나요?">Buying a Business?</h3>
+          <p data-ko="상업용 융자는 보통 주택보다 더 많은 다운페이먼트가 필요합니다. 조건은 은행, 업종, 신용 상태에 따라 다릅니다. 오퍼 전에 은행 소개와 재무 검토를 도와드립니다.">Commercial loans usually need a larger down payment than home loans. Terms depend on the lender, industry and your finances. I can refer you to lenders and help review the numbers before you make an offer.</p>
+          <a href="#contact" class="btn btn-ghost" data-ko="구매 상담 받기">Talk to Me About Buying</a>
+        </div>
+        <div class="cta-box red">
+          <h3 data-ko="비즈니스를 판매하시나요?">Selling a Business?</h3>
+          <p data-ko="비공개로 가치 평가를 받아보세요. 직원과 고객이 모르게 진행합니다.">Get a confidential valuation. Your staff and customers will not know.</p>
+          <a href="#sell-business" class="btn btn-ghost" data-ko="비공개 가치 평가 요청">Request a Confidential Valuation</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================
+     LEASING
+     ====================================================== -->
+<section class="view" id="view-leasing">
+  <div class="page-head"><div class="wrap">
+    <div class="eyebrow light" data-ko="상업용 리스">Commercial Leasing</div>
+    <h1 data-ko="리스 공간 & 리스 서비스">Space for Lease & Leasing Services</h1>
+    <p data-ko="임차인과 임대인 모두를 위한 리스 전문 서비스">Expert leasing help for tenants and landlords</p>
+  </div></div>
+  <div class="section pt-sm">
+    <div class="wrap">
+      <div class="two-cards">
+        <div class="svc-card">
+          <div class="eyebrow" data-ko="임차인 대리">For Tenants</div>
+          <h3 data-ko="내 비즈니스에 맞는 공간 찾기">Find the Right Space</h3>
+          <ul class="checks">
+            <li data-ko="업종, 면적, 예산에 맞는 공간 검색 (공개되지 않은 공간 포함)">Search by use, size and budget – including off-market space</li>
+            <li data-ko="기본 임대료 + 추가 임대료(Op Costs) 총비용 비교">Compare total cost: base rent + operating costs</li>
+            <li data-ko="LOI 작성, 무료 임대 기간, 인테리어 지원금(TI) 협상">LOI, free rent and tenant improvement (TI) negotiation</li>
+            <li data-ko="존닝, 사용 용도, 독점 조항 확인">Zoning, permitted use and exclusive-use checks</li>
+          </ul>
+          <a href="#space-request" class="btn btn-red" data-ko="공간 찾기 요청">Request Space</a>
+        </div>
+        <div class="svc-card">
+          <div class="eyebrow" data-ko="임대인 대리">For Landlords</div>
+          <h3 data-ko="공실을 빠르게 채우기">Fill Your Vacancy</h3>
+          <ul class="checks">
+            <li data-ko="MLS®, 웹사이트, SNS, 한인 커뮤니티 마케팅">Marketing on MLS®, this website, social media and the Korean community</li>
+            <li data-ko="임차인 재무 상태와 사업 계획 검토">Tenant screening: financials and business plan review</li>
+            <li data-ko="리스 조건 협상과 리스 양도 진행">Lease negotiation and lease assignments</li>
+            <li data-ko="시장 임대료 분석">Market rent analysis</li>
+          </ul>
+          <a href="#contact" class="btn btn-outline" data-ko="공실 등록 상담">List Your Space</a>
+        </div>
+      </div>
+
+      <div class="filter-bar mt">
+        <div class="field"><label data-ko="매물 종류">Space Type</label><select id="lCat"></select></div>
+        <div class="field"><label data-ko="지역">Region</label><select id="lRegion" class="region-sel"></select></div>
+        <div class="field"><label data-ko="최소 면적 (sq.ft.)">Min Size (sq.ft.)</label>
+          <select id="lMin"><option value="0" data-ko="제한 없음">Any</option><option value="1000">1,000+</option><option value="2000">2,000+</option><option value="5000">5,000+</option><option value="10000">10,000+</option></select></div>
+        <div class="field"><label data-ko="정렬">Sort</label><select id="lSort" class="sort-sel"></select></div>
+      </div>
+      <div class="section-head mt"><div><div class="eyebrow" data-ko="Jason Choi 등록 매물">Exclusive Listings</div><h2 data-ko="리스 매물">Space for Lease</h2></div></div>
+      <div class="grid" id="leaseMine"></div>
+      <div class="section-head mt-lg">
+        <div><div class="eyebrow" data-ko="MLS® 매물 · 매일 자동 업데이트">MLS® Listings · Updated Daily</div><h2 data-ko="다른 리스 매물">More Space for Lease</h2></div>
+        <span class="ddf-logo">REALTOR.ca DDF®</span>
+      </div>
+      <div class="grid" id="leaseDdf"></div>
+      <div class="more-wrap"><button class="btn btn-outline more-btn" data-target="lease" data-ko="더 보기">Show More</button></div>
+
+      <!-- Lease calculator -->
+      <div class="calc mt-lg" id="leasing-calc-box">
+        <div class="calc-box">
+          <div class="eyebrow" data-ko="계산기">Calculator</div>
+          <h2 class="h2-sm" data-ko="리스 비용 계산기">Lease Cost Calculator</h2>
+          <div class="field"><label data-ko="면적 (sq.ft.)">Size (sq.ft.)</label><input type="number" id="lcSize" value="1500"></div>
+          <div class="field"><label data-ko="기본 임대료 ($/sq.ft./년)">Base Rent ($/sq.ft./yr)</label><input type="number" id="lcBase" value="28" step="0.5"></div>
+          <div class="field"><label data-ko="추가 임대료 / Op Costs ($/sq.ft./년)">Additional Rent / Op Costs ($/sq.ft./yr)</label><input type="number" id="lcAdd" value="14" step="0.5"></div>
+          <div class="field"><label data-ko="GST 포함">Include GST (5%)</label><select id="lcGst"><option value="1" data-ko="포함">Yes</option><option value="0" data-ko="미포함">No</option></select></div>
+        </div>
+        <div class="result">
+          <div data-ko="월 예상 임대료">Estimated Monthly Rent</div>
+          <div class="big" id="lcMonthly">$0</div>
+          <div class="row"><span data-ko="월 기본 임대료">Base rent / month</span><span id="lcBaseM"></span></div>
+          <div class="row"><span data-ko="월 추가 임대료">Additional rent / month</span><span id="lcAddM"></span></div>
+          <div class="row"><span>GST</span><span id="lcGstM"></span></div>
+          <div class="row"><span data-ko="연간 총비용">Total per year</span><span id="lcYear"></span></div>
+          <p class="note" data-ko="참고용 예상 금액입니다. 실제 추가 임대료는 건물마다 다르며 매년 조정됩니다.">Estimate only. Additional rent is different for each building and is adjusted every year.</p>
+        </div>
+      </div>
+
+      <!-- Space request -->
+      <div class="form-section mt-lg" id="space-request-box">
+        <div>
+          <div class="eyebrow" data-ko="공간 찾기 요청">Space Request</div>
+          <h2 class="h2-sm" data-ko="원하시는 공간을 알려주세요">Tell Me What You Need</h2>
+          <p class="muted" data-ko="조건에 맞는 공간을 찾아 1~2 영업일 내에 목록을 보내드립니다. 공개되지 않은 공간도 포함합니다.">I will send you a list of matching spaces within 1–2 business days, including space that is not advertised.</p>
+        </div>
+        <form class="lead-form form-card bordered" data-subject="Space Request">
+          <div class="form-grid">
+            <div class="field"><label data-ko="업종 / 사용 용도">Business Type / Use</label><input name="use" required></div>
+            <div class="field"><label data-ko="필요 면적 (sq.ft.)">Size Needed (sq.ft.)</label><input name="size"></div>
+            <div class="field"><label data-ko="선호 지역">Preferred Area</label><input name="area"></div>
+            <div class="field"><label data-ko="월 예산">Monthly Budget</label><input name="budget"></div>
+            <div class="field"><label data-ko="입주 희망 시기">Move-in Date</label><input name="move_in"></div>
+            <div class="field"><label data-ko="이름">Name</label><input name="name" required></div>
+            <div class="field"><label data-ko="전화번호">Phone</label><input name="phone" type="tel" required></div>
+            <div class="field"><label data-ko="이메일">Email</label><input name="email" type="email" required></div>
+            <div class="field full"><label data-ko="추가 요청 사항">Other Needs (parking, kitchen, venting, etc.)</label><textarea name="message" rows="3"></textarea></div>
+            <div class="full"><button class="btn btn-red w100" type="submit" data-ko="요청 보내기">Send Request</button></div>
+          </div>
+          <div class="form-msg" data-ko="감사합니다! 1 영업일 내에 연락드리겠습니다.">Thank you! I will contact you within 1 business day.</div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================
+     INVESTMENT
+     ====================================================== -->
+<section class="view" id="view-investment">
+  <div class="page-head"><div class="wrap">
+    <div class="eyebrow light" data-ko="투자 부동산">Investment Properties</div>
+    <h1 id="invTitle" data-ko="수익형 투자 부동산">Income-Producing Investment Properties</h1>
+    <p data-ko="상가 건물, 산업용, 다세대 주택, 호텔, 토지 – 숫자로 판단하는 투자">Retail plazas, industrial, multi-family, hotels and land – investments judged by the numbers</p>
+  </div></div>
+  <div class="section pt-sm">
+    <div class="wrap">
+      <div class="cats cats-sm" id="invCats"></div>
+      <div class="filter-bar">
+        <div class="field"><label data-ko="지역">Region</label><select id="iRegion" class="region-sel"></select></div>
+        <div class="field"><label data-ko="최대 가격">Max Price</label><select id="iMax" class="price-sel"></select></div>
+        <div class="field"><label data-ko="최소 Cap Rate">Min Cap Rate</label>
+          <select id="iCap"><option value="0" data-ko="제한 없음">Any</option><option value="4">4%+</option><option value="5">5%+</option><option value="6">6%+</option><option value="7">7%+</option><option value="8">8%+</option></select></div>
+        <div class="field"><label data-ko="정렬">Sort</label><select id="iSort" class="sort-sel"></select></div>
+      </div>
+      <div class="section-head mt"><div><div class="eyebrow" data-ko="Jason Choi 등록 매물">Exclusive Listings</div><h2 data-ko="투자 매물">Investment Listings</h2></div></div>
+      <div class="grid" id="invMine"></div>
+      <div class="section-head mt-lg">
+        <div><div class="eyebrow" data-ko="MLS® 매물 · 매일 자동 업데이트">MLS® Listings · Updated Daily</div><h2 data-ko="다른 투자 매물">More Investment Properties</h2></div>
+        <span class="ddf-logo">REALTOR.ca DDF®</span>
+      </div>
+      <div class="grid" id="invDdf"></div>
+      <div class="more-wrap"><button class="btn btn-outline more-btn" data-target="inv" data-ko="더 보기">Show More</button></div>
+
+      <!-- Cap rate calculator -->
+      <div class="calc mt-lg" id="cap-calc-box">
+        <div class="calc-box">
+          <div class="eyebrow" data-ko="계산기">Calculator</div>
+          <h2 class="h2-sm" data-ko="Cap Rate & 수익 계산기">Cap Rate & Return Calculator</h2>
+          <div class="field"><label data-ko="매매 가격 ($)">Purchase Price ($)</label><input type="number" id="ccPrice" value="1450000" step="1000"></div>
+          <div class="field"><label data-ko="연간 총 임대 수입 ($)">Gross Annual Rent ($)</label><input type="number" id="ccRent" value="128000" step="500"></div>
+          <div class="field"><label data-ko="연간 운영 비용 – 임대인 부담 ($)">Annual Operating Expenses – Landlord Paid ($)</label><input type="number" id="ccExp" value="21000" step="500"></div>
+          <div class="field"><label data-ko="공실률 (%)">Vacancy Allowance (%)</label><input type="number" id="ccVac" value="5" step="0.5"></div>
+          <div class="field"><label data-ko="다운페이먼트 (%)">Down Payment (%)</label><input type="number" id="ccDown" value="35" step="1"></div>
+          <div class="field"><label data-ko="이자율 (%) / 상환 기간 (년)">Interest Rate (%) / Amortization (yrs)</label>
+            <div class="inline2"><input type="number" id="ccRate" value="6" step="0.05"><input type="number" id="ccAm" value="25"></div></div>
+        </div>
+        <div class="result">
+          <div data-ko="Cap Rate">Cap Rate</div>
+          <div class="big" id="ccCap">0%</div>
+          <div class="row"><span data-ko="순영업소득 (NOI)">Net Operating Income (NOI)</span><span id="ccNoi"></span></div>
+          <div class="row"><span data-ko="연간 대출 상환액">Annual Mortgage Payments</span><span id="ccDebt"></span></div>
+          <div class="row"><span data-ko="연간 현금 흐름">Annual Cash Flow</span><span id="ccCash"></span></div>
+          <div class="row"><span data-ko="현금 수익률 (Cash-on-Cash)">Cash-on-Cash Return</span><span id="ccCoc"></span></div>
+          <div class="row"><span data-ko="부채 상환 비율 (DSCR)">Debt Coverage Ratio (DSCR)</span><span id="ccDscr"></span></div>
+          <p class="note" data-ko="참고용 예상 수치입니다. 실제 수익은 임대 현황, 비용, 융자 조건에 따라 다릅니다.">Estimate only. Real returns depend on the rent roll, expenses and loan terms.</p>
+        </div>
+      </div>
+
+      <!-- Investor list -->
+      <div class="form-section mt-lg" id="investor-list-box">
+        <div>
+          <div class="eyebrow" data-ko="투자자 리스트">Investor List</div>
+          <h2 class="h2-sm" data-ko="새 투자 매물을 가장 먼저 받아보세요">Hear About New Deals First</h2>
+          <p class="muted" data-ko="투자 조건을 알려주시면, 시장에 나오기 전 매물을 포함해 조건에 맞는 매물을 먼저 연락드립니다.">Share your criteria. I will contact you first when a matching property comes up – including pocket listings before they hit the market.</p>
+        </div>
+        <form class="lead-form form-card bordered" data-subject="Investor List">
+          <div class="form-grid">
+            <div class="field"><label data-ko="관심 매물 종류">Property Type</label>
+              <select name="asset"><option data-ko="상가 건물">Retail Plaza</option><option data-ko="산업용">Industrial</option><option data-ko="다세대 주택">Multi-Family</option><option data-ko="호텔 & 모텔">Hotel & Motel</option><option data-ko="주유소 (건물 포함)">Gas Station with Property</option><option data-ko="토지">Land</option><option data-ko="상관없음">Any</option></select></div>
+            <div class="field"><label data-ko="투자 예산">Budget</label><input name="budget"></div>
+            <div class="field"><label data-ko="목표 Cap Rate">Target Cap Rate</label><input name="cap"></div>
+            <div class="field"><label data-ko="선호 지역">Preferred Area</label><input name="area"></div>
+            <div class="field"><label data-ko="이름">Name</label><input name="name" required></div>
+            <div class="field"><label data-ko="전화번호">Phone</label><input name="phone" type="tel" required></div>
+            <div class="field full"><label data-ko="이메일">Email</label><input name="email" type="email" required></div>
+            <div class="full"><button class="btn btn-red w100" type="submit" data-ko="투자자 리스트 등록">Join the Investor List</button></div>
+          </div>
+          <div class="form-msg" data-ko="감사합니다! 조건에 맞는 매물이 나오면 연락드리겠습니다.">Thank you! I will contact you when a matching property comes up.</div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================
+     SELL YOUR BUSINESS
+     ====================================================== -->
+<section class="view" id="view-sell-business">
+  <div class="page-head"><div class="wrap">
+    <div class="eyebrow light" data-ko="비즈니스 판매">Sell Your Business</div>
+    <h1 data-ko="비즈니스 판매, 경험이 결과를 만듭니다">Selling a Business Takes Experience</h1>
+    <p data-ko="비공개 가치 평가부터 클로징까지 – 2007년부터 쌓아온 노하우">From a confidential valuation to closing – know-how built since 2007</p>
+  </div></div>
+  <div class="section">
+    <div class="wrap calc">
+      <div>
+        <h2 class="h2-sm" data-ko="판매자가 가장 많이 묻는 질문">What Sellers Ask Me Most</h2>
+        <div class="faq">
+          <details open><summary data-ko="내 비즈니스는 얼마일까요?">What is my business worth?</summary><p data-ko="매출, 순이익(SDE/EBITDA), 리스 조건, 장비 상태, 업종 평균을 함께 검토합니다. 같은 매출이라도 리스 기간과 임대료에 따라 가치가 크게 달라집니다.">I review sales, profit (SDE/EBITDA), lease terms, equipment and industry averages. Two businesses with the same sales can have very different values because of the lease.</p></details>
+          <details><summary data-ko="직원과 고객이 알게 되나요?">Will my staff and customers find out?</summary><p data-ko="아닙니다. 비즈니스 이름 없이 마케팅하고, NDA 서명과 자금 확인을 마친 구매자에게만 자세한 정보를 제공합니다.">No. I market the business without its name and share details only with buyers who sign an NDA and show proof of funds.</p></details>
+          <details><summary data-ko="자산 매매와 주식 매매의 차이는?">Asset sale or share sale?</summary><p data-ko="세금과 책임 범위가 다릅니다. 회계사와 함께 가장 유리한 구조를 찾아 드립니다.">Taxes and liabilities are different. I work with your accountant to find the best structure for you.</p></details>
+          <details><summary data-ko="셀러 파이낸싱(VTB)이 필요한가요?">Should I offer seller financing (VTB)?</summary><p data-ko="은행 융자가 어려운 업종에서는 VTB가 거래를 성사시키는 열쇠가 될 수 있습니다. 안전하게 구조를 만드는 방법을 알려드립니다.">For businesses that banks do not like to finance, a VTB can be the key to closing. I show you how to structure it safely.</p></details>
+          <details><summary data-ko="건물주 승인은 어떻게 받나요?">How does the landlord approval work?</summary><p data-ko="리스 양도 조건을 미리 확인하고 구매자 자료를 준비하여 승인이 빨리 나오도록 돕습니다.">I check the assignment terms early and prepare the buyer package so the landlord can approve quickly.</p></details>
+        </div>
+      </div>
+      <form class="lead-form form-card bordered" data-subject="Confidential Business Valuation">
+        <div class="eyebrow">🔒 <span data-ko="비공개">Confidential</span></div>
+        <h3 style="margin-bottom:16px" data-ko="비공개 비즈니스 가치 평가 요청">Request a Confidential Business Valuation</h3>
+        <div class="form-grid">
+          <div class="field"><label data-ko="업종">Type of Business</label><input name="business_type" required></div>
+          <div class="field"><label data-ko="도시">City</label><input name="city"></div>
+          <div class="field"><label data-ko="연 매출 (대략)">Annual Sales (approx.)</label><input name="sales"></div>
+          <div class="field"><label data-ko="건물 소유 여부">Do You Own the Property?</label><select name="own_property"><option data-ko="아니요 – 리스">No – Leased</option><option data-ko="예 – 소유">Yes – Owned</option></select></div>
+          <div class="field"><label data-ko="리스 잔여 기간">Lease Term Remaining</label><input name="lease_left"></div>
+          <div class="field"><label data-ko="판매 희망 시기">When Do You Want to Sell?</label><select name="timeline"><option data-ko="3개월 이내">Within 3 months</option><option data-ko="3~6개월">3–6 months</option><option data-ko="6~12개월">6–12 months</option><option data-ko="알아보는 중">Just exploring</option></select></div>
+          <div class="field"><label data-ko="이름">Name</label><input name="name" required></div>
+          <div class="field"><label data-ko="전화번호">Phone</label><input name="phone" type="tel" required></div>
+          <div class="field full"><label data-ko="이메일">Email</label><input name="email" type="email" required></div>
+          <div class="full"><button class="btn btn-red w100" type="submit" data-ko="비공개 평가 요청">Request Confidential Valuation</button></div>
+        </div>
+        <p class="note" data-ko="입력하신 정보는 비공개로 처리되며 다른 사람과 공유하지 않습니다.">Your information is kept private and is never shared.</p>
+        <div class="form-msg" data-ko="감사합니다! 1 영업일 내에 비공개로 연락드리겠습니다.">Thank you! I will contact you privately within 1 business day.</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================
+     RESIDENTIAL
+     ====================================================== -->
+<section class="view" id="view-residential">
+  <div class="page-head"><div class="wrap">
+    <div class="eyebrow light" data-ko="주거용">Residential</div>
+    <h1 data-ko="주거용 매물">Residential Listings</h1>
+    <p data-ko="주택, 콘도, 타운하우스, 토지">Homes, condos, townhomes and land</p>
+  </div></div>
+  <div class="section pt-sm">
+    <div class="wrap">
+      <div class="filter-row"><div class="filters" id="typeChips"></div><div class="filters" id="statusChips"></div></div>
+      <div class="grid" id="listGrid"></div>
+      <div class="cta-split mt-lg">
+        <div class="cta-box dark"><h3 data-ko="집을 구매하시나요?">Buying a Home?</h3><p data-ko="모기지 계산기로 월 상환액을 확인하세요.">Estimate your payment with the mortgage calculator.</p><a href="#mortgage" class="btn btn-ghost" data-ko="모기지 계산기">Mortgage Calculator</a></div>
+        <div class="cta-box red"><h3 data-ko="집을 판매하시나요?">Selling a Home?</h3><p data-ko="무료로 주택 가치 평가를 받아보세요.">Get a free home evaluation.</p><a href="#home-evaluation" class="btn btn-ghost" data-ko="무료 주택 가치 평가">Free Home Evaluation</a></div>
+      </div>
+      <div style="text-align:center;margin-top:36px">
+        <p class="muted" data-ko="다른 매물을 찾으시나요? REALTOR.ca에서 검색하시고 쇼잉 예약은 저에게 연락 주세요.">Looking for other homes? Search REALTOR.ca and call me to book a showing.</p>
+        <a class="btn btn-outline" style="margin-top:12px" href="https://www.realtor.ca/" target="_blank" rel="noopener" data-ko="REALTOR.ca 검색 →">Search REALTOR.ca →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================
+     LISTING DETAIL
+     ====================================================== -->
+<section class="view" id="view-detail"><div class="section"><div class="wrap" id="detailWrap"></div></div></section>
+
+<!-- ======================================================
+     MORTGAGE
+     ====================================================== -->
+<section class="view" id="view-mortgage">
+  <div class="page-head"><div class="wrap"><div class="eyebrow light" data-ko="계산기">Calculator</div><h1 data-ko="모기지 계산기">Mortgage Calculator</h1><p data-ko="주택 구매 예산을 계획하세요.">Plan your home-buying budget.</p></div></div>
+  <div class="section">
+    <div class="wrap calc">
+      <div class="calc-box">
+        <div class="field"><label data-ko="구매 가격 ($)">Purchase Price ($)</label><input type="number" id="cPrice" value="550000" step="1000"></div>
+        <div class="field"><label data-ko="다운페이먼트 (%)">Down Payment (%)</label><input type="number" id="cDown" value="10" step="0.5"></div>
+        <div class="field"><label data-ko="이자율 (%)">Interest Rate (%)</label><input type="number" id="cRate" value="4.49" step="0.01"></div>
+        <div class="field"><label data-ko="상환 기간">Amortization</label><select id="cAmort"><option value="25" data-ko="25년">25 years</option><option value="30" data-ko="30년">30 years</option><option value="20" data-ko="20년">20 years</option></select></div>
+        <div class="field"><label data-ko="상환 주기">Payment Frequency</label><select id="cFreq"><option value="12" data-ko="월별">Monthly</option><option value="26" data-ko="격주">Bi-weekly</option><option value="acc" data-ko="가속 격주">Accelerated Bi-weekly</option><option value="52" data-ko="주별">Weekly</option></select></div>
+      </div>
+      <div class="result">
+        <div data-ko="예상 상환액">Estimated Payment</div>
+        <div class="big" id="rPay">$0</div>
+        <div class="muted-l" id="rFreqLabel"></div>
+        <div class="row"><span data-ko="다운페이먼트">Down Payment</span><span id="rDown"></span></div>
+        <div class="row"><span data-ko="CMHC 보험료">CMHC Insurance</span><span id="rIns"></span></div>
+        <div class="row"><span data-ko="총 모기지 금액">Total Mortgage</span><span id="rLoan"></span></div>
+        <div class="row"><span data-ko="총 이자 (전체 상환 기간)">Total Interest (full amortization)</span><span id="rInt"></span></div>
+        <div class="warn" id="rWarn"></div>
+        <p class="note" data-ko="참고용 예상 금액입니다. 캐나다 반기 복리 방식으로 계산합니다. 다운페이먼트가 20% 미만이면 CMHC 보험료가 추가됩니다. 정확한 금액은 은행에 문의하세요.">Estimate only. Uses Canadian semi-annual compounding. CMHC premium applies when the down payment is under 20%. Ask your lender for an exact quote.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================
+     HOME EVALUATION
+     ====================================================== -->
+<section class="view" id="view-home-evaluation">
+  <div class="page-head"><div class="wrap"><div class="eyebrow light" data-ko="무료 평가">Free Evaluation</div><h1 data-ko="내 집은 얼마일까요?">What Is My Home Worth?</h1><p data-ko="무료이며 부담이 없습니다.">Free and no obligation.</p></div></div>
+  <div class="section">
+    <div class="wrap calc">
+      <div>
+        <p class="muted" style="margin-bottom:20px" data-ko="양식을 작성해 주세요. 주변 최근 거래를 검토하여 1~2 영업일 내에 시장 가치 평가를 보내드립니다.">Fill out the form. I will review recent sales in your area and send you a market evaluation within 1–2 business days.</p>
+        <ol class="steps">
+          <li data-ko="무료 시장 가치 평가와 가격 전략">Free market evaluation and pricing strategy</li>
+          <li data-ko="전문 사진 촬영 및 MLS®, 웹사이트, SNS 마케팅">Professional photos and marketing on MLS®, this website and social media</li>
+          <li data-ko="쇼잉, 오퍼, 협상">Showings, offers and negotiation</li>
+          <li data-ko="조건 해제, 클로징, 인도">Conditions, closing and handover</li>
+        </ol>
+      </div>
+      <form class="lead-form form-card bordered" data-subject="Home Evaluation Request">
+        <div class="form-grid">
+          <div class="field full"><label data-ko="부동산 주소">Property Address</label><input name="property_address" required></div>
+          <div class="field"><label data-ko="매물 종류">Property Type</label><select name="property_type"><option data-ko="단독 주택">House</option><option data-ko="콘도">Condo</option><option data-ko="타운하우스">Townhome</option><option data-ko="토지">Land</option></select></div>
+          <div class="field"><label data-ko="판매 예정 시기">When Are You Planning to Sell?</label><select name="timeline"><option data-ko="3개월 이내">Within 3 months</option><option data-ko="3~6개월">3–6 months</option><option data-ko="6~12개월">6–12 months</option><option data-ko="알아보는 중">Just curious</option></select></div>
+          <div class="field"><label data-ko="침실 수">Bedrooms</label><input name="beds" type="number" min="0"></div>
+          <div class="field"><label data-ko="욕실 수">Bathrooms</label><input name="baths" type="number" min="0" step="0.5"></div>
+          <div class="field"><label data-ko="이름">Name</label><input name="name" required></div>
+          <div class="field"><label data-ko="전화번호">Phone</label><input name="phone" type="tel" required></div>
+          <div class="field full"><label data-ko="이메일">Email</label><input name="email" type="email" required></div>
+          <div class="field full"><label data-ko="참고 사항 (리모델링, 특징 등)">Notes (renovations, special features)</label><textarea name="message" rows="3"></textarea></div>
+          <div class="full"><button class="btn btn-red w100" type="submit" data-ko="무료 평가 요청">Request Free Evaluation</button></div>
+        </div>
+        <div class="form-msg" data-ko="감사합니다! 1 영업일 내에 연락드리겠습니다.">Thank you! I will contact you within 1 business day.</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================
+     GUIDES
+     ====================================================== -->
+<section class="view" id="view-guides">
+  <div class="page-head"><div class="wrap"><div class="eyebrow light" data-ko="자료">Resources</div><h1 data-ko="무료 가이드">Free Guides</h1><p data-ko="영어와 한국어 가이드를 다운로드하세요.">Download my guides in English and Korean.</p></div></div>
+  <div class="section">
+    <div class="wrap res">
+      <div class="res-card"><div class="res-tag">PDF · EN</div><h3 data-ko="캐나다에서 집 사는 방법">How to Buy a Home in Canada</h3><p data-ko="첫 주택 구매자와 캐나다에 처음 오신 분을 위한 가이드입니다.">A simple guide for first-time and new-to-Canada buyers.</p><a href="pdfs/how-to-buy-a-home-in-canada.pdf" target="_blank" data-ko="PDF 다운로드 →">Download PDF →</a></div>
+      <div class="res-card"><div class="res-tag">PDF · EN</div><h3 data-ko="꿈의 집 짓기">Building Your Dream Home</h3><p data-ko="신축 주택을 짓기 전에 알아야 할 내용입니다.">What to know before building a new home.</p><a href="pdfs/building-your-dream-home.pdf" target="_blank" data-ko="PDF 다운로드 →">Download PDF →</a></div>
+      <div class="res-card"><div class="res-tag">PDF · 한국어</div><h3>캘거리 주택 구매 절차 가이드</h3><p data-ko="캘거리에서 집을 구매하는 과정을 한국어로 설명합니다.">The Calgary home-buying process, explained in Korean.</p><a href="pdfs/calgary-home-buying-guide-ko.pdf" target="_blank" data-ko="PDF 다운로드 →">Download PDF →</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================
+     ABOUT
+     ====================================================== -->
+<section class="view" id="view-about">
+  <div class="section">
+    <div class="wrap about">
+      <div class="about-photo"><img src="assets/jason-choi.jpg" alt="Jason Choi"><div class="since"><b>2007</b><span data-ko="부터">Since</span></div></div>
+      <div>
+        <div class="eyebrow" data-ko="소개">About Jason</div>
+        <h2>Jason Choi <span class="kr">최재봉</span></h2>
+        <div class="sub" data-ko="REALTOR® · 상업용 부동산 & 비즈니스 매매 · 앨버타 & BC">REALTOR® · Commercial Real Estate & Business Sales · Alberta & BC</div>
+        <p data-ko="저는 2007년부터 부동산 업계에서 일해 왔습니다. 그동안 주유소, 리커스토어, 레스토랑, 세탁소, 미용실 등 다양한 비즈니스 매매와 상업용 리스, 투자 부동산 거래를 진행했습니다.">I have worked in real estate since 2007. Over the years I have handled business sales – gas stations, liquor stores, restaurants, dry cleaners, salons and more – as well as commercial leases and investment properties.</p>
+        <p data-ko="비즈니스 거래는 주택 거래보다 훨씬 복잡합니다. 재무 자료, 리스 양도, 재고, 라이선스, 융자 구조까지 모두 맞아야 거래가 성사됩니다. 오랜 경험을 바탕으로 이 모든 과정을 쉽고 명확하게 안내해 드립니다.">Business deals are more complex than home sales. The financials, lease assignment, inventory, licences and financing all have to line up. With years of experience, I make every step clear and simple.</p>
+        <p data-ko="앨버타주와 BC주 면허를 보유하고 있으며, 영어와 한국어로 상담해 드립니다.">I am licensed in Alberta and British Columbia, and I serve clients in English and Korean.</p>
+        <div class="svc">
+          <div data-ko="비즈니스 매매">Business Sales</div><div data-ko="상업용 리스">Commercial Leasing</div>
+          <div data-ko="투자 부동산">Investment Properties</div><div data-ko="부동산 관리">Property Management</div>
+          <div data-ko="사업 계획서 지원">Business Plan Support</div><div data-ko="주거용 부동산">Residential</div>
+        </div>
+        <div class="hero-actions"><a href="#contact" class="btn btn-red" data-ko="상담 문의">Contact Me</a><a href="#sell-business" class="btn btn-outline" data-ko="비즈니스 가치 평가">Business Valuation</a></div>
+      </div>
+    </div>
+  </div>
+  <div class="section section-alt">
+    <div class="wrap">
+      <div class="center-head"><div class="eyebrow" data-ko="경력">Career</div><h2 data-ko="경력 하이라이트">Career Highlights</h2></div>
+      <div class="milestones">
+        <div><b>2007</b><span data-ko="부동산 업계 시작">Started in real estate</span></div>
+        <div><b data-ko="비즈니스">Business</b><span data-ko="주유소, 리커스토어, 레스토랑 등 비즈니스 매매">Gas station, liquor store and restaurant sales</span></div>
+        <div><b data-ko="상업용">Commercial</b><span data-ko="상업용 리스, 리스 양도, 상가 건물 마케팅">Commercial leases, assignments and retail plaza marketing</span></div>
+        <div><b>AB · BC</b><span data-ko="앨버타 & 브리티시컬럼비아 면허">Licensed in Alberta & British Columbia</span></div>
+        <div><b><span class="yrs"></span>+</b><span data-ko="년 경력, 현재 진행 중">Years and counting</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================
+     CONTACT (shown on every page)
+     ====================================================== -->
+<section class="section contact-band" id="contactBand">
+  <div class="wrap contact-grid">
+    <div>
+      <div class="eyebrow light" data-ko="연락처">Contact</div>
+      <h2 data-ko="상담 문의">Let's Talk About Your Next Deal</h2>
+      <p class="muted-l" data-ko="언제든지 전화, 문자, 이메일 주세요. 영어 또는 한국어로 답변드립니다.">Call, text or email me anytime. I reply in English or Korean.</p>
+      <div class="contact-list">
+        <div><span class="ic">☎</span><div><small data-ko="휴대폰">Cell</small><a href="tel:4033998124" class="big-link">(403) 399-8124</a></div></div>
+        <div><span class="ic">✉</span><div><small>Email</small><a href="mailto:CalgaryJason@gmail.com">CalgaryJason@gmail.com</a></div></div>
+        <div><span class="ic">⌂</span><div><small>First Place Realty (AB)</small>#305, 1822 10th Avenue SW, Calgary AB T3C 0J8</div></div>
+        <div><span class="ic">⌂</span><div><small>Maple Supreme Realty Inc. (BC)</small>#1290, 4380 No. 3 Road, Richmond BC V6X 3V7</div></div>
+      </div>
+      <div class="social-row" id="socialContact"></div>
+    </div>
+    <div class="form-card">
+      <form class="lead-form" data-subject="Website Inquiry">
+        <div class="form-grid">
+          <div class="field"><label data-ko="이름">Name</label><input name="name" required></div>
+          <div class="field"><label data-ko="전화번호">Phone</label><input name="phone" type="tel"></div>
+          <div class="field full"><label data-ko="이메일">Email</label><input name="email" type="email" required></div>
+          <div class="field full"><label data-ko="관심 분야">I Am Interested In</label>
+            <select name="interest"><option data-ko="비즈니스 구매">Buying a Business</option><option data-ko="비즈니스 판매">Selling a Business</option><option data-ko="상업용 리스">Commercial Leasing</option><option data-ko="투자 부동산">Investment Property</option><option data-ko="주거용 부동산">Residential</option><option data-ko="기타">Other</option></select></div>
+          <div class="field full"><label data-ko="메시지">Message</label><textarea name="message" rows="4" id="contactMsg"></textarea></div>
+          <div class="full"><button class="btn btn-red w100" type="submit" data-ko="메시지 보내기">Send Message</button></div>
+        </div>
+        <div class="form-msg" data-ko="감사합니다! 1 영업일 내에 연락드리겠습니다.">Thank you! I will contact you within 1 business day.</div>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ===================== FOOTER ===================== -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-logo"><img src="assets/logo.jpg" alt="Jason Choi Real Estate"></div>
+        <p>Jason Choi 최재봉, REALTOR®</p>
+        <p data-ko="2007년부터 신뢰받는 REALTOR®">Trusted REALTOR® Since 2007</p>
+        <div class="social-row" id="socialFoot"></div>
+      </div>
+      <div><h4 data-ko="상업용">Commercial</h4><ul>
+        <li><a href="#business" data-ko="비즈니스 매매">Business for Sale</a></li>
+        <li><a href="#leasing" data-ko="리스">Leasing</a></li>
+        <li><a href="#investment" data-ko="투자 부동산">Investment</a></li>
+        <li><a href="#sell-business" data-ko="비즈니스 판매">Sell Your Business</a></li></ul></div>
+      <div><h4 data-ko="자료">Resources</h4><ul>
+        <li><a href="#residential" data-ko="주거용 매물">Residential Listings</a></li>
+        <li><a href="#mortgage" data-ko="모기지 계산기">Mortgage Calculator</a></li>
+        <li><a href="#cap-calc" data-ko="Cap Rate 계산기">Cap Rate Calculator</a></li>
+        <li><a href="#guides" data-ko="무료 가이드">Free Guides</a></li></ul></div>
+      <div><h4 data-ko="연락처">Contact</h4><ul>
+        <li><a href="tel:4033998124">(403) 399-8124</a></li>
+        <li><a href="mailto:CalgaryJason@gmail.com">CalgaryJason@gmail.com</a></li>
+        <li>First Place Realty (AB)</li><li>Maple Supreme Realty Inc. (BC)</li></ul></div>
+    </div>
+    <div class="legal">
+      <div>Jason Choi is a REALTOR® with First Place Realty (Alberta) and Maple Supreme Realty Inc. (British Columbia).</div>
+      <div>The trademarks REALTOR®, REALTORS®, and the REALTOR® logo are controlled by The Canadian Real Estate Association (CREA) and identify real estate professionals who are members of CREA. The trademarks MLS®, Multiple Listing Service® and the associated logos are owned by CREA and identify the quality of services provided by real estate professionals who are members of CREA.</div>
+      <div>This REALTOR.ca listing content is owned and licensed by REALTOR® members of The Canadian Real Estate Association. Listings from other brokerages are provided through REALTOR.ca DDF®.</div>
+      <div>Information is believed to be reliable but is not guaranteed. Not intended to solicit buyers or sellers currently under contract.</div>
+      <div>© <span id="yr"></span> Jason Choi Real Estate. All rights reserved.</div>
+    </div>
+  </div>
+</footer>
+
+<!-- Data fallbacks (preview only; the live site loads data/*.json) -->
+<script id="fallback-data" type="application/json">[]</script>
+<script id="fallback-ddf" type="application/json">[]</script>
+<script src="js/config.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
