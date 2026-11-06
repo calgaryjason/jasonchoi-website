@@ -41,6 +41,8 @@ const D = {
   "freq.12":["per month","월별 상환"], "freq.26":["bi-weekly","격주 상환"], "freq.acc":["accelerated bi-weekly","가속 격주 상환"], "freq.52":["per week","주별 상환"],
   wMin:["Minimum down payment for this price is $","이 가격의 최소 다운페이먼트는 $"], wMin2:[".","입니다."], wBig:["A minimum 20% down payment is required at $1,500,000 or more.","$1,500,000 이상은 최소 20% 다운페이먼트가 필요합니다."],
   bizAll:["Businesses for Sale","비즈니스 매물"], invAll:["Income-Producing Investment Properties","수익형 투자 부동산"], forSaleSuffix:[" for Sale"," 매물"],
+  emptyT:["New listings coming soon","새 매물 준비 중"], emptyD:["Many of my business opportunities are shared privately. Tell me what you are looking for and I will contact you first.","많은 비즈니스 매물은 비공개로 소개됩니다. 원하시는 조건을 알려주시면 가장 먼저 연락드리겠습니다."],
+  emptyF:["No listings match these filters.","조건에 맞는 매물이 없습니다."], contactBtn:["Contact Jason","상담 문의"],
   leaseAll:["All Space","전체"], foodSpace:["Restaurant / Food Space","레스토랑 / 식당 공간"], otherSpace:["Other","기타"]
 };
 let lang = "en";
@@ -178,7 +180,10 @@ function cardHTML(l) {
       <div class="card-foot"><span>${l.source === "ddf" ? (l.listOffice || "") : "First Place Realty"}</span><span class="go">${t("more")}</span></div>
     </div></a>`;
 }
-const gridHTML = items => items.length ? items.map(cardHTML).join("") : `<div class="empty">${t("none")}</div>`;
+const emptyBox = () => MINE.some(l => l.status === "active")
+  ? `<div class="empty">${t("emptyF")}</div>`
+  : `<div class="empty empty-cta"><b>${t("emptyT")}</b><p>${t("emptyD")}</p><a class="btn btn-red" href="#contact">${t("contactBtn")}</a></div>`;
+const gridHTML = items => items.length ? items.map(cardHTML).join("") : emptyBox();
 const catTiles = (cats, cur, base) => ["all", ...cats].map(c =>
   `<a class="cat ${cur === c ? "on" : ""}" href="#${c === "all" ? base : base + "-" + c}"><div class="cat-ic">${icon(c)}</div><b>${c === "all" ? t("all") : t("c." + c)}</b></a>`).join("");
 
@@ -194,7 +199,12 @@ function renderHome() {
   $("featTabs").querySelectorAll("button").forEach(b => b.onclick = () => { featTab = b.dataset.k; renderHome(); });
   const pick = MINE.filter(l => l.status === "active" && kind(l) === featTab);
   $("featuredGrid").innerHTML = gridHTML(pick.sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0)).slice(0, 6));
-  $("statActive").textContent = MINE.filter(l => l.status === "active").length;
+  const nActive = MINE.filter(l => l.status === "active").length;
+  $("statActive").textContent = nActive;
+  $("statListings").style.display = nActive ? "" : "none"; $("statService").style.display = nActive ? "none" : "";
+  $("featuredSection").style.display = nActive ? "" : "none";
+  $("testimonials").style.display = SITE.showTestimonials ? "" : "none";
+  document.querySelectorAll(".ddf-block").forEach(b => b.style.display = DDF.length ? "" : "none");
   document.querySelectorAll(".pillar-ic[data-icon]").forEach(e => e.innerHTML = icon(e.dataset.icon, 30));
 }
 

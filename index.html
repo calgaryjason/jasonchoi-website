@@ -96,7 +96,8 @@
       <div class="wrap stats">
         <div class="stat"><b><span class="yrs"></span>+</b><span data-ko="년 업계 경력 (2007년부터)">Years in Real Estate (Since 2007)</span></div>
         <div class="stat"><b>AB · BC</b><span data-ko="2개 주 면허 보유">Licensed in Two Provinces</span></div>
-        <div class="stat"><b id="statActive">0</b><span data-ko="현재 등록 매물">Active Listings</span></div>
+        <div class="stat" id="statListings"><b id="statActive">0</b><span data-ko="현재 등록 매물">Active Listings</span></div>
+        <div class="stat" id="statService" style="display:none"><b>1:1</b><span data-ko="맞춤 상담">Personal Service</span></div>
         <div class="stat"><b>EN · 한</b><span data-ko="영어 · 한국어 상담">English · Korean Service</span></div>
       </div>
     </div>
@@ -162,7 +163,7 @@
   </div>
 
   <!-- Featured -->
-  <div class="section">
+  <div class="section" id="featuredSection">
     <div class="wrap">
       <div class="section-head">
         <div><div class="eyebrow" data-ko="추천 매물">Featured</div><h2 data-ko="추천 매물">Featured Listings</h2></div>
@@ -229,7 +230,7 @@
   </div>
 
   <!-- Testimonials -->
-  <div class="section">
+  <div class="section" id="testimonials">
     <div class="wrap">
       <div class="center-head"><div class="eyebrow" data-ko="고객 후기">Testimonials</div><h2 data-ko="고객님들의 이야기">What My Clients Say</h2></div>
       <div class="quotes">
@@ -273,6 +274,7 @@
       </div>
       <div class="section-head mt"><div><div class="eyebrow" data-ko="Jason Choi 등록 매물">Exclusive Listings</div><h2 data-ko="내 비즈니스 매물">My Business Listings</h2></div></div>
       <div class="grid" id="bizMine"></div>
+      <div class="ddf-block">
       <div class="section-head mt-lg">
         <div><div class="eyebrow" data-ko="MLS® 매물 · 매일 자동 업데이트">MLS® Listings · Updated Daily</div><h2 data-ko="다른 비즈니스 매물">More Businesses for Sale</h2>
         <p class="muted small-mt" data-ko="REALTOR.ca DDF®를 통해 자동으로 업데이트되는 다른 브로커리지의 매물입니다. 관심 있는 매물은 저에게 연락 주세요.">Listings from other brokerages, updated through REALTOR.ca DDF®. Contact me to view any of them.</p></div>
@@ -280,6 +282,7 @@
       </div>
       <div class="grid" id="bizDdf"></div>
       <div class="more-wrap"><button class="btn btn-outline more-btn" data-target="biz" data-ko="더 보기">Show More</button></div>
+      </div>
 
       <div class="cta-split mt-lg">
         <div class="cta-box dark">
@@ -342,12 +345,14 @@
       </div>
       <div class="section-head mt"><div><div class="eyebrow" data-ko="Jason Choi 등록 매물">Exclusive Listings</div><h2 data-ko="리스 매물">Space for Lease</h2></div></div>
       <div class="grid" id="leaseMine"></div>
+      <div class="ddf-block">
       <div class="section-head mt-lg">
         <div><div class="eyebrow" data-ko="MLS® 매물 · 매일 자동 업데이트">MLS® Listings · Updated Daily</div><h2 data-ko="다른 리스 매물">More Space for Lease</h2></div>
         <span class="ddf-logo">REALTOR.ca DDF®</span>
       </div>
       <div class="grid" id="leaseDdf"></div>
       <div class="more-wrap"><button class="btn btn-outline more-btn" data-target="lease" data-ko="더 보기">Show More</button></div>
+      </div>
 
       <!-- Lease calculator -->
       <div class="calc mt-lg" id="leasing-calc-box">
@@ -418,12 +423,14 @@
       </div>
       <div class="section-head mt"><div><div class="eyebrow" data-ko="Jason Choi 등록 매물">Exclusive Listings</div><h2 data-ko="투자 매물">Investment Listings</h2></div></div>
       <div class="grid" id="invMine"></div>
+      <div class="ddf-block">
       <div class="section-head mt-lg">
         <div><div class="eyebrow" data-ko="MLS® 매물 · 매일 자동 업데이트">MLS® Listings · Updated Daily</div><h2 data-ko="다른 투자 매물">More Investment Properties</h2></div>
         <span class="ddf-logo">REALTOR.ca DDF®</span>
       </div>
       <div class="grid" id="invDdf"></div>
       <div class="more-wrap"><button class="btn btn-outline more-btn" data-target="inv" data-ko="더 보기">Show More</button></div>
+      </div>
 
       <!-- Cap rate calculator -->
       <div class="calc mt-lg" id="cap-calc-box">

@@ -21,6 +21,9 @@ window.SITE = {
      Empty = preview mode (forms only show a thank-you message). */
   formAccessKey: "f5c5f3c1-9ea2-4a7c-9b5f-9179bd184062",
 
+  /* Show the testimonials section on the home page (true after you add real reviews). */
+  showTestimonials: false,
+
   /* Maximum photos per listing. */
   maxPhotos: 5,
 
