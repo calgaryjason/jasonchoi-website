@@ -110,5 +110,21 @@
     "desc_ko": "독립·배너·에스닉 그로서리 스토어 인수 안내: 핵심 지표, 재고 조항, 냉장 설비 점검, 라이선스, 융자, 위험 신호, 구매자 비용 (영문).",
     "lang": "EN",
     "file": "uploads/guides/Grocery_Store_Purchase_Guide_AB_BC.pdf"
+  },
+  {
+    "title_en": "Investment Property Guide: Rental Income, Numbers & Tax",
+    "title_ko": "투자 부동산 가이드: 임대 수익, 계산, 세금",
+    "desc_en": "Key numbers (NOI, cap rate, cash flow), a worked Calgary rental example, financing rules, Alberta vs. BC differences, 2026 tax basics and a due diligence checklist.",
+    "desc_ko": "핵심 지표(NOI, Cap Rate, 현금 흐름), 캘거리 임대 계산 예시, 융자 규정, 앨버타·BC 차이, 2026년 세금 기본, 실사 체크리스트 (영문).",
+    "lang": "EN",
+    "file": "uploads/guides/Investment_Property_Guide_AB_BC_2026.pdf"
+  },
+  {
+    "title_en": "Environmental Site Assessments (Phase I, II, III)",
+    "title_ko": "환경평가(ESA) 1·2·3단계 안내",
+    "desc_en": "What each ESA phase does, when you need it, typical cost and time, and how environmental due diligence fits into buying commercial property — essential for gas stations and industrial sites.",
+    "desc_ko": "환경평가 단계별 내용, 필요한 시기, 비용과 기간, 상업용 부동산 구매 시 활용 방법. 주유소·산업용 부지 필수 (영문).",
+    "lang": "EN",
+    "file": "uploads/guides/Environmental_Site_Assessment_Guide.pdf"
   }
 ]
