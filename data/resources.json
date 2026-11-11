@@ -38,5 +38,21 @@
     "desc_ko": "조건 해제 전에 꼭 받아야 할 콘도 서류 7가지, 주의해야 할 위험 신호 7가지, 문제가 발견됐을 때 대처 방법.",
     "lang": "한국어",
     "file": "uploads/guides/Alberta_Condo_Document_Guide_KO.pdf"
+  },
+  {
+    "title_en": "Calgary New Home Buying Guide (Korean)",
+    "title_ko": "캘거리 신축 주택 구매 완벽 가이드 (2026)",
+    "desc_en": "An 8-step guide for first-time buyers purchasing a new home from a builder in Calgary: mortgage, the new GST rebate, builder checks, contracts, inspections and Alberta's new home warranty. Written in Korean.",
+    "desc_ko": "빌더에게 새 집을 사는 첫 주택 구매자를 위한 8단계 안내: 모기지, 새 GST 환급, 빌더 확인, 계약서, 입주 전 검사, 앨버타 신축 주택 보증.",
+    "lang": "한국어",
+    "file": "uploads/guides/Calgary_New_Home_Buying_Guide_KO_2026.pdf"
+  },
+  {
+    "title_en": "Calgary Home Selling Guide (Korean)",
+    "title_ko": "캘거리 집 팔기 단계별 안내서 (주택·콘도)",
+    "desc_en": "Selling a house or condo in Calgary: the 10 steps, RPR and condo documents, selling costs, tax points (including the 365-day flipping rule) and a closing checklist. Written in Korean.",
+    "desc_ko": "단독주택과 콘도 매도 10단계, RPR과 콘도 서류, 매도 비용, 세금 주의사항(1년 내 매도 규정 포함), 잔금일 체크리스트.",
+    "lang": "한국어",
+    "file": "uploads/guides/Calgary_Home_Selling_Guide_KO_2026.pdf"
   }
 ]
