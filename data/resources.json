@@ -70,5 +70,29 @@
     "desc_ko": "앨버타에서 비즈니스를 인수할 때 단계별 체크리스트. 주유소, 레스토랑, 리커스토어, 모텔별 추가 체크리스트 포함 (영문).",
     "lang": "EN",
     "file": "uploads/guides/Business_Purchase_Checklist_Alberta.pdf"
+  },
+  {
+    "title_en": "Restaurant Equipment Due Diligence Checklist",
+    "title_ko": "레스토랑 장비 실사 체크리스트",
+    "desc_en": "A printable checklist for inspecting a restaurant, café or bar before you buy: cooking line, refrigeration, ventilation and fire safety, bar and POS, building systems and price allocation.",
+    "desc_ko": "레스토랑·카페·바 인수 전 장비 점검용 체크리스트: 조리 장비, 냉장, 환기·소방, 바·POS, 건물 설비, 가격 배분 (영문).",
+    "lang": "EN",
+    "file": "uploads/guides/Restaurant_Equipment_Checklist_Calgary.pdf"
+  },
+  {
+    "title_en": "Mortgage Document Checklist (Residential & Commercial)",
+    "title_ko": "모기지 서류 체크리스트 (주택·상업용)",
+    "desc_en": "Everything lenders ask for — for home buyers and for business and investment property buyers in Alberta and BC. Updated for 2026 rules.",
+    "desc_ko": "주택 구매자와 비즈니스·투자 부동산 구매자가 은행에 제출하는 서류 목록. 2026년 기준 (영문).",
+    "lang": "EN",
+    "file": "uploads/guides/Mortgage_Document_Checklist_AB_BC.pdf"
+  },
+  {
+    "title_en": "Bridge Financing Explained",
+    "title_ko": "브리지 론(Bridge Financing) 안내",
+    "desc_en": "Buying your next home before your current home sale closes: how bridge financing works, costs, how to qualify, risks, alternatives and Alberta vs. BC differences.",
+    "desc_ko": "지금 집이 팔리기 전에 새 집을 살 때 쓰는 단기 대출: 방법, 비용, 자격, 위험, 대안, 앨버타·BC 차이 (영문).",
+    "lang": "EN",
+    "file": "uploads/guides/Bridge_Financing_Guide_AB_BC.pdf"
   }
 ]
