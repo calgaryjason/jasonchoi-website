@@ -8,6 +8,14 @@
     "file": "uploads/guides/Home_Purchase_Cost_Guide_AB_BC_2026.pdf"
   },
   {
+    "title_en": "What It Costs to Buy a Home (Korean, 2026)",
+    "title_ko": "집을 살 때 실제로 드는 비용 (앨버타·BC, 2026)",
+    "desc_en": "Korean version of the home purchase cost guide: down payment, mortgage insurance, closing costs, first-time buyer programs and a cost worksheet.",
+    "desc_ko": "다운페이먼트, 모기지 보험, 클로징 비용, 첫 주택 구매자 혜택을 2026년 기준으로 정리. $600,000 주택 계산 예시와 비용 계산표 포함.",
+    "lang": "한국어",
+    "file": "uploads/guides/Home_Purchase_Cost_Guide_KO_2026.pdf"
+  },
+  {
     "title_en": "Condo & Strata Red Flags Checklist",
     "title_ko": "콘도·스트라타 위험 신호 체크리스트",
     "desc_en": "The warning signs to look for in condo documents before you remove conditions, the documents to ask for, questions for the property manager, and your options if you find a problem.",
@@ -70,6 +78,14 @@
     "desc_ko": "앨버타에서 비즈니스를 인수할 때 단계별 체크리스트. 주유소, 레스토랑, 리커스토어, 모텔별 추가 체크리스트 포함 (영문).",
     "lang": "EN",
     "file": "uploads/guides/Business_Purchase_Checklist_Alberta.pdf"
+  },
+  {
+    "title_en": "Buying a Business Checklist (Korean)",
+    "title_ko": "비즈니스 인수 체크리스트 (오퍼부터 클로징까지)",
+    "desc_en": "Korean version of the 5-stage business purchase checklist, with extra checklists for gas stations, restaurants, liquor stores and motels.",
+    "desc_ko": "앨버타 비즈니스 인수 5단계 체크리스트. 주유소, 레스토랑, 리커스토어, 모텔·호텔별 추가 체크리스트 포함.",
+    "lang": "한국어",
+    "file": "uploads/guides/Business_Purchase_Checklist_KO.pdf"
   },
   {
     "title_en": "Restaurant Equipment Due Diligence Checklist",
