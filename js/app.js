@@ -100,10 +100,10 @@ const socIcon = (k, s = 18) => `<svg width="${s}" height="${s}" viewBox="0 0 24 
 function renderSocial() {
   const keys = Object.keys(SOC).filter(k => SITE[k]);
   const links = s => keys.map(k => `<a href="${SITE[k]}" target="_blank" rel="noopener" aria-label="${SOC[k].n}">${socIcon(k, s)}</a>`).join("");
-  $("socialTop").innerHTML = links(15); $("socialFoot").innerHTML = links(18); $("socialContact").innerHTML = links(18);
+  $("socialTop").innerHTML = links(19); $("socialFoot").innerHTML = links(24); $("socialContact").innerHTML = links(24);
   $("socialCards").innerHTML = ["instagram","facebook","threads","a9ent"].filter(k => SITE[k]).map(k =>
-    `<a class="social-card" href="${SITE[k]}" target="_blank" rel="noopener"><span class="s-ic" style="background:${SOC[k].c}">${socIcon(k, 24)}</span>
-     <span><b>${SOC[k].n}</b><small>${k === "a9ent" ? "a9ent.co/jasonchoirealestate" : "@" + (k === "facebook" ? (SITE.facebookHandle || SITE.handle || "") : (SITE.handle || ""))} · ${t(SOC[k].s)}</small></span></a>`).join("");
+    `<a class="social-card" href="${SITE[k]}" target="_blank" rel="noopener"><span class="s-ic" style="background:${SOC[k].c}">${socIcon(k, 34)}</span>
+     <b>${SOC[k].n}</b><small class="s-handle">${k === "a9ent" ? "a9ent.co/jasonchoirealestate" : "@" + (k === "facebook" ? (SITE.facebookHandle || SITE.handle || "") : (SITE.handle || ""))}</small><small>${t(SOC[k].s)}</small><span class="s-go">${lang === "ko" ? "팔로우 →" : "Follow →"}</span></a>`).join("");
 }
 
 /* ---------- Categories ---------- */
@@ -113,7 +113,7 @@ const HOME_CATS = ["restaurant","gas-station","hotel","liquor-store","car-wash",
 const RES_TYPES = ["all","residential","condo","townhome","land"];
 
 /* ---------- Data & state ---------- */
-let MINE = [], DDF = [], SOLD = [], REVIEWS = [], RES = [], POCKET = [];
+let MINE = [], DDF = [], SOLD = [], REVIEWS = [], RES = [], POCKET = [], MARKET = {};
 let trackGrp = "all";
 const ALL = () => MINE.concat(DDF);
 let bizCat = "all", invCat = "all", featTab = "biz", resType = "all", resStatus = "active";
@@ -520,9 +520,41 @@ function router() {
   if (jump) setTimeout(() => $(jump).scrollIntoView({ behavior: "smooth" }), 30); else window.scrollTo(0, 0);
 }
 window.addEventListener("hashchange", router);
+
+/* ---------- Calgary market update ---------- */
+const MK = { detached:["Detached","단독주택"], semi:["Semi-detached","세미 단독"], row:["Row / Townhouse","타운하우스"], apartment:["Apartment Condo","아파트 콘도"] };
+function renderMarket() {
+  const m = MARKET, ok = m && m.total && m.month;
+  const sec = $("marketSection"); if (sec) sec.style.display = ok ? "" : "none";
+  if (!ok) { document.querySelectorAll(".market-slot").forEach(e => e.innerHTML = ""); return; }
+  const ko = lang === "ko", [y, mo] = m.month.split("-").map(Number);
+  const mname = ko ? `${y}년 ${mo}월` : new Date(y, mo - 1, 1).toLocaleString("en-CA", { month: "long", year: "numeric" });
+  const money = n => "$" + Math.round(n).toLocaleString("en-CA");
+  const pct = n => `<span class="${n >= 0 ? "up" : "down"}">${n >= 0 ? "▲" : "▼"} ${Math.abs(n).toFixed(1)}%</span>`;
+  const mkt = s => s < 4 ? (ko ? "판매자 우위" : "Seller's market") : s <= 6 ? (ko ? "균형 시장" : "Balanced") : (ko ? "구매자 우위" : "Buyer's market");
+  const T = m.total;
+  const kpis = [
+    [ko ? "기준 가격 (전체)" : "Benchmark Price", money(T.benchmark), pct(T.yoy) + (ko ? " 전년 대비" : " vs last year")],
+    [ko ? "월간 거래량" : "Sales", T.sales.toLocaleString("en-CA"), pct(T.salesYoy) + (ko ? " 전년 대비" : " vs last year")],
+    [ko ? "매물 재고" : "Inventory", T.inventory.toLocaleString("en-CA"), (ko ? "신규 매물 " : "New listings ") + T.newListings.toLocaleString("en-CA")],
+    [ko ? "재고 소진 기간" : "Months of Supply", T.monthsSupply.toFixed(1), mkt(T.monthsSupply)],
+    [ko ? "평균 판매 기간" : "Days on Market", T.dom, ko ? "일" : "days"],
+    [ko ? "호가 대비 판매가" : "Sale-to-List", T.saleToList.toFixed(1) + "%", ko ? "평균" : "average"]
+  ].map(k => `<div class="mk-kpi"><small>${k[0]}</small><b>${k[1]}</b><span>${k[2]}</span></div>`).join("");
+  const rows = (m.types || []).map(r => `<tr><td>${(MK[r.type] || [r.type, r.type])[ko ? 1 : 0]}</td><td>${money(r.benchmark)}</td><td>${pct(r.yoy)}</td><td>${r.sales.toLocaleString("en-CA")}</td><td>${r.monthsSupply.toFixed(1)} <em>${mkt(r.monthsSupply)}</em></td></tr>`).join("");
+  const html = `<div class="section-head"><div><div class="eyebrow">${ko ? "캘거리 부동산 시장" : "Calgary Market Update"}</div>
+    <h2>${ko ? mname + " 캘거리 시장 통계" : "Calgary Market Statistics – " + mname}</h2>
+    <p class="muted small-mt">${ko ? m.summaryKo : m.summaryEn}</p></div>
+    <a href="#contact" class="btn btn-outline">${ko ? "시장 상담 받기 →" : "Ask About Your Area →"}</a></div>
+    <div class="mk-kpis">${kpis}</div>
+    <div class="mk-table-wrap"><table class="mk-table"><thead><tr><th>${ko ? "유형" : "Property Type"}</th><th>${ko ? "기준 가격" : "Benchmark"}</th><th>${ko ? "전년 대비" : "Y/Y"}</th><th>${ko ? "거래량" : "Sales"}</th><th>${ko ? "재고 소진 기간 (개월)" : "Months of Supply"}</th></tr></thead><tbody>${rows}</tbody></table></div>
+    <p class="note mk-src">${ko ? "출처" : "Source"}: <a href="${m.sourceUrl}" target="_blank" rel="noopener">${m.source}</a>. ${ko ? "캘거리 시 기준. 매월 업데이트됩니다." : "City of Calgary. Updated monthly."}</p>`;
+  document.querySelectorAll(".market-slot").forEach(e => e.innerHTML = html);
+}
+
 function renderAll() {
   renderBrokers();
-  renderTrack(); renderReviews(); renderResources(); renderPocket();
+  renderTrack(); renderReviews(); renderResources(); renderPocket(); renderMarket();
   renderSocial(); renderHome(); renderBusiness(); renderLeasing(); renderInvestment(); renderResidential();
   if (ALL().some(l => l.id === route)) renderDetail(route);
   calcMortgage(); calcLease(); calcCap();
@@ -581,8 +613,8 @@ async function getJSON(url, fb) {
   catch (e) { try { return JSON.parse($(fb).textContent); } catch (_) { return []; } }
 }
 (async () => {
-  [MINE, DDF, SOLD, REVIEWS, RES, POCKET] = await Promise.all([getJSON("data/listings.json", "fallback-data"), getJSON("data/ddf-listings.json", "fallback-ddf"),
-    getJSON("data/sold.json", "fallback-sold"), getJSON("data/testimonials.json", "fallback-reviews"), getJSON("data/resources.json", "fallback-res"), getJSON("data/pocket.json", "fallback-pocket")]);
+  [MINE, DDF, SOLD, REVIEWS, RES, POCKET, MARKET] = await Promise.all([getJSON("data/listings.json", "fallback-data"), getJSON("data/ddf-listings.json", "fallback-ddf"),
+    getJSON("data/sold.json", "fallback-sold"), getJSON("data/testimonials.json", "fallback-reviews"), getJSON("data/resources.json", "fallback-res"), getJSON("data/pocket.json", "fallback-pocket"), getJSON("data/market.json", "fallback-market")]);
   MINE.forEach(l => l.source = "jason"); DDF.forEach(l => l.source = "ddf");
   fillSelects(); applyLang(); renderPhotos(); router();
 })();

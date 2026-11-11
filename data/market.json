@@ -1,0 +1,14 @@
+{
+  "month": "2026-10",
+  "source": "CREB® Calgary Monthly Statistics, October 2026",
+  "sourceUrl": "https://www.creb.com/Housing_Statistics/documents/10_2026_Calgary_Monthly_Stats_Package.pdf",
+  "total": { "benchmark": 564200, "yoy": -0.35, "sales": 1592, "salesYoy": -15.27, "newListings": 2928, "inventory": 6173, "monthsSupply": 3.88, "dom": 43, "saleToList": 97.30 },
+  "types": [
+    { "type": "detached", "benchmark": 735100, "yoy": -0.72, "sales": 847, "monthsSupply": 3.34 },
+    { "type": "semi", "benchmark": 685200, "yoy": 0.78, "sales": 184, "monthsSupply": 3.16 },
+    { "type": "row", "benchmark": 407500, "yoy": -5.12, "sales": 241, "monthsSupply": 4.44 },
+    { "type": "apartment", "benchmark": 288800, "yoy": -7.94, "sales": 320, "monthsSupply": 5.28 }
+  ],
+  "summaryEn": "Sales slowed in October, but detached homes are still a seller's market. Condos and townhomes are more balanced, which gives buyers more choice.",
+  "summaryKo": "10월 거래량은 줄었지만 단독주택은 여전히 판매자 우위 시장입니다. 콘도와 타운하우스는 균형 시장에 가까워 구매자의 선택 폭이 넓어졌습니다."
+}

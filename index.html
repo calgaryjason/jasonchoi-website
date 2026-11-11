@@ -246,6 +246,11 @@
   </div>
 
   <!-- Track record (data/sold.json) -->
+  <!-- Calgary market update (data/market.json, updated monthly) -->
+  <div class="section" id="marketSection" style="display:none">
+    <div class="wrap"><div class="market-slot"></div></div>
+  </div>
+
   <div class="section section-alt" id="trackSection" style="display:none">
     <div class="wrap">
       <div class="section-head">
@@ -612,7 +617,8 @@
     <div class="wrap">
       <div class="filter-row"><div class="filters" id="typeChips"></div><div class="filters" id="statusChips"></div></div>
       <div class="grid" id="listGrid"></div>
-<div class="districts mt-lg">
+<div class="market-slot mt-lg"></div>
+      <div class="districts mt-lg">
         <div class="section-head"><div><div class="eyebrow" data-ko="캘거리 지역 안내">Calgary Area Guide</div><h2 data-ko="캘거리 8개 부동산 지역">Calgary's 8 Real Estate Districts</h2>
         <p class="muted small-mt" data-ko="캘거리 부동산 협회(CREB®)는 캘거리를 8개 지역으로 나눕니다. MLS® 검색도 이 지역을 기준으로 합니다.">The Calgary Real Estate Board (CREB®) divides the city into 8 districts. MLS® searches use these districts.</p></div>
         <a href="https://www.creb.com/-/media/Public/CREBcom/Housing_Statistics/CITY_OF_CALGARY_MAP_2022.pdf" target="_blank" rel="noopener" class="btn btn-red" data-ko="CREB® 공식 지도 보기 →">View CREB® Official Map →</a></div>
@@ -858,6 +864,7 @@
 <script id="fallback-reviews" type="application/json">[]</script>
 <script id="fallback-res" type="application/json">[]</script>
 <script id="fallback-pocket" type="application/json">[]</script>
+<script id="fallback-market" type="application/json">{}</script>
 <script src="js/config.js"></script>
 <script src="js/app.js"></script>
 </body>

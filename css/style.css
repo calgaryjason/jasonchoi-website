@@ -44,8 +44,8 @@ img{max-width:100%;display:block}
 .topbar .wrap{display:flex;justify-content:space-between;align-items:center;height:40px;gap:12px}
 .tb-left,.tb-right{display:flex;align-items:center;gap:12px}
 .topbar a:hover{color:#fff}
-.social-mini{display:flex;gap:6px}
-.social-mini a{width:26px;height:26px;display:flex;align-items:center;justify-content:center;border-radius:50%;color:#cfd0d4}
+.social-mini{display:flex;gap:8px}
+.social-mini a{width:34px;height:34px;display:flex;align-items:center;justify-content:center;border-radius:50%;color:#cfd0d4}
 .social-mini a:hover{background:var(--red);color:#fff}
 .lang{display:flex;border:1px solid #4a4c52;border-radius:4px;overflow:hidden}
 .lang button{background:none;border:0;color:#b9bbc0;padding:4px 10px;cursor:pointer;font:inherit;font-size:12px;font-weight:700}
@@ -201,13 +201,16 @@ nav.menu .btn:hover{color:#fff}
 /* Social */
 .social-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;max-width:1100px;margin:0 auto}
 @media (max-width:980px){.social-cards{grid-template-columns:1fr 1fr}}
-.social-card{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px;transition:.18s}
+@media (max-width:560px){.social-cards{grid-template-columns:1fr 1fr!important;gap:12px}.social-card{padding:18px 10px}}
+.social-card{display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;min-width:0;background:#fff;border:1px solid var(--line);border-radius:14px;padding:24px;transition:.18s}
 .social-card:hover{border-color:var(--red);box-shadow:var(--shadow)}
-.social-card .s-ic{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#fff;flex:none}
-.social-card b{display:block}
-.social-card small{color:var(--gray)}
-.social-row{display:flex;gap:10px;margin-top:18px}
-.social-row a{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;color:#fff}
+.social-card .s-ic{width:72px;height:72px;border-radius:18px;margin-bottom:8px;display:flex;align-items:center;justify-content:center;color:#fff;flex:none}
+.social-card b{display:block;font-size:1.2rem;margin-bottom:3px}
+.social-card small{color:var(--gray);font-size:.92rem;display:block;overflow-wrap:anywhere}
+.social-card .s-handle{color:var(--ink);font-weight:600}
+.social-card .s-go{margin-top:8px;color:var(--red);font-weight:700;font-size:.92rem}
+.social-row{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
+.social-row a{width:50px;height:50px;border-radius:50%;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;color:#fff}
 .social-row a:hover{background:var(--red)}
 
 /* Page head */
@@ -444,3 +447,21 @@ footer a:hover{color:#fff}
 .dist p{margin:0;font-size:.9rem;line-height:1.55;color:#5b5f68}
 .dist-code{display:inline-block;background:var(--red);color:#fff;font-weight:800;font-size:.8rem;padding:3px 9px;border-radius:4px}
 @media(max-width:900px){.dist-grid{grid-template-columns:1fr 1fr}}
+
+/* Market update */
+.mk-kpis{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-bottom:18px}
+.mk-kpi{background:#fff;border:1px solid var(--line,#e5e6ea);border-radius:10px;padding:16px}
+.mk-kpi small{display:block;color:#6b6f78;font-size:.8rem;margin-bottom:6px}
+.mk-kpi b{display:block;font-size:1.45rem;margin-bottom:4px}
+.mk-kpi span{font-size:.82rem;color:#5b5f68}
+.mk-kpi span.up{color:#1a7f45}.mk-kpi span.down{color:var(--red)}
+.mk-table-wrap{overflow-x:auto;background:#fff;border:1px solid var(--line,#e5e6ea);border-radius:10px}
+.mk-table{width:100%;border-collapse:collapse;font-size:.95rem}
+.mk-table th,.mk-table td{padding:13px 16px;text-align:left;border-bottom:1px solid #eee;white-space:nowrap}
+.mk-table th{background:#1d1f24;color:#fff;font-weight:600;font-size:.85rem}
+.mk-table tr:last-child td{border-bottom:0}
+.mk-table em{font-style:normal;color:#6b6f78;font-size:.82rem;margin-left:6px}
+.up{color:#1a7f45;font-weight:700}.down{color:var(--red);font-weight:700}
+.mk-src{margin-top:12px}
+@media(max-width:1000px){.mk-kpis{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:560px){.mk-kpis{grid-template-columns:1fr 1fr}}
