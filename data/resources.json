@@ -1,1 +1,26 @@
-[]
+[
+  {
+    "title_en": "Business Valuation: The Multiplier Explained",
+    "title_ko": "비즈니스 가치 평가: 멀티플(배수) 쉽게 이해하기",
+    "desc_en": "How businesses are priced using SDE, EBITDA and revenue multiples. Typical ranges by business type, a full worked example, common mistakes and 14 questions every buyer should ask.",
+    "desc_ko": "SDE, EBITDA, 매출 배수로 비즈니스 가격을 정하는 방법. 업종별 일반적인 배수 범위, 계산 예시, 흔한 실수, 구매자가 꼭 물어야 할 질문 14가지 (영문).",
+    "lang": "EN",
+    "file": "uploads/guides/Business_Valuation_Multiplier_Guide.pdf"
+  },
+  {
+    "title_en": "Commercial Lease Review: Key Points",
+    "title_ko": "상업용 리스 계약 검토 핵심 정리",
+    "desc_en": "What to understand and negotiate before signing a commercial lease or Letter of Intent in Alberta or BC: rent and operating costs, renewal, assignment, personal guarantees and a tenant checklist.",
+    "desc_ko": "앨버타·BC에서 상업용 리스나 LOI에 서명하기 전에 알아야 할 내용: 임대료와 운영비, 갱신, 양도, 개인 보증, 임차인 체크리스트 (영문).",
+    "lang": "EN",
+    "file": "uploads/guides/Commercial_Lease_Review_Guide.pdf"
+  },
+  {
+    "title_en": "Alberta Condo Document Review Guide (Korean)",
+    "title_ko": "앨버타 콘도 구매 전 서류 검토 안내",
+    "desc_en": "The 7 condo documents to review before removing conditions, the 7 red flags to watch for, and what to do if you find a problem. Written in Korean.",
+    "desc_ko": "조건 해제 전에 꼭 받아야 할 콘도 서류 7가지, 주의해야 할 위험 신호 7가지, 문제가 발견됐을 때 대처 방법.",
+    "lang": "한국어",
+    "file": "uploads/guides/Alberta_Condo_Document_Guide_KO.pdf"
+  }
+]
