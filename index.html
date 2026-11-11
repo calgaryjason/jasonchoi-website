@@ -655,12 +655,18 @@
      ====================================================== -->
 <section class="view" id="view-residential">
   <div class="page-head"><div class="wrap">
-    <div class="eyebrow light" data-ko="주거용">Residential</div>
-    <h1 data-ko="주거용 매물">Residential Listings</h1>
-    <p data-ko="주택, 콘도, 타운하우스, 토지">Homes, condos, townhomes and land</p>
+    <div class="eyebrow light" data-ko="캘거리 주거용 부동산 전문">Calgary Residential Specialist</div>
+    <h1 data-ko="캘거리 주택 매매, 지역 전문가와 함께">Buy &amp; Sell in Calgary with a Local Expert</h1>
+    <p data-ko="2007년부터 캘거리 주택, 콘도, 타운하우스, 토지 거래를 도와드리고 있습니다.">Homes, condos, townhomes and land in Calgary since 2007.</p>
   </div></div>
   <div class="section pt-sm">
     <div class="wrap">
+      <div class="spec-strip">
+        <div><b data-ko="2007년부터">Since 2007</b><span data-ko="캘거리에서 19년 경력">19 years in Calgary real estate</span></div>
+        <div><b data-ko="8개 지역 전체">All 8 Districts</b><span data-ko="CREB® 전 지역 거래 경험">Experience in every CREB® district</span></div>
+        <div><b>English &amp; 한국어</b><span data-ko="계약서와 절차를 쉽게 설명">Contracts and steps explained clearly</span></div>
+        <div><b data-ko="구매 · 판매 · 투자">Buy · Sell · Invest</b><span data-ko="첫 집, 이사, 수익형 주택까지">First homes, move-ups and rental suites</span></div>
+      </div>
       <div class="filter-row"><div class="filters" id="typeChips"></div><div class="filters" id="statusChips"></div></div>
       <div class="grid" id="listGrid"></div>
 <div class="market-slot mt-lg"></div>
@@ -671,6 +677,122 @@
         <div class="dist-grid"><div class="dist"><span class="dist-code">CC</span><b data-ko="시티 센터">City Centre</b><p data-ko="다운타운, 벨트라인 등 도심 지역입니다. 걸어서 생활하기 좋고 직장과 편의시설이 가깝습니다.">Downtown, Beltline and inner-city condos. Walkable, close to work and amenities.</p></div><div class="dist"><span class="dist-code">N</span><b data-ko="북부">North</b><p data-ko="북쪽의 신규 가족 단지입니다. Stoney Trail로 이동이 편리합니다.">Newer family communities north of the city, linked by Stoney Trail.</p></div><div class="dist"><span class="dist-code">NW</span><b data-ko="북서부">Northwest</b><p data-ko="노즈힐, 대학교, 로키산맥과 가까운 기존 주택가입니다.">Established neighbourhoods near Nose Hill, the university and the mountains.</p></div><div class="dist"><span class="dist-code">NE</span><b data-ko="북동부">Northeast</b><p data-ko="합리적인 가격대이며 공항과 가깝고 C-Train 이용이 가능합니다.">Good value, close to the airport, with C-Train access.</p></div><div class="dist"><span class="dist-code">E</span><b data-ko="동부">East</b><p data-ko="가장 합리적인 가격대이며 East Hills에 대형 쇼핑 시설이 있습니다.">The most affordable area, with major shopping in East Hills.</p></div><div class="dist"><span class="dist-code">SE</span><b data-ko="남동부">Southeast</b><p data-ko="호수 커뮤니티와 피시크릭 공원이 있는 가족 친화 지역입니다.">Family-friendly lake communities and Fish Creek Park.</p></div><div class="dist"><span class="dist-code">S</span><b data-ko="남부">South</b><p data-ko="Macleod Trail 양쪽에 기존 주택가와 신규 단지가 함께 있습니다.">Mature and newer communities on both sides of Macleod Trail.</p></div><div class="dist"><span class="dist-code">W</span><b data-ko="서부">West</b><p data-ko="로키산맥과 좋은 학교에 가까운 인기 지역입니다.">Sought-after communities near the mountains and top schools.</p></div></div>
         <p class="note" style="margin-top:14px" data-ko="어느 지역이 맞는지 고민되시나요? 예산과 생활 방식에 맞는 지역을 함께 찾아드리겠습니다.">Not sure which area fits you? I can help you find the right area for your budget and lifestyle.</p>
       </div>
+      <!-- Calgary buyer closing costs -->
+      <div class="calc mt-lg" id="closing-calc-box">
+        <div class="calc-box">
+          <div class="eyebrow" data-ko="캘거리 구매 비용 계산기">Calgary Closing Cost Calculator</div>
+          <h2 class="h2-sm" data-ko="앨버타는 토지 양도세가 없습니다">Alberta Has No Land Transfer Tax</h2>
+          <p class="muted" style="margin:8px 0 18px" data-ko="앨버타에서는 집값의 몇 %를 내는 양도세가 없고, 작은 등기 수수료만 냅니다. 캘거리에서 집을 살 때 필요한 비용을 미리 확인해 보세요.">In Alberta you pay small Land Titles fees, not a percentage tax. See what it costs to close on a Calgary home.</p>
+          <div class="field"><label data-ko="구매 가격 ($)">Purchase Price ($)</label><input type="number" id="ccbPrice" value="650000" step="5000"></div>
+          <div class="field"><label data-ko="다운페이먼트 (%)">Down Payment (%)</label><input type="number" id="ccbDown" value="10" step="0.5"></div>
+          <div class="field"><label data-ko="부동산 종류">Property Type</label><select id="ccbType"><option value="house" data-ko="단독 / 반단독 주택">House / Duplex</option><option value="condo" data-ko="콘도 / 타운하우스">Condo / Townhouse</option></select></div>
+        </div>
+        <div class="result">
+          <div data-ko="예상 클로징 비용 (현금 필요액)">Estimated Closing Costs (cash needed)</div>
+          <div class="big" id="ccbTotal">$0</div>
+          <div class="muted-l" data-ko="다운페이먼트 별도">Plus your down payment</div>
+          <div class="row"><span data-ko="토지 양도세">Land Transfer Tax</span><span>$0</span></div>
+          <div class="row"><span data-ko="등기 이전 수수료 (Land Titles)">Land Titles – Transfer Fee</span><span id="ccbLto"></span></div>
+          <div class="row"><span data-ko="모기지 등기 수수료">Land Titles – Mortgage Fee</span><span id="ccbMto"></span></div>
+          <div class="row"><span data-ko="변호사 비용 (예상)">Legal Fees (est.)</span><span id="ccbLegal"></span></div>
+          <div class="row"><span data-ko="주택 검사 (예상)">Home Inspection (est.)</span><span id="ccbInsp"></span></div>
+          <div class="row"><span data-ko="타이틀 보험 (예상)">Title Insurance (est.)</span><span id="ccbTitle"></span></div>
+          <div class="row"><span data-ko="다운페이먼트">Down Payment</span><span id="ccbDp"></span></div>
+          <div class="row"><span data-ko="연간 재산세 (2026 캘거리 세율)">Yearly Property Tax (2026 Calgary rate)</span><span id="ccbTax"></span></div>
+          <div class="warn" id="ccbBc" style="color:#ffd4d4"></div>
+          <p class="note" data-ko="참고용 예상 금액입니다. 등기 수수료는 기본 $50 + $5,000당 $5입니다. 재산세는 캘거리시 2026 주거용 세율(0.66499%)을 구매 가격에 적용한 값이며, 실제 세금은 시의 평가액을 기준으로 합니다. 변호사, 검사, 보험 비용은 일반적인 금액입니다.">Estimate only. Land Titles fees are $50 + $5 per $5,000. Property tax uses the City of Calgary 2026 residential rate (0.66499%) on the price; the real bill uses the City's assessed value. Legal, inspection and insurance amounts are typical figures.</p>
+        </div>
+      </div>
+
+      <!-- Calgary affordability calculator -->
+      <div class="calc mt-lg" id="afford-calc-box">
+        <div class="calc-box">
+          <div class="eyebrow" data-ko="구매 가능 금액 계산기">Affordability Calculator</div>
+          <h2 class="h2-sm" data-ko="캘거리에서 얼마짜리 집을 살 수 있을까요?">How Much Home Can You Buy in Calgary?</h2>
+          <p class="muted" style="margin:8px 0 18px" data-ko="은행 심사 기준(스트레스 테스트)과 캘거리 재산세를 반영해 최대 구매 가격을 계산합니다.">Uses the bank stress test and Calgary property tax to estimate your maximum price.</p>
+          <div class="field"><label data-ko="가구 연소득 (세전, $)">Household Income (before tax, $)</label><input type="number" id="afInc" value="140000" step="1000"></div>
+          <div class="field"><label data-ko="월 부채 상환액 (차 할부, 카드 등, $)">Monthly Debt Payments (car, cards, etc., $)</label><input type="number" id="afDebt" value="500" step="50"></div>
+          <div class="field"><label data-ko="다운페이먼트 금액 ($)">Down Payment ($)</label><input type="number" id="afDown" value="80000" step="1000"></div>
+          <div class="field"><label data-ko="이자율 (%)">Interest Rate (%)</label><input type="number" id="afRate" value="4.49" step="0.01"></div>
+          <div class="field"><label data-ko="상환 기간">Amortization</label><select id="afAm"><option value="25" data-ko="25년">25 years</option><option value="30" data-ko="30년 (첫 집 또는 신축)">30 years (first home or new build)</option></select></div>
+          <div class="field"><label data-ko="콘도 관리비 (월, 없으면 0)">Condo Fees (monthly, 0 if none)</label><input type="number" id="afCondo" value="0" step="25"></div>
+        </div>
+        <div class="result">
+          <div data-ko="최대 구매 가능 금액 (예상)">Estimated Maximum Price</div>
+          <div class="big" id="afMax">$0</div>
+          <div class="muted-l" id="afLimit"></div>
+          <div class="row"><span data-ko="모기지 금액 (보험료 포함)">Mortgage (incl. CMHC)</span><span id="afLoan"></span></div>
+          <div class="row"><span data-ko="월 상환액 (실제 이자율)">Monthly Payment (your rate)</span><span id="afPay"></span></div>
+          <div class="row"><span data-ko="심사 이자율 (스트레스 테스트)">Qualifying Rate (stress test)</span><span id="afQual"></span></div>
+          <div class="row"><span data-ko="월 재산세 (캘거리 2026)">Monthly Property Tax (Calgary 2026)</span><span id="afTax"></span></div>
+          <div class="row"><span data-ko="월 난방비 (예상)">Monthly Heating (est.)</span><span>$120</span></div>
+          <p class="note" data-ko="참고용 예상 금액입니다. 심사 이자율은 실제 이자율 +2% 또는 5.25% 중 높은 쪽입니다. 주거비 비율(GDS) 39%, 총부채 비율(TDS) 44% 기준이며, 최소 다운페이먼트 규정도 반영합니다. 실제 승인 금액은 은행이나 모기지 브로커에게 확인하세요.">Estimate only. The qualifying rate is the higher of your rate + 2% or 5.25%. Uses 39% GDS and 44% TDS limits and the minimum down payment rules. Confirm your approval with a lender or mortgage broker.</p>
+          <a href="#contact" class="btn btn-ghost" style="margin-top:12px" data-ko="이 가격대 매물 추천받기 →">Get Homes in This Price Range →</a>
+        </div>
+      </div>
+
+      <!-- Calgary buyer checklist -->
+      <div class="mt-lg">
+        <div class="section-head"><div><div class="eyebrow" data-ko="캘거리 구매자 체크리스트">Calgary Buyer Checklist</div><h2 data-ko="캘거리에서 집을 살 때 꼭 확인할 8가지">8 Things to Check Before You Buy in Calgary</h2>
+        <p class="muted small-mt" data-ko="캘거리 주택에는 지역 특유의 확인 사항이 있습니다. 쇼잉 때 제가 함께 확인해 드립니다.">Calgary homes have local issues to check. I review these with you at every showing.</p></div></div>
+        <div class="dist-grid check-grid">
+          <div class="dist"><span class="dist-code">01</span><b data-ko="우박과 지붕">Hail &amp; Roof</b><p data-ko="캘거리는 우박 피해가 잦은 도시입니다. 지붕, 외벽, 창문 상태와 보험 청구 기록을 확인하세요. 내충격(Class 4) 지붕은 보험료에 도움이 될 수 있습니다.">Calgary gets frequent hail. Check the roof, siding, windows and past insurance claims. Impact-resistant (Class 4) shingles may help with insurance.</p></div>
+          <div class="dist"><span class="dist-code">02</span><b data-ko="라돈 가스">Radon Gas</b><p data-ko="캘거리 주택 약 6채 중 1채가 라돈 기준치를 넘습니다. 신축일수록 높을 수 있습니다. 입주 후 장기 테스트를 권합니다.">About 1 in 6 Calgary homes is above the radon guideline, and newer homes can be higher. A long-term test after you move in is recommended.</p></div>
+          <div class="dist"><span class="dist-code">03</span><b data-ko="합법 지하 스위트">Legal Basement Suite</b><p data-ko="부엌이 두 개라고 합법 스위트는 아닙니다. 시의 Secondary Suite Registry에 등록되어 있는지 확인하세요. 임대 수입과 보험에 영향을 줍니다.">A second kitchen does not make a suite legal. Check the City's Secondary Suite Registry. It affects rental income and insurance.</p></div>
+          <div class="dist"><span class="dist-code">04</span><b data-ko="RPR과 시 승인서">RPR &amp; Compliance</b><p data-ko="앨버타 표준 계약서에서 판매자는 시의 승인 도장이 있는 RPR(부동산 측량 보고서)을 제공합니다. 데크, 차고, 펜스 위치를 확인합니다.">Under the standard Alberta contract, the seller provides a Real Property Report with City compliance. It shows decks, garages and fences.</p></div>
+          <div class="dist"><span class="dist-code">05</span><b data-ko="오래된 배관">Older Plumbing</b><p data-ko="1980~90년대 주택은 Poly-B나 Kitec 배관이 있을 수 있습니다. 누수 위험과 보험 문제로 교체 여부를 확인하세요.">Homes from the 1980s–90s may have Poly-B or Kitec pipes. Check if they were replaced, because of leak risk and insurance.</p></div>
+          <div class="dist"><span class="dist-code">06</span><b data-ko="홍수 위험 지역">Flood Risk Areas</b><p data-ko="Bow강과 Elbow강 주변 동네는 홍수 지도를 확인하세요. 2013년 홍수 피해 이력과 보험 가능 여부도 중요합니다.">Near the Bow and Elbow rivers, check the flood maps. Past 2013 flood damage and insurance options also matter.</p></div>
+          <div class="dist"><span class="dist-code">07</span><b data-ko="콘도 서류와 적립금">Condo Documents</b><p data-ko="관리비, 적립금(Reserve Fund) 연구, 회의록, 특별 부과금 계획을 확인하세요. 문제는 서류에서 먼저 보입니다.">Review fees, the reserve fund study, meeting minutes and any special levies. Problems show up in the documents first.</p></div>
+          <div class="dist"><span class="dist-code">08</span><b data-ko="학교 배정">School Designation</b><p data-ko="같은 동네라도 주소에 따라 배정 학교가 다릅니다. 계약 전에 CBE와 가톨릭 교육청에서 확인하세요.">Designated schools can change from street to street. Check with the CBE and Catholic board before you buy.</p></div>
+        </div>
+        <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap"><a class="btn btn-outline" href="https://secondarysuites.calgary.ca/" target="_blank" rel="noopener" data-ko="합법 스위트 조회 →">Check a Legal Suite →</a><a class="btn btn-outline" href="https://www.alberta.ca/radon" target="_blank" rel="noopener" data-ko="앨버타 라돈 정보 →">Alberta Radon Info →</a></div>
+      </div>
+
+      <!-- Selling in Calgary -->
+      <div class="mt-lg sell-band">
+        <div class="section-head"><div><div class="eyebrow" data-ko="캘거리에서 집 팔기">Selling in Calgary</div><h2 data-ko="좋은 가격에, 문제 없이 파는 방법">How I Sell Your Home for the Best Price</h2></div></div>
+        <div class="dist-grid check-grid">
+          <div class="dist"><span class="dist-code">📊</span><b data-ko="데이터 기반 가격 책정">Data-Based Pricing</b><p data-ko="CREB® 월간 통계와 같은 동네 최근 거래를 분석해 시장에 맞는 가격을 제안합니다.">I use CREB® monthly data and recent sales on your street to set the right price.</p></div>
+          <div class="dist"><span class="dist-code">📐</span><b data-ko="RPR과 면적 측정 미리 준비">RPR &amp; RMS Ready</b><p data-ko="RPR 시 승인과 RMS 면적 측정을 미리 준비해 계약 후 지연과 분쟁을 막습니다.">I get the RPR compliance and RMS measurement ready early, so there are no delays after an offer.</p></div>
+          <div class="dist"><span class="dist-code">📸</span><b data-ko="전문 사진과 마케팅">Pro Photos &amp; Marketing</b><p data-ko="전문 사진, MLS®, 웹사이트, SNS, 한인 커뮤니티까지 폭넓게 알립니다.">Professional photos plus MLS®, this website, social media and the Korean community.</p></div>
+          <div class="dist"><span class="dist-code">🤝</span><b data-ko="협상과 마무리">Negotiation to Closing</b><p data-ko="조건, 검사, 변호사 일정까지 끝까지 챙겨서 편하게 마무리하도록 돕습니다.">I handle conditions, inspections and lawyer timelines through to closing day.</p></div>
+        </div>
+        <div style="margin-top:14px"><a href="#home-evaluation" class="btn btn-red" data-ko="무료 주택 가치 평가 받기 →">Get a Free Home Evaluation →</a></div>
+      </div>
+
+      <!-- Community lifestyle finder -->
+      <div class="mt-lg">
+        <div class="section-head"><div><div class="eyebrow" data-ko="생활 방식별 동네 찾기">Find Your Community</div><h2 data-ko="어떤 캘거리 생활을 원하세요?">What Kind of Calgary Life Do You Want?</h2>
+        <p class="muted small-mt" data-ko="2007년부터 캘거리 전 지역에서 거래해 왔습니다. 생활 방식에 맞는 대표 동네를 소개합니다.">I have helped buyers across Calgary since 2007. Here are popular communities by lifestyle.</p></div></div>
+        <div class="dist-grid life-grid">
+          <div class="dist"><span class="dist-code">🏫</span><b data-ko="자녀 교육 / 가족">Families &amp; Schools</b><p data-ko="Aspen Woods, Tuscany, Royal Oak, Evanston, Auburn Bay">Aspen Woods, Tuscany, Royal Oak, Evanston, Auburn Bay</p></div>
+          <div class="dist"><span class="dist-code">🌊</span><b data-ko="호수 커뮤니티">Lake Living</b><p data-ko="Mahogany, Auburn Bay, Lake Bonavista, Lake Midnapore, Sundance">Mahogany, Auburn Bay, Lake Bonavista, Lake Midnapore, Sundance</p></div>
+          <div class="dist"><span class="dist-code">🏙️</span><b data-ko="도심 생활 / 도보 생활">Walkable Inner City</b><p data-ko="Beltline, Mission, Kensington, Inglewood, Bridgeland">Beltline, Mission, Kensington, Inglewood, Bridgeland</p></div>
+          <div class="dist"><span class="dist-code">🏗️</span><b data-ko="신축 주택">New Builds</b><p data-ko="Seton, Livingston, Cornerstone, Belmont, Rangeview">Seton, Livingston, Cornerstone, Belmont, Rangeview</p></div>
+          <div class="dist"><span class="dist-code">⛰️</span><b data-ko="로키산맥 가까이">Close to the Mountains</b><p data-ko="Springbank Hill, Rockland Park, Crestmont, Cougar Ridge, West Springs">Springbank Hill, Rockland Park, Crestmont, Cougar Ridge, West Springs</p></div>
+          <div class="dist"><span class="dist-code">💰</span><b data-ko="첫 집 / 합리적 가격">First Home &amp; Value</b><p data-ko="Redstone, Cityscape, Saddle Ridge, Penbrooke, Marlborough">Redstone, Cityscape, Saddle Ridge, Penbrooke, Marlborough</p></div>
+          <div class="dist"><span class="dist-code">🚆</span><b data-ko="C-Train 출퇴근">C-Train Commute</b><p data-ko="Brentwood, Dalhousie, Bridlewood, Shawnessy, Martindale">Brentwood, Dalhousie, Bridlewood, Shawnessy, Martindale</p></div>
+          <div class="dist"><span class="dist-code">🏡</span><b data-ko="조용한 기존 주택가">Mature &amp; Quiet</b><p data-ko="Varsity, Lakeview, Oakridge, Edgemont, Willow Park">Varsity, Lakeview, Oakridge, Edgemont, Willow Park</p></div>
+        </div>
+        <p class="note" style="margin-top:14px" data-ko="동네마다 학교, 통근 거리, 가격대가 다릅니다. 원하시는 조건을 알려주시면 맞는 동네와 매물을 골라 드리겠습니다.">Each community has different schools, commute times and prices. Tell me what matters to you and I will shortlist the right communities and homes.</p>
+        <div style="margin-top:14px"><a href="#listing-alerts" class="btn btn-red" data-ko="원하는 조건으로 매물 알림 받기 →">Get Listing Alerts for Your Criteria →</a></div>
+      </div>
+
+      <!-- Calgary homeowner resources -->
+      <div class="mt-lg">
+        <div class="section-head"><div><div class="eyebrow" data-ko="캘거리 생활 정보">Calgary Resources</div><h2 data-ko="집을 고를 때 유용한 사이트">Helpful Links for Calgary Buyers</h2></div></div>
+        <div class="dist-grid res-grid">
+          <a class="dist" href="https://assessmentsearch.calgary.ca/" target="_blank" rel="noopener"><b data-ko="캘거리 재산 평가액 조회 →">Calgary Property Assessment →</b><p data-ko="주소로 시의 평가액을 확인합니다.">Look up the City's assessed value by address.</p></a>
+          <a class="dist" href="https://www.calgary.ca/property-owners/taxes/current-rates.html" target="_blank" rel="noopener"><b data-ko="캘거리 재산세율 →">Calgary Property Tax Rates →</b><p data-ko="올해 재산세율과 계산 방법을 확인합니다.">This year's tax rates and how the bill is calculated.</p></a>
+          <a class="dist" href="https://cbe.ab.ca/" target="_blank" rel="noopener"><b data-ko="캘거리 공립 교육청 (CBE) →">Calgary Board of Education →</b><p data-ko="주소별 배정 학교를 확인합니다.">Find the designated public school for an address.</p></a>
+          <a class="dist" href="https://www.cssd.ab.ca/" target="_blank" rel="noopener"><b data-ko="캘거리 가톨릭 교육청 →">Calgary Catholic Schools →</b><p data-ko="가톨릭 학교 배정을 확인합니다.">Check Catholic school designations.</p></a>
+          <a class="dist" href="https://www.calgarytransit.com/" target="_blank" rel="noopener"><b data-ko="캘거리 트랜짓 →">Calgary Transit →</b><p data-ko="C-Train과 버스 노선을 확인합니다.">C-Train and bus routes.</p></a>
+          <a class="dist" href="https://floods.alberta.ca/" target="_blank" rel="noopener"><b data-ko="앨버타 홍수 지도 →">Alberta Flood Maps →</b><p data-ko="강 주변 주택의 홍수 위험을 확인합니다.">Check flood risk for homes near rivers.</p></a>
+          <a class="dist" href="https://www.alberta.ca/new-home-buyer-protection" target="_blank" rel="noopener"><b data-ko="신축 주택 보증 확인 →">New Home Warranty Check →</b><p data-ko="신축 주택의 보증과 건축업자 면허를 확인합니다.">Check new home warranty and builder licences.</p></a>
+          <a class="dist" href="#guides"><b data-ko="무료 구매 가이드 →">Free Buyer Guides →</b><p data-ko="구매 비용, 콘도 체크리스트 등 가이드를 받으세요.">Closing costs, condo checklist and more.</p></a>
+        </div>
+      </div>
+
             <div class="cta-split mt-lg">
         <div class="cta-box dark"><h3 data-ko="집을 구매하시나요?">Buying a Home?</h3><p data-ko="모기지 계산기로 월 상환액을 확인하세요.">Estimate your payment with the mortgage calculator.</p><a href="#mortgage" class="btn btn-ghost" data-ko="모기지 계산기">Mortgage Calculator</a></div>
         <div class="cta-box red"><h3 data-ko="집을 판매하시나요?">Selling a Home?</h3><p data-ko="무료로 주택 가치 평가를 받아보세요.">Get a free home evaluation.</p><a href="#home-evaluation" class="btn btn-ghost" data-ko="무료 주택 가치 평가">Free Home Evaluation</a></div>

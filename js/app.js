@@ -645,7 +645,7 @@ function renderAll() {
   renderTrack(); renderReviews(); renderResources(); renderPocket(); renderMarket(); renderGBP(); renderContactBar();
   renderSocial(); renderHome(); renderBusiness(); renderLeasing(); renderInvestment(); renderResidential();
   if (ALL().some(l => l.id === route)) renderDetail(route);
-  calcMortgage(); calcLease(); calcCap();
+  calcMortgage(); calcLease(); calcCap(); calcClosing(); calcAfford();
 }
 
 /* ---------- Calculators ---------- */
@@ -676,6 +676,45 @@ function calcCap() {
   $("ccNoi").textContent = money(noi); $("ccDebt").textContent = money(debt); $("ccCash").textContent = money(cash);
   $("ccCoc").textContent = eq ? (cash / eq * 100).toFixed(2) + "%" : "–"; $("ccDscr").textContent = debt ? (noi / debt).toFixed(2) + "x" : "–";
 }
+function calcClosing() {
+  const price = +$("ccbPrice").value || 0, dp = +$("ccbDown").value || 0, condo = $("ccbType").value === "condo";
+  const down = price * dp / 100, loan = Math.max(price - down, 0) * (dp < 20 && price < 1500000 ? 1 + cmhcRate(dp) : 1);
+  const fee = v => v > 0 ? 50 + Math.ceil(v / 5000) * 5 : 0;
+  const lto = fee(price), mto = fee(loan), legal = 1500, insp = condo ? 450 : 550, title = 300;
+  $("ccbLto").textContent = money(lto); $("ccbMto").textContent = money(mto); $("ccbLegal").textContent = money(legal);
+  $("ccbInsp").textContent = money(insp); $("ccbTitle").textContent = money(title); $("ccbDp").textContent = money(down);
+  $("ccbTotal").textContent = money(lto + mto + legal + insp + title);
+  const tax = price * 0.0066499; $("ccbTax").textContent = money(tax) + (lang === "ko" ? " (월 " : " (") + money(tax / 12) + (lang === "ko" ? ")" : "/mo)");
+  const bc = Math.min(price, 200000) * .01 + Math.max(Math.min(price, 2000000) - 200000, 0) * .02 + Math.max(Math.min(price, 3000000) - 2000000, 0) * .03 + Math.max(price - 3000000, 0) * .05;
+  $("ccbBc").textContent = lang === "ko" ? `같은 가격의 집을 BC주에서 사면 부동산 양도세(PTT)만 약 ${money(bc)}입니다. 앨버타에서는 $0입니다.`
+    : `The same price in BC would cost about ${money(bc)} in Property Transfer Tax. In Alberta it is $0.`;
+}
+function calcAfford() {
+  const inc = (+$("afInc").value || 0) / 12, debt = +$("afDebt").value || 0, down = +$("afDown").value || 0;
+  const rate = (+$("afRate").value || 0) / 100, am = +$("afAm").value || 25, condo = +$("afCondo").value || 0;
+  const q = Math.max(rate + .02, .0525), heat = 120, taxR = 0.0066499;
+  const ok = P => {
+    const minDown = P >= 1500000 ? P * .2 : (P <= 500000 ? P * .05 : 25000 + (P - 500000) * .1);
+    if (down < minDown || down >= P) return null;
+    const dp = down / P * 100, loan = (P - down) * (P < 1500000 ? 1 + cmhcRate(dp) : 1);
+    const qp = pmt(loan, q, am, 12), housing = qp + P * taxR / 12 + heat + condo * .5;
+    return housing <= inc * .39 && housing + debt <= inc * .44 ? loan : null;
+  };
+  let lo = 0, hi = 5000000;
+  for (let i = 0; i < 60; i++) { const m = (lo + hi) / 2; ok(m) != null ? lo = m : hi = m; }
+  const P = Math.floor(lo / 1000) * 1000, loan = ok(P) || 0;
+  $("afMax").textContent = P > down ? money(P) : "–";
+  $("afLoan").textContent = money(loan); $("afPay").textContent = money(pmt(loan, rate, am, 12));
+  $("afQual").textContent = (q * 100).toFixed(2) + "%"; $("afTax").textContent = money(P * taxR / 12);
+  const capDown = down < 25000 ? down / .05 : down < 150000 ? 500000 + (down - 25000) / .1 : 1500000;
+  $("afLimit").textContent = P >= Math.floor(capDown / 1000) * 1000 - 1000
+    ? (lang === "ko" ? "다운페이먼트 금액이 최대 가격을 제한하고 있습니다." : "Your down payment is the limit on price.")
+    : (lang === "ko" ? "소득 기준(GDS/TDS)이 최대 가격을 정합니다." : "Your income (GDS/TDS) sets the maximum price.");
+}
+["afInc","afDebt","afDown","afRate","afAm","afCondo"].forEach(id => $(id).addEventListener("input", calcAfford));
+calcAfford();
+["ccbPrice","ccbDown","ccbType"].forEach(id => $(id).addEventListener("input", calcClosing));
+calcClosing();
 ["cPrice","cDown","cRate","cAmort","cFreq"].forEach(id => $(id).addEventListener("input", calcMortgage));
 ["lcSize","lcBase","lcAdd","lcGst"].forEach(id => $(id).addEventListener("input", calcLease));
 ["ccPrice","ccRent","ccExp","ccVac","ccDown","ccRate","ccAm"].forEach(id => $(id).addEventListener("input", calcCap));
