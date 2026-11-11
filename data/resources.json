@@ -54,5 +54,21 @@
     "desc_ko": "단독주택과 콘도 매도 10단계, RPR과 콘도 서류, 매도 비용, 세금 주의사항(1년 내 매도 규정 포함), 잔금일 체크리스트.",
     "lang": "한국어",
     "file": "uploads/guides/Calgary_Home_Selling_Guide_KO_2026.pdf"
+  },
+  {
+    "title_en": "Asset Sale vs. Share Sale (AB & BC)",
+    "title_ko": "자산 매매 vs 주식 매매 비교 (앨버타·BC)",
+    "desc_en": "How the deal structure changes tax, risk, licences and timing when you buy or sell a business — with 2026 tax rules, a BC PTT example and industry notes for gas stations, hotels and car washes.",
+    "desc_ko": "비즈니스를 사고팔 때 거래 구조에 따라 달라지는 세금, 위험, 라이선스, 기간 비교. 2026년 세법, BC 양도세 예시, 주유소·호텔·세차장 참고 사항 (영문).",
+    "lang": "EN",
+    "file": "uploads/guides/Asset_vs_Share_Sale_Guide_AB_BC.pdf"
+  },
+  {
+    "title_en": "Buying a Business: Offer to Closing Checklist",
+    "title_ko": "비즈니스 인수 체크리스트 (오퍼부터 클로징까지)",
+    "desc_en": "A 5-stage checklist for buying a business in Alberta, plus extra checklists for gas stations, restaurants, liquor stores and motels.",
+    "desc_ko": "앨버타에서 비즈니스를 인수할 때 단계별 체크리스트. 주유소, 레스토랑, 리커스토어, 모텔별 추가 체크리스트 포함 (영문).",
+    "lang": "EN",
+    "file": "uploads/guides/Business_Purchase_Checklist_Alberta.pdf"
   }
 ]
