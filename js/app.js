@@ -111,7 +111,7 @@ const SOC = {
 const socIcon = (k, s = 18) => `<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${SOC[k].p}</svg>`;
 function renderSocial() {
   const keys = Object.keys(SOC).filter(k => SITE[k] && k !== "whatsapp");
-  const links = s => keys.map(k => `<a href="${SITE[k]}" target="_blank" rel="noopener" aria-label="${SOC[k].n}">${socIcon(k, s)}</a>`).join("");
+  const links = s => keys.map(k => `<a href="${SITE[k]}" target="_blank" rel="noopener" aria-label="${SOC[k].n}" title="${SOC[k].n}" style="--c:${SOC[k].c}">${socIcon(k, s)}</a>`).join("");
   $("socialTop").innerHTML = links(19); $("socialFoot").innerHTML = links(24); $("socialContact").innerHTML = links(24);
   $("socialCards").innerHTML = ["instagram","facebook","threads","a9ent"].filter(k => SITE[k]).map(k =>
     `<a class="social-card" href="${SITE[k]}" target="_blank" rel="noopener"><span class="s-ic" style="background:${SOC[k].c}">${socIcon(k, 34)}</span>
