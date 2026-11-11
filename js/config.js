@@ -22,6 +22,13 @@ window.SITE = {
      Empty = preview mode (forms only show a thank-you message). */
   formAccessKey: "f5c5f3c1-9ea2-4a7c-9b5f-9179bd184062",
 
+  /* Google Business Profile (free) – shows you on Google Maps.
+     googleMaps:   your profile link (Google Maps → your business → Share → Copy link)
+     googleReview: your "Ask for reviews" link (Business Profile → Ask for reviews)
+     Empty = button hidden. */
+  googleMaps: "",
+  googleReview: "",
+
   /* Visitor statistics (free): Cloudflare Web Analytics token.
      Cloudflare → Analytics & Logs → Web Analytics → Add a site → copy the "token" value.
      Empty = off. (If you choose Cloudflare's "automatic setup", leave this empty.) */

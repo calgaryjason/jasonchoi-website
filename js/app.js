@@ -32,7 +32,7 @@ const D = {
   call:["Call","전화하기"], ask:["Ask About This Listing","이 매물 문의하기"], ndaBtn:["Request NDA & Financials","NDA 및 재무 자료 요청"],
   nda:["🔒 Financial details are shared after a signed NDA.","🔒 재무 자료는 NDA 서명 후 제공됩니다."],
   askMsg:["I am interested in this listing: ","다음 매물에 대해 문의드립니다: "], ndaMsg:["Please send me the NDA and financial details for: ","다음 매물의 NDA와 재무 자료를 요청합니다: "],
-  brochure:["Download Brochure (PDF)","브로슈어 PDF 다운로드"], sheet:["Print Feature Sheet","매물 안내서 인쇄"], qrT:["Listing QR Code","매물 QR 코드"], qrDl:["Download QR","QR 다운로드"], scan:["Scan for photos & details","스캔하면 사진과 상세 정보를 볼 수 있습니다"], realtor:["View on REALTOR.ca","REALTOR.ca에서 보기"], map:["View on Google Maps","구글 지도에서 보기"],
+  brochure:["Download Brochure (PDF)","브로슈어 PDF 다운로드"], sheet:["Print Feature Sheet","매물 안내서 인쇄"], loc:["Location","위치"], locNote:["Approximate area. The exact address is shared with qualified buyers.","대략적인 위치입니다. 정확한 주소는 확인된 구매자에게 알려드립니다."], gbp:["Find Me on Google Maps","구글 지도에서 보기"], review:["Leave a Google Review","구글 리뷰 남기기"], qrT:["Listing QR Code","매물 QR 코드"], qrDl:["Download QR","QR 다운로드"], scan:["Scan for photos & details","스캔하면 사진과 상세 정보를 볼 수 있습니다"], realtor:["View on REALTOR.ca","REALTOR.ca에서 보기"], map:["View on Google Maps","구글 지도에서 보기"],
   share:["Share This Listing","이 매물 공유하기"], copy:["Copy Link","링크 복사"], copied:["Link copied!","링크가 복사되었습니다!"],
   igTip:["Instagram: copy the link and add it to your story or bio.","인스타그램: 링크를 복사해 스토리나 프로필에 넣으세요."],
   ddf:["This listing is provided through REALTOR.ca DDF®. This REALTOR.ca listing content is owned and licensed by REALTOR® members of The Canadian Real Estate Association.",
@@ -333,6 +333,24 @@ function printSheet(l, url) {
   Promise.all(imgs.map(i => i.complete ? 0 : new Promise(r => { i.onload = i.onerror = r; }))).then(() => window.print());
 }
 
+
+/* ---------- Google Maps ---------- */
+const isBizOnly = l => l.offering === "business";
+function mapQuery(l) {
+  if (l.mapQuery) return l.mapQuery;
+  const city = (l.city || "").replace(/\s+(SW|SE|NW|NE)$/, "");
+  if (l.offering === "business" || l.offering === "business_property") {
+    const area = (l.address || "").includes(" – ") ? l.address.split(" – ").pop() : "";
+    return [area, city].filter(Boolean).join(", ") + (/AB|BC/.test(city) ? "" : ", AB");
+  }
+  return [l.address, city].filter(Boolean).join(", ") + (/AB|BC/.test(city) ? "" : ", AB");
+}
+function renderGBP() {
+  const s = $("gbpSlot"); if (!s) return;
+  s.innerHTML = (SITE.googleMaps ? `<a class="btn btn-ghost" target="_blank" rel="noopener" href="${SITE.googleMaps}">${t("gbp")}</a>` : "") +
+    (SITE.googleReview ? ` <a class="btn btn-ghost" target="_blank" rel="noopener" href="${SITE.googleReview}">★ ${t("review")}</a>` : "");
+}
+
 /* ---------- Listing detail ---------- */
 function renderDetail(id) {
   const w = $("detailWrap"), l = ALL().find(x => x.id === id);
@@ -382,8 +400,11 @@ function renderDetail(id) {
           ${l.brochure ? `<a class="btn btn-outline" href="${l.brochure}" target="_blank">${t("brochure")}</a>` : ""}
           ${l.realtorUrl ? `<a class="btn btn-outline" href="${l.realtorUrl}" target="_blank" rel="noopener">${t("realtor")}</a>` : ""}
           <button type="button" class="btn btn-outline" id="printSheet">${t("sheet")}</button>
-          <a class="btn btn-outline" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(l.address + ", " + (l.city || ""))}">${t("map")}</a>
+          <a class="btn btn-outline" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapQuery(l))}">${t("map")}</a>
         </div>
+        <h4 style="margin:28px 0 10px;font-size:16px">${t("loc")}</h4>
+        <div class="listing-map"><iframe title="Map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=${encodeURIComponent(mapQuery(l))}&z=${isBizOnly(l) ? 14 : 15}&output=embed"></iframe></div>
+        ${isBizOnly(l) ? `<p class="note" style="margin-top:6px">${t("locNote")}</p>` : ""}
         ${l.source === "ddf" ? `<p class="ddf-note"><span class="ddf-logo" style="font-size:11px;padding:2px 6px">REALTOR.ca</span> ${t("ddf")}</p>` : ""}
       </div>
     </div>
@@ -588,7 +609,7 @@ function renderMarket() {
 
 function renderAll() {
   renderBrokers();
-  renderTrack(); renderReviews(); renderResources(); renderPocket(); renderMarket();
+  renderTrack(); renderReviews(); renderResources(); renderPocket(); renderMarket(); renderGBP();
   renderSocial(); renderHome(); renderBusiness(); renderLeasing(); renderInvestment(); renderResidential();
   if (ALL().some(l => l.id === route)) renderDetail(route);
   calcMortgage(); calcLease(); calcCap();
