@@ -49,6 +49,9 @@ const D = {
   "side.landlord":["Represented the Landlord","임대인 대리"], "side.tenant":["Represented the Tenant","임차인 대리"], "side.both":["Represented Both Sides","양측 대리"],
   "grp.all":["All","전체"], "grp.biz":["Business Sales","비즈니스 매매"], "grp.lease":["Leasing","리스"], "grp.inv":["Investment","투자"], "grp.res":["Residential","주거용"],
   resEmpty:["New guides are coming soon. Contact me for any information you need.","새 자료를 준비 중입니다. 필요한 자료가 있으면 연락 주세요."], download:["Download →","다운로드 →"],
+  pocketB:["Off-Market","비공개"], reqDetails:["Request Details →","상세 정보 요청 →"], priceReq:["Price on request","가격 문의"],
+  pocketEmpty:["New off-market opportunities are shared privately. Register below to hear about them first.","새 비공개 매물은 개별적으로 안내됩니다. 아래에 등록하시면 가장 먼저 연락드립니다."],
+  ndaNote:["NDA required","NDA 필요"],
   trackEmpty:["Transaction history is being updated.","거래 실적을 업데이트하고 있습니다."], foodSpace:["Restaurant / Food Space","레스토랑 / 식당 공간"], otherSpace:["Other","기타"]
 };
 let lang = "en";
@@ -109,7 +112,7 @@ const HOME_CATS = ["restaurant","gas-station","hotel","liquor-store","car-wash",
 const RES_TYPES = ["all","residential","condo","townhome","land"];
 
 /* ---------- Data & state ---------- */
-let MINE = [], DDF = [], SOLD = [], REVIEWS = [], RES = [];
+let MINE = [], DDF = [], SOLD = [], REVIEWS = [], RES = [], POCKET = [];
 let trackGrp = "all";
 const ALL = () => MINE.concat(DDF);
 let bizCat = "all", invCat = "all", featTab = "biz", resType = "all", resStatus = "active";
@@ -406,6 +409,38 @@ function renderResources() {
     : `<div class="empty empty-cta" style="grid-column:1/-1"><p>${t("resEmpty")}</p><a class="btn btn-red" href="#contact">${t("contactBtn")}</a></div>`;
 }
 
+/* ---------- Off-market (pocket) listings ---------- */
+function pocketCard(p, i) {
+  const cat = p.category || "other-business", ph = (p.photos || []).filter(Boolean)[0];
+  const k = [];
+  if (p.size) k.push([t("sqft"), p.size]);
+  if (p.revenue) k.push([t("sales"), p.revenue]);
+  if (p.cap) k.push([t("cap"), p.cap]);
+  return `<div class="card pocket-card">
+    <div class="card-img">${ph ? `<img src="${ph}" alt="" loading="lazy">` : `<div class="ph pocket-ph">${icon(cat, 46)}<span>CONFIDENTIAL</span></div>`}
+      <span class="badge pocket-b">${t("pocketB")}</span><span class="badge cat-b">${t("c." + cat)}</span></div>
+    <div class="card-body">
+      ${p.offering ? `<div class="offer">${t("off." + p.offering)}${p.deal === "lease" ? " · " + t("lease") : ""}</div>` : ""}
+      <div class="price">${p.priceRange || t("priceReq")}</div>
+      <div class="addr">${tr(p, "title")}</div>
+      <div class="city">${p.area || ""}</div>
+      ${k.length ? `<div class="kpis">${k.slice(0, 3).map(([a, b]) => `<div><small>${a}</small><b>${b}</b></div>`).join("")}</div>` : ""}
+      ${tr(p, "highlights") ? `<p class="muted" style="font-size:14px;margin-bottom:12px;white-space:pre-line">${tr(p, "highlights")}</p>` : ""}
+      <div class="card-foot"><span>🔒 ${t("ndaNote")}</span><a href="#off-market" class="go" data-pocket="${i}">${t("reqDetails")}</a></div>
+    </div></div>`;
+}
+function renderPocket() {
+  const list = POCKET.filter(p => p.status !== "closed");
+  $("pocketHome").style.display = list.length ? "" : "none";
+  $("pocketHomeGrid").innerHTML = list.slice(0, 3).map(pocketCard).join("");
+  $("pocketGrid").innerHTML = list.length ? list.map(pocketCard).join("")
+    : `<div class="empty empty-cta"><p>${t("pocketEmpty")}</p></div>`;
+  document.querySelectorAll("[data-pocket]").forEach(b => b.onclick = () => {
+    const p = list[+b.dataset.pocket]; $("pocketListing").value = tr(p, "title") + (p.area ? " – " + p.area : "") + (p.ref ? " (Ref " + p.ref + ")" : "");
+    setTimeout(() => $("pocket-request-box").scrollIntoView({ behavior: "smooth" }), 60);
+  });
+}
+
 /* ---------- Brokerage logos ---------- */
 const BROKERS = [
   { name: "First Place Realty", prov: ["Alberta", "앨버타"], logo: "assets/first-place-realty.jpg" },
@@ -417,7 +452,7 @@ function renderBrokers() {
 }
 
 /* ---------- Router ---------- */
-const VIEWS = ["track-record","home","business","leasing","investment","sell-business","residential","mortgage","home-evaluation","guides","about"];
+const VIEWS = ["off-market","track-record","home","business","leasing","investment","sell-business","residential","mortgage","home-evaluation","guides","about"];
 const JUMPS = { "leasing-calc": ["leasing","leasing-calc-box"], "space-request": ["leasing","space-request-box"], "cap-calc": ["investment","cap-calc-box"], "investor-list": ["investment","investor-list-box"] };
 function router() {
   let h = (location.hash || "#home").slice(1);
@@ -447,7 +482,7 @@ function router() {
 window.addEventListener("hashchange", router);
 function renderAll() {
   renderBrokers();
-  renderTrack(); renderReviews(); renderResources();
+  renderTrack(); renderReviews(); renderResources(); renderPocket();
   renderSocial(); renderHome(); renderBusiness(); renderLeasing(); renderInvestment(); renderResidential();
   if (ALL().some(l => l.id === route)) renderDetail(route);
   calcMortgage(); calcLease(); calcCap();
@@ -506,8 +541,8 @@ async function getJSON(url, fb) {
   catch (e) { try { return JSON.parse($(fb).textContent); } catch (_) { return []; } }
 }
 (async () => {
-  [MINE, DDF, SOLD, REVIEWS, RES] = await Promise.all([getJSON("data/listings.json", "fallback-data"), getJSON("data/ddf-listings.json", "fallback-ddf"),
-    getJSON("data/sold.json", "fallback-sold"), getJSON("data/testimonials.json", "fallback-reviews"), getJSON("data/resources.json", "fallback-res")]);
+  [MINE, DDF, SOLD, REVIEWS, RES, POCKET] = await Promise.all([getJSON("data/listings.json", "fallback-data"), getJSON("data/ddf-listings.json", "fallback-ddf"),
+    getJSON("data/sold.json", "fallback-sold"), getJSON("data/testimonials.json", "fallback-reviews"), getJSON("data/resources.json", "fallback-res"), getJSON("data/pocket.json", "fallback-pocket")]);
   MINE.forEach(l => l.source = "jason"); DDF.forEach(l => l.source = "ddf");
   fillSelects(); applyLang(); router();
 })();

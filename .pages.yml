@@ -92,3 +92,25 @@ content:
       - { name: desc_ko, label: "Short description (한국어)", type: text }
       - { name: lang, label: "Language label – e.g. EN, 한국어, EN + 한국어", type: string }
       - { name: file, label: "File (PDF)", type: file, required: true }
+
+  - name: pocket
+    label: Off-Market (Pocket) Listings · 비공개 매물
+    type: file
+    path: data/pocket.json
+    list: true
+    fields:
+      - { name: ref, label: "Reference code – e.g. OM-101 (shown to buyers instead of the address)", type: string }
+      - { name: status, label: "Status", type: select, options: { values: [active, closed] }, default: active, description: "closed = hidden from the website" }
+      - { name: title_en, label: "Title (English) – do not include the business name", type: string, required: true }
+      - { name: title_ko, label: "Title (한국어)", type: string }
+      - { name: category, label: "Category", type: select, options: { values: [restaurant, gas-station, hotel, liquor-store, car-wash, retail-office, industrial, land, multi-family, other-business] } }
+      - { name: offering, label: "Offering", type: select, options: { values: [business, business_property, property] } }
+      - { name: deal, label: "Sale or Lease", type: select, options: { values: [sale, lease] }, default: sale }
+      - { name: area, label: "General area only – e.g. Calgary NE, Central Alberta", type: string }
+      - { name: priceRange, label: "Price or price range – e.g. $300K–$400K (empty = Price on request)", type: string }
+      - { name: size, label: "Size – e.g. 1,800 sq.ft.", type: string }
+      - { name: revenue, label: "Annual sales – e.g. $1.2M (optional)", type: string }
+      - { name: cap, label: "Cap rate – e.g. 6.5% (optional)", type: string }
+      - { name: highlights_en, label: "Highlights (English) – short, no identifying details", type: text }
+      - { name: highlights_ko, label: "Highlights (한국어)", type: text }
+      - { name: photos, label: "Photo (optional – only photos that do not identify the business)", type: image, list: { max: 5 } }

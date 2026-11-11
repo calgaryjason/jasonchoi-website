@@ -41,6 +41,7 @@
       <a href="#business" data-nav="business" data-ko="비즈니스 매매">Business for Sale</a>
       <a href="#leasing" data-nav="leasing" data-ko="리스">Leasing</a>
       <a href="#investment" data-nav="investment" data-ko="투자 부동산">Investment</a>
+      <a href="#off-market" data-nav="off-market" data-ko="비공개 매물">Off-Market</a>
       <a href="#sell-business" data-nav="sell-business" data-ko="비즈니스 판매">Sell Your Business</a>
       <a href="#residential" data-nav="residential" data-ko="주거용">Residential</a>
       <div class="dd">
@@ -83,6 +84,7 @@
           <a href="#business-liquor-store" data-ko="리커스토어">Liquor Stores</a>
           <a href="#business-car-wash" data-ko="세차장">Car Washes</a>
           <a href="#leasing" data-ko="리스 공간">Lease Space</a>
+          <a href="#off-market" data-ko="비공개 매물">Off-Market Deals</a>
         </div>
       </div>
       <div class="hero-card">
@@ -227,6 +229,18 @@
         <li><b data-ko="클로징">Closing</b><span data-ko="재고 정산 후 열쇠를 넘깁니다.">Inventory count, final adjustments and handover.</span></li>
       </ol>
       <div style="text-align:center;margin-top:28px"><a href="#sell-business" class="btn btn-red" data-ko="내 비즈니스 가치 알아보기">Find Out What Your Business Is Worth</a></div>
+    </div>
+  </div>
+
+  <!-- Off-market teaser (data/pocket.json) -->
+  <div class="section dark-section" id="pocketHome" style="display:none">
+    <div class="wrap">
+      <div class="section-head">
+        <div><div class="eyebrow light" data-ko="비공개 매물">Off-Market Opportunities</div><h2 data-ko="MLS®에 없는 비공개 매물">Exclusive Deals Not on MLS®</h2>
+        <p class="muted-l small-mt" data-ko="비밀 유지를 원하는 매도인의 매물입니다. 자세한 정보는 NDA 서명 후 제공됩니다.">Listings from sellers who want privacy. Full details are shared after a signed NDA.</p></div>
+        <a href="#off-market" class="btn btn-ghost" data-ko="비공개 매물 전체 보기 →">View All Off-Market →</a>
+      </div>
+      <div class="grid" id="pocketHomeGrid"></div>
     </div>
   </div>
 
@@ -493,6 +507,50 @@
 </section>
 
 <!-- ======================================================
+     OFF-MARKET / POCKET LISTINGS
+     ====================================================== -->
+<section class="view" id="view-off-market">
+  <div class="page-head"><div class="wrap">
+    <div class="eyebrow light" data-ko="비공개 매물">Off-Market Opportunities</div>
+    <h1 data-ko="비공개 매물 (Pocket Listings)">Off-Market Opportunities</h1>
+    <p data-ko="MLS®에 공개되지 않은 비즈니스와 부동산 매물입니다. 매도인의 비밀 유지를 위해 요약 정보만 공개합니다.">Businesses and properties not advertised on MLS®. Only a summary is shown to protect each seller's privacy.</p>
+  </div></div>
+  <div class="section pt-sm">
+    <div class="wrap">
+      <ol class="steps steps-row">
+        <li data-ko="관심 있는 매물의 '상세 정보 요청'을 누릅니다.">Choose a listing and click "Request Details".</li>
+        <li data-ko="비밀 유지에 동의하고 연락처를 남깁니다.">Agree to keep the information confidential and leave your contact details.</li>
+        <li data-ko="NDA 서명과 자금 확인 후 상세 정보를 보내드립니다.">After a signed NDA and proof of funds, I send you the full details.</li>
+      </ol>
+      <div class="grid mt" id="pocketGrid"></div>
+
+      <div class="form-section mt-lg" id="pocket-request-box">
+        <div>
+          <div class="eyebrow" data-ko="상세 정보 요청">Request Details</div>
+          <h2 class="h2-sm" id="pocketFormTitle" data-ko="비공개 매물 정보 요청">Request Off-Market Information</h2>
+          <p class="muted" data-ko="원하시는 조건을 알려주시면, 현재 매물과 앞으로 나올 비공개 매물을 가장 먼저 안내해 드립니다.">Tell me what you are looking for. I will contact you about current and upcoming off-market deals first.</p>
+          <p class="note" data-ko="입력하신 정보는 비공개로 처리됩니다.">Your information is kept private.</p>
+        </div>
+        <form class="lead-form form-card bordered" data-subject="Off-Market Inquiry" id="pocketForm">
+          <div class="form-grid">
+            <div class="field full"><label data-ko="관심 매물">Listing of Interest</label><input name="listing" id="pocketListing" placeholder="Any / 전체"></div>
+            <div class="field"><label data-ko="이름">Name</label><input name="name" required></div>
+            <div class="field"><label data-ko="전화번호">Phone</label><input name="phone" type="tel" required></div>
+            <div class="field full"><label data-ko="이메일">Email</label><input name="email" type="email" required></div>
+            <div class="field"><label data-ko="투자 예산">Budget</label><input name="budget"></div>
+            <div class="field"><label data-ko="중개인 여부">Are You a REALTOR®?</label><select name="is_agent"><option data-ko="아니요 – 구매자 본인">No – I am the buyer</option><option data-ko="예 – 구매자 대리">Yes – I represent a buyer</option></select></div>
+            <div class="field full"><label data-ko="메시지">Message</label><textarea name="message" rows="3"></textarea></div>
+            <label class="full check-line"><input type="checkbox" name="confidentiality" value="agreed" required> <span data-ko="비공개 매물 정보를 비밀로 유지하고, NDA 서명 후 상세 정보를 받는 것에 동의합니다.">I agree to keep off-market information confidential and to sign an NDA before receiving full details.</span></label>
+            <div class="full"><button class="btn btn-red w100" type="submit" data-ko="상세 정보 요청">Request Details</button></div>
+          </div>
+          <div class="form-msg" data-ko="감사합니다! 1 영업일 내에 비공개로 연락드리겠습니다.">Thank you! I will contact you privately within 1 business day.</div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================
      SELL YOUR BUSINESS
      ====================================================== -->
 <section class="view" id="view-sell-business">
@@ -750,6 +808,7 @@
         <li><a href="#business" data-ko="비즈니스 매매">Business for Sale</a></li>
         <li><a href="#leasing" data-ko="리스">Leasing</a></li>
         <li><a href="#investment" data-ko="투자 부동산">Investment</a></li>
+        <li><a href="#off-market" data-ko="비공개 매물">Off-Market</a></li>
         <li><a href="#sell-business" data-ko="비즈니스 판매">Sell Your Business</a></li></ul></div>
       <div><h4 data-ko="자료">Resources</h4><ul>
         <li><a href="#residential" data-ko="주거용 매물">Residential Listings</a></li>
@@ -780,6 +839,7 @@
 <script id="fallback-sold" type="application/json">[]</script>
 <script id="fallback-reviews" type="application/json">[]</script>
 <script id="fallback-res" type="application/json">[]</script>
+<script id="fallback-pocket" type="application/json">[]</script>
 <script src="js/config.js"></script>
 <script src="js/app.js"></script>
 </body>

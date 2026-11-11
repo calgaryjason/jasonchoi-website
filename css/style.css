@@ -313,6 +313,15 @@ nav.menu .btn:hover{color:#fff}
 .contact-list small{display:block;color:#9a9ca1;font-size:13px}
 .big-link{font-weight:700;font-size:18px}
 
+/* Off-market */
+.badge.pocket-b{background:#7a5c1e}
+.pocket-ph{background:linear-gradient(135deg,#2a2c32,#4a3a22);color:#e8d7b0;letter-spacing:.2em;font-weight:700}
+.pocket-card{border-top:3px solid #b8892d}
+.steps-row{grid-template-columns:repeat(3,1fr)}
+.check-line{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#3b3e44}
+.check-line input{margin-top:4px;width:18px;height:18px;flex:none}
+@media (max-width:640px){.steps-row{grid-template-columns:1fr}}
+
 /* Photo viewer */
 .card.clickable{cursor:zoom-in}
 #lightbox{display:none;position:fixed;inset:0;background:rgba(10,10,12,.88);z-index:200;align-items:center;justify-content:center;padding:24px}
