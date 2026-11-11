@@ -94,5 +94,21 @@
     "desc_ko": "지금 집이 팔리기 전에 새 집을 살 때 쓰는 단기 대출: 방법, 비용, 자격, 위험, 대안, 앨버타·BC 차이 (영문).",
     "lang": "EN",
     "file": "uploads/guides/Bridge_Financing_Guide_AB_BC.pdf"
+  },
+  {
+    "title_en": "Buying a Hotel or Motel: Step-by-Step",
+    "title_ko": "호텔·모텔 인수 단계별 가이드",
+    "desc_en": "A 10-phase guide for hotel and motel buyers in Alberta and BC: criteria, key numbers (RevPAR, ADR), LOI, purchase agreement, inspections, brand PIP, liquor licence, financing, closing and the first 90 days.",
+    "desc_ko": "앨버타·BC 호텔·모텔 구매자를 위한 10단계 안내: 기준 설정, 핵심 지표, LOI, 계약, 점검, 브랜드 PIP, 주류 라이선스, 융자, 클로징, 인수 후 90일 (영문).",
+    "lang": "EN",
+    "file": "uploads/guides/Hotel_Purchase_Guide_AB_BC.pdf"
+  },
+  {
+    "title_en": "Buying a Grocery Store: Step-by-Step",
+    "title_ko": "그로서리 스토어 인수 단계별 가이드",
+    "desc_en": "For independent, banner and specialty / ethnic grocery stores: key numbers, the inventory clause, refrigeration checks, licences, financing, red flags and typical buyer costs.",
+    "desc_ko": "독립·배너·에스닉 그로서리 스토어 인수 안내: 핵심 지표, 재고 조항, 냉장 설비 점검, 라이선스, 융자, 위험 신호, 구매자 비용 (영문).",
+    "lang": "EN",
+    "file": "uploads/guides/Grocery_Store_Purchase_Guide_AB_BC.pdf"
   }
 ]
