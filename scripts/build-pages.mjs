@@ -3,6 +3,7 @@
      listing/<id>/index.html   – one page per active listing (Google + Facebook previews)
      sitemap.xml               – list of pages for Google
      robots.txt                – tells search engines where the sitemap is
+     ko/index.html             – Korean version of the home page
    Runs automatically on GitHub when data/listings.json or data/ddf-listings.json changes.
    Off-market (pocket) listings are never published here.
    ========================================================= */
@@ -100,11 +101,30 @@ body{background:#f4f4f5}.lp{max-width:980px;margin:0 auto;padding:28px 20px 60px
   fs.writeFileSync(path.join(outDir, l.id, "index.html"), html);
 }
 
+/* ---------- Korean home page: /ko/ (same site, Korean text in the HTML for Google and Naver) ---------- */
+{
+  let h = fs.readFileSync(path.join(root, "index.html"), "utf8");
+  const ko = s => s.replace(/&(?!amp;|lt;|gt;|quot;|#)/g, "&amp;");
+  // Put the Korean text into simple elements, keeping the English in data-en.
+  h = h.replace(/<([a-z0-9]+)(\s(?:[^>]*?\s)?data-ko="([^"]*)"[^>]*)>([^<]*)<\/\1>/g,
+    (m, tag, attrs, k, en) => `<${tag}${attrs} data-en="${en.replace(/"/g, "&quot;")}">${ko(k)}</${tag}>`);
+  h = h.replace('<html lang="en">', '<html lang="ko">')
+    .replace(/<head>/, '<head>\n<base href="/">')
+    .replace(/<title>[^<]*<\/title>/, "<title>최재봉 부동산 | 캘거리 상업용 부동산 리얼터 – 비즈니스 매매, 리스, 투자</title>")
+    .replace(/<meta name="description" content="[^"]*">/, '<meta name="description" content="2007년부터 활동한 캘거리 REALTOR® 최재봉(Jason Choi). 식당, 주유소, 호텔, 리커스토어 등 비즈니스 매매와 상업용 리스, 투자 부동산, 주택 거래. 한국어 상담 가능.">')
+    .replace(/<meta property="og:title" content="[^"]*">/, '<meta property="og:title" content="최재봉 부동산 – 2007년부터 캘거리 상업용 부동산 전문">')
+    .replace(/<meta property="og:description" content="[^"]*">/, '<meta property="og:description" content="캘거리와 앨버타, BC의 비즈니스 매매, 상업용 리스, 투자 부동산. 한국어 상담 가능.">')
+    .replace('<meta property="og:url" content="https://jasonchoirealestate.com/">', '<meta property="og:url" content="https://jasonchoirealestate.com/ko/">\n<meta property="og:locale" content="ko_KR">')
+    .replace('<link rel="canonical" href="https://jasonchoirealestate.com/">', '<link rel="canonical" href="https://jasonchoirealestate.com/ko/">');
+  fs.mkdirSync(path.join(root, "ko"), { recursive: true });
+  fs.writeFileSync(path.join(root, "ko", "index.html"), h);
+}
+
 const today = new Date().toISOString().slice(0, 10);
-const urls = [`${SITE}/`, ...listings.map(l => `${SITE}/listing/${l.id}/`)];
+const urls = [`${SITE}/`, `${SITE}/ko/`, ...listings.map(l => `${SITE}/listing/${l.id}/`)];
 fs.writeFileSync(path.join(root, "sitemap.xml"),
   `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
   urls.map(u => `  <url><loc>${u}</loc><lastmod>${today}</lastmod></url>`).join("\n") + `\n</urlset>\n`);
 fs.writeFileSync(path.join(root, "robots.txt"),
   `User-agent: *\nAllow: /\nDisallow: /studio.html\nDisallow: /admin/\n\nSitemap: ${SITE}/sitemap.xml\n`);
-console.log(`Built ${listings.length} listing pages, sitemap.xml and robots.txt`);
+console.log(`Built ${listings.length} listing pages, the Korean page (/ko/), sitemap.xml and robots.txt`);

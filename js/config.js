@@ -22,6 +22,12 @@ window.SITE = {
      Empty = preview mode (forms only show a thank-you message). */
   formAccessKey: "f5c5f3c1-9ea2-4a7c-9b5f-9179bd184062",
 
+  /* WhatsApp number (digits, with country code 1). Empty = hidden.
+     KakaoTalk channel link, e.g. "https://pf.kakao.com/_xxxxx/chat". Empty = hidden. */
+  whatsapp: "14033998124",
+  kakao: "",
+  kakaoId: "calgaryjason",   /* personal KakaoTalk ID (button copies it) */
+
   /* Google Business Profile (free) – shows you on Google Maps.
      googleMaps:   your profile link (Google Maps → your business → Share → Copy link)
      googleReview: your "Ask for reviews" link (Business Profile → Ask for reviews)

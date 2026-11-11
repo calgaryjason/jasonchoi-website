@@ -56,13 +56,23 @@ const D = {
   trackEmpty:["Transaction history is being updated.","거래 실적을 업데이트하고 있습니다."], foodSpace:["Restaurant / Food Space","레스토랑 / 식당 공간"], otherSpace:["Other","기타"]
 };
 let lang = "en";
+const KO_PAGE = location.pathname.startsWith("/ko");
 try { lang = localStorage.getItem("jc_lang") || "en"; } catch (e) {}
+if (KO_PAGE) lang = "ko";
 const t = k => (D[k] ? D[k][lang === "ko" ? 1 : 0] : k);
 
 /* ---------- Static page text (data-ko) ---------- */
-document.querySelectorAll("[data-ko]").forEach(el => el.dataset.en = el.textContent);
+document.querySelectorAll("[data-ko]").forEach(el => { if (el.dataset.en == null) el.dataset.en = el.textContent; });
 document.querySelectorAll(".lang button").forEach(b => b.onclick = () => {
-  lang = b.dataset.lang; try { localStorage.setItem("jc_lang", lang); } catch (e) {} applyLang();
+  lang = b.dataset.lang; try { localStorage.setItem("jc_lang", lang); } catch (e) {}
+  if (KO_PAGE && lang === "en") { location.href = "/" + location.hash; return; }
+  applyLang();
+});
+/* The Korean page (/ko/) uses <base href="/">, so keep "#page" links on this page. */
+if (document.querySelector("base")) document.addEventListener("click", e => {
+  const a = e.target.closest('a[href^="#"]'); if (!a || e.ctrlKey || e.metaKey) return;
+  e.preventDefault(); const h = a.getAttribute("href");
+  if (location.hash === h) window.dispatchEvent(new HashChangeEvent("hashchange")); else location.hash = h;
 });
 function applyLang() {
   document.documentElement.lang = lang;
@@ -89,6 +99,7 @@ const ICONS = {
 };
 const icon = (k, s = 26) => `<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">${ICONS[k] || ICONS["other-business"]}</svg>`;
 const SOC = {
+  whatsapp:{c:"#25D366",p:'<path d="M3.5 20.5l1.3-4.2A8.5 8.5 0 1 1 8 19.4z"/><path d="M9 8.5c0 3.5 3 6.5 6.5 6.5l1-1.6-2-1-1 .9c-1.2-.5-2.3-1.6-2.8-2.8l.9-1-1-2z"/>',n:"WhatsApp",s:"waSub"},
   instagram:{c:"#E1306C",p:'<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/>',n:"Instagram",s:"igSub"},
   facebook:{c:"#1877F2",p:'<path d="M14 8h3V4h-3a4 4 0 0 0-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8z"/>',n:"Facebook",s:"fbSub"},
   threads:{c:"#111",p:'<path d="M16.5 11.2c-.3-2.6-2-3.9-4.4-3.9-2.6 0-4.1 1.7-4.1 1.7M8.3 15.2c.3 1.6 1.9 2.4 3.6 2.3 2.4-.1 3.7-1.8 3.6-4.2-.1-1.9-1.7-2.7-3.5-2.6-1.9.1-3.1 1.1-3.1 2.4 0 1.2 1 2 2.4 1.9 2.6-.1 4.3-2.2 4.2-6C15.3 4.8 13 3 10.5 3.3 6.2 3.8 4 7.4 4 12c0 5 2.7 9 8 9 3.6 0 6-1.7 7.2-4.2"/>',n:"Threads",s:"thSub"},
@@ -98,7 +109,7 @@ const SOC = {
 };
 const socIcon = (k, s = 18) => `<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${SOC[k].p}</svg>`;
 function renderSocial() {
-  const keys = Object.keys(SOC).filter(k => SITE[k]);
+  const keys = Object.keys(SOC).filter(k => SITE[k] && k !== "whatsapp");
   const links = s => keys.map(k => `<a href="${SITE[k]}" target="_blank" rel="noopener" aria-label="${SOC[k].n}">${socIcon(k, s)}</a>`).join("");
   $("socialTop").innerHTML = links(19); $("socialFoot").innerHTML = links(24); $("socialContact").innerHTML = links(24);
   $("socialCards").innerHTML = ["instagram","facebook","threads","a9ent"].filter(k => SITE[k]).map(k =>
@@ -345,6 +356,27 @@ function mapQuery(l) {
   }
   return [l.address, city].filter(Boolean).join(", ") + (/AB|BC/.test(city) ? "" : ", AB");
 }
+function renderContactBar() {
+  const wa = (SITE.whatsapp || "").replace(/\D/g, "");
+  const w = $("mbarWa"), k = $("mbarKakao");
+  if (w) { w.style.display = wa ? "" : "none"; w.href = "https://wa.me/" + wa; $("mbarWaIc").innerHTML = socIcon("whatsapp", 18); }
+  if (k) {
+    k.style.display = (SITE.kakao || SITE.kakaoId) ? "" : "none";
+    if (SITE.kakao) k.href = SITE.kakao;
+    else k.onclick = e => { e.preventDefault(); kakaoCopy(); };
+  }
+  document.querySelectorAll(".kakao-id").forEach(e => e.textContent = SITE.kakaoId || "");
+  document.querySelectorAll(".kakao-copy").forEach(b => b.onclick = e => { e.preventDefault(); kakaoCopy(); });
+}
+async function kakaoCopy() {
+  try { await navigator.clipboard.writeText(SITE.kakaoId); } catch (e) {}
+  toast(lang === "ko" ? `카카오톡 ID "${SITE.kakaoId}"가 복사되었습니다. 카카오톡 → 친구 추가 → ID로 추가에서 검색해 주세요.`
+    : `KakaoTalk ID "${SITE.kakaoId}" copied. In KakaoTalk, tap Add Friend → Add by ID and search.`);
+}
+function toast(msg) {
+  let el = $("toast"); if (!el) { el = document.createElement("div"); el.id = "toast"; el.className = "toast"; document.body.appendChild(el); }
+  el.textContent = msg; el.classList.add("on"); clearTimeout(el._t); el._t = setTimeout(() => el.classList.remove("on"), 5000);
+}
 function renderGBP() {
   const s = $("gbpSlot"); if (!s) return;
   s.innerHTML = (SITE.googleMaps ? `<a class="btn btn-ghost" target="_blank" rel="noopener" href="${SITE.googleMaps}">${t("gbp")}</a>` : "") +
@@ -547,7 +579,7 @@ function renderBrokers() {
 }
 
 /* ---------- Router ---------- */
-const VIEWS = ["off-market","track-record","home","business","leasing","investment","sell-business","residential","mortgage","home-evaluation","guides","about"];
+const VIEWS = ["privacy","off-market","track-record","home","business","leasing","investment","sell-business","residential","mortgage","home-evaluation","guides","about"];
 const JUMPS = { "leasing-calc": ["leasing","leasing-calc-box"], "space-request": ["leasing","space-request-box"], "cap-calc": ["investment","cap-calc-box"], "investor-list": ["investment","investor-list-box"], "listing-alerts": ["home","listing-alerts"], "market": ["home","marketSection"] };
 function router() {
   let h = (location.hash || "#home").slice(1);
@@ -609,7 +641,7 @@ function renderMarket() {
 
 function renderAll() {
   renderBrokers();
-  renderTrack(); renderReviews(); renderResources(); renderPocket(); renderMarket(); renderGBP();
+  renderTrack(); renderReviews(); renderResources(); renderPocket(); renderMarket(); renderGBP(); renderContactBar();
   renderSocial(); renderHome(); renderBusiness(); renderLeasing(); renderInvestment(); renderResidential();
   if (ALL().some(l => l.id === route)) renderDetail(route);
   calcMortgage(); calcLease(); calcCap();
