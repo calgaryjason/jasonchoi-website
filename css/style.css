@@ -313,6 +313,29 @@ nav.menu .btn:hover{color:#fff}
 .contact-list small{display:block;color:#9a9ca1;font-size:13px}
 .big-link{font-weight:700;font-size:18px}
 
+/* Photos: hero mosaic, photo category tiles, photo strip */
+.hero-mosaic{position:absolute;inset:0;display:grid;grid-template-columns:repeat(8,1fr);grid-auto-rows:1fr;gap:3px;opacity:.5}
+.hero-mosaic img{width:100%;height:100%;object-fit:cover;animation:mosaicIn 1.2s ease both}
+@keyframes mosaicIn{from{opacity:0;transform:scale(1.04)}to{opacity:1;transform:none}}
+.hero::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(17,18,21,.96) 0%,rgba(17,18,21,.86) 45%,rgba(40,20,22,.62) 100%)}
+.hero-wrap,.stats-strip{z-index:2}
+.cat-photo{position:relative;overflow:hidden;min-height:170px;padding:0;border:0;color:#fff;text-align:left;display:flex;align-items:flex-end;background:#222}
+.cat-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.cat-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 30%,rgba(0,0,0,.78) 100%)}
+.cat-photo:hover img{transform:scale(1.07)}
+.cat-photo .cat-txt{position:relative;z-index:1;padding:14px 16px}
+.cat-photo b{font-size:16px;color:#fff}
+.cat-photo small{color:#e6e6e6}
+.cat-photo:hover{border-color:transparent}
+.cat-noimg{background:linear-gradient(135deg,#3a3d44,#5a2a2c)}
+.cat-bigic{position:absolute;top:22px;right:22px;color:rgba(255,255,255,.28)}
+.photo-strip{overflow:hidden;margin-top:56px;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.strip-track{display:flex;gap:12px;width:max-content;animation:stripMove 80s linear infinite}
+.strip-track img{height:150px;width:220px;object-fit:cover;border-radius:8px;opacity:.9}
+@keyframes stripMove{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion: reduce){.strip-track,.hero-mosaic img{animation:none}}
+@media (max-width:640px){.hero-mosaic{grid-template-columns:repeat(4,1fr)}.cat-photo{min-height:140px}}
+
 /* Off-market */
 .badge.pocket-b{background:#7a5c1e}
 .pocket-ph{background:linear-gradient(135deg,#2a2c32,#4a3a22);color:#e8d7b0;letter-spacing:.2em;font-weight:700}

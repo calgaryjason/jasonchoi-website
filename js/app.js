@@ -202,11 +202,47 @@ const catTiles = (cats, cur, base) => ["all", ...cats].map(c =>
   `<a class="cat ${cur === c ? "on" : ""}" href="#${c === "all" ? base : base + "-" + c}"><div class="cat-ic">${icon(c)}</div><b>${c === "all" ? t("all") : t("c." + c)}</b></a>`).join("");
 
 /* ---------- Home ---------- */
+/* ---------- Real deal photos (warmer look) ---------- */
+const CAT_PHOTO = {   /* chosen photos per category; others are picked automatically */
+  "gas-station": "uploads/sold/longview-gas-station.jpg",
+  "restaurant": "uploads/sold/cochrane-restaurant.jpg",
+  "liquor-store": "uploads/sold/calgary-ne-liquor.jpg",
+  "hotel": "uploads/sold/stettler-hotel.jpg",
+  "retail-office": "uploads/listings/new-horizon-mall-g11b-1.jpg",
+  "industrial": "uploads/sold/manchester-office-industrial.jpg",
+  "multi-family": "uploads/sold/panorama-hills-apartment-1.jpg",
+  "other-business": "uploads/listings/convenience-store-condo-eau-claire-2.jpg"
+};
+function catPhoto(c) {
+  if (CAT_PHOTO[c]) return CAT_PHOTO[c];
+  const hit = SOLD.concat(MINE).find(x => x.category === c && ((x.photos && x.photos[0]) || x.photo));
+  return hit ? (hit.photos ? hit.photos[0] : hit.photo) : "";
+}
+function allDealPhotos() {
+  const seen = new Set(), out = [];
+  SOLD.concat(MINE.filter(l => l.status === "active")).forEach(x => {
+    const p = (x.photos && x.photos[0]) || x.photo;
+    if (p && !seen.has(p)) { seen.add(p); out.push(p); }
+  });
+  return out;
+}
+function renderPhotos() {
+  const ph = allDealPhotos();
+  if (!ph.length) return;
+  const mix = ph.slice().sort((a, b) => (a.length * 7 + a.charCodeAt(a.length - 6)) % 11 - (b.length * 7 + b.charCodeAt(b.length - 6)) % 11);
+  const tiles = []; while (tiles.length < 24) tiles.push(...mix); 
+  $("heroMosaic").innerHTML = tiles.slice(0, 24).map((p, i) => `<img src="${p}" alt="" loading="${i < 12 ? "eager" : "lazy"}" style="animation-delay:${(i % 8) * 0.25}s">`).join("");
+  const strip = ph.slice(0, 18).map(p => `<img src="${p}" alt="" loading="lazy">`).join("");
+  $("photoStrip").innerHTML = strip + strip;
+}
+
 function renderHome() {
   $("homeCats").innerHTML = HOME_CATS.map(c => {
     const base = BIZ_CATS.includes(c) ? "business" : "investment";
     const n = ALL().filter(l => l.category === c && l.status === "active").length;
-    return `<a class="cat" href="#${base}-${c}"><div class="cat-ic">${icon(c)}</div><b>${t("c." + c)}</b><small>${t("cs." + c)}${n ? " · " + n : ""}</small></a>`;
+    const ph = catPhoto(c);
+    if (ph) return `<a class="cat cat-photo" href="#${base}-${c}"><img src="${ph}" alt="" loading="lazy"><span class="cat-txt"><b>${t("c." + c)}</b><small>${t("cs." + c)}${n ? " · " + n : ""}</small></span></a>`;
+    return `<a class="cat cat-photo cat-noimg" href="#${base}-${c}"><span class="cat-bigic">${icon(c, 64)}</span><span class="cat-txt"><b>${t("c." + c)}</b><small>${t("cs." + c)}${n ? " · " + n : ""}</small></span></a>`;
   }).join("");
   const tabs = [["biz","tabBiz"],["lease","tabLease"],["inv","tabInv"],["res","tabRes"]];
   $("featTabs").innerHTML = tabs.map(([k, l]) => `<button class="${featTab === k ? "on" : ""}" data-k="${k}">${t(l)}</button>`).join("");
@@ -548,5 +584,5 @@ async function getJSON(url, fb) {
   [MINE, DDF, SOLD, REVIEWS, RES, POCKET] = await Promise.all([getJSON("data/listings.json", "fallback-data"), getJSON("data/ddf-listings.json", "fallback-ddf"),
     getJSON("data/sold.json", "fallback-sold"), getJSON("data/testimonials.json", "fallback-reviews"), getJSON("data/resources.json", "fallback-res"), getJSON("data/pocket.json", "fallback-pocket")]);
   MINE.forEach(l => l.source = "jason"); DDF.forEach(l => l.source = "ddf");
-  fillSelects(); applyLang(); router();
+  fillSelects(); applyLang(); renderPhotos(); router();
 })();
