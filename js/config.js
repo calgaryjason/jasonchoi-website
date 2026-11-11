@@ -12,6 +12,7 @@ window.SITE = {
   threads:   "https://www.threads.net/@jasonchoirealestate",
   youtube:   "",
   linkedin:  "",
+  a9ent:     "https://a9ent.co/jasonchoirealestate",   /* A9ENT digital business card */
 
   /* Your Instagram / Threads handle shown on the site (without @). */
   handle: "jasonchoirealestate",

@@ -37,7 +37,7 @@ const D = {
   igTip:["Instagram: copy the link and add it to your story or bio.","인스타그램: 링크를 복사해 스토리나 프로필에 넣으세요."],
   ddf:["This listing is provided through REALTOR.ca DDF®. This REALTOR.ca listing content is owned and licensed by REALTOR® members of The Canadian Real Estate Association.",
        "이 매물은 REALTOR.ca DDF®를 통해 제공됩니다. This REALTOR.ca listing content is owned and licensed by REALTOR® members of The Canadian Real Estate Association."],
-  follow:["Follow","팔로우"], igSub:["Listing photos & reels","매물 사진 & 릴스"], fbSub:["New listings & market news","새 매물 & 시장 소식"], thSub:["Quick updates & tips","빠른 소식 & 팁"],
+  follow:["Follow","팔로우"], a9Sub:["Digital business card","디지털 명함"], igSub:["Listing photos & reels","매물 사진 & 릴스"], fbSub:["New listings & market news","새 매물 & 시장 소식"], thSub:["Quick updates & tips","빠른 소식 & 팁"],
   "freq.12":["per month","월별 상환"], "freq.26":["bi-weekly","격주 상환"], "freq.acc":["accelerated bi-weekly","가속 격주 상환"], "freq.52":["per week","주별 상환"],
   wMin:["Minimum down payment for this price is $","이 가격의 최소 다운페이먼트는 $"], wMin2:[".","입니다."], wBig:["A minimum 20% down payment is required at $1,500,000 or more.","$1,500,000 이상은 최소 20% 다운페이먼트가 필요합니다."],
   bizAll:["Businesses for Sale","비즈니스 매물"], invAll:["Income-Producing Investment Properties","수익형 투자 부동산"], forSaleSuffix:[" for Sale"," 매물"],
@@ -89,6 +89,7 @@ const SOC = {
   facebook:{c:"#1877F2",p:'<path d="M14 8h3V4h-3a4 4 0 0 0-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8z"/>',n:"Facebook",s:"fbSub"},
   threads:{c:"#111",p:'<path d="M16.5 11.2c-.3-2.6-2-3.9-4.4-3.9-2.6 0-4.1 1.7-4.1 1.7M8.3 15.2c.3 1.6 1.9 2.4 3.6 2.3 2.4-.1 3.7-1.8 3.6-4.2-.1-1.9-1.7-2.7-3.5-2.6-1.9.1-3.1 1.1-3.1 2.4 0 1.2 1 2 2.4 1.9 2.6-.1 4.3-2.2 4.2-6C15.3 4.8 13 3 10.5 3.3 6.2 3.8 4 7.4 4 12c0 5 2.7 9 8 9 3.6 0 6-1.7 7.2-4.2"/>',n:"Threads",s:"thSub"},
   youtube:{c:"#FF0000",p:'<rect x="2" y="5" width="20" height="14" rx="4"/><path d="M10 9l5 3-5 3z" fill="currentColor"/>',n:"YouTube"},
+  a9ent:{c:"#C8282B",p:'<rect x="2" y="5" width="20" height="14" rx="2"/><circle cx="8" cy="11" r="2"/><path d="M5 16c.6-1.5 1.7-2 3-2s2.4.5 3 2M14 10h5M14 13h4"/>',n:"A9ENT",s:"a9Sub"},
   linkedin:{c:"#0A66C2",p:'<rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/>',n:"LinkedIn"}
 };
 const socIcon = (k, s = 18) => `<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${SOC[k].p}</svg>`;
@@ -96,9 +97,9 @@ function renderSocial() {
   const keys = Object.keys(SOC).filter(k => SITE[k]);
   const links = s => keys.map(k => `<a href="${SITE[k]}" target="_blank" rel="noopener" aria-label="${SOC[k].n}">${socIcon(k, s)}</a>`).join("");
   $("socialTop").innerHTML = links(15); $("socialFoot").innerHTML = links(18); $("socialContact").innerHTML = links(18);
-  $("socialCards").innerHTML = ["instagram","facebook","threads"].filter(k => SITE[k]).map(k =>
+  $("socialCards").innerHTML = ["instagram","facebook","threads","a9ent"].filter(k => SITE[k]).map(k =>
     `<a class="social-card" href="${SITE[k]}" target="_blank" rel="noopener"><span class="s-ic" style="background:${SOC[k].c}">${socIcon(k, 24)}</span>
-     <span><b>${SOC[k].n}</b><small>${"@" + (k === "facebook" ? (SITE.facebookHandle || SITE.handle || "") : (SITE.handle || ""))} · ${t(SOC[k].s)}</small></span></a>`).join("");
+     <span><b>${SOC[k].n}</b><small>${k === "a9ent" ? "a9ent.co/jasonchoirealestate" : "@" + (k === "facebook" ? (SITE.facebookHandle || SITE.handle || "") : (SITE.handle || ""))} · ${t(SOC[k].s)}</small></span></a>`).join("");
 }
 
 /* ---------- Categories ---------- */
