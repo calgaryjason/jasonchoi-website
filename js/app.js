@@ -366,6 +366,7 @@ function renderContactBar() {
     else k.onclick = e => { e.preventDefault(); kakaoCopy(); };
   }
   document.querySelectorAll(".kakao-id").forEach(e => e.textContent = SITE.kakaoId || "");
+  document.querySelectorAll(".qc-wa").forEach(e => e.innerHTML = socIcon("whatsapp", 20));
   document.querySelectorAll(".kakao-copy").forEach(b => b.onclick = e => { e.preventDefault(); kakaoCopy(); });
 }
 async function kakaoCopy() {

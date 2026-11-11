@@ -522,3 +522,17 @@ footer a:hover{color:#fff}
 
 .toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%) translateY(20px);background:#1d1f24;color:#fff;padding:14px 20px;border-radius:10px;max-width:90vw;font-size:14px;line-height:1.5;box-shadow:0 10px 30px rgba(0,0,0,.25);opacity:0;pointer-events:none;transition:.25s;z-index:200;border-left:4px solid #FEE500}
 .toast.on{opacity:1;transform:translateX(-50%)}
+
+/* Contact right column */
+.contact-side{display:flex;flex-direction:column;gap:16px}
+.side-map{margin:0}.side-map iframe{height:170px}
+.quick-contact{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.quick-contact a{display:flex;flex-direction:column;align-items:center;gap:4px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:10px;padding:12px 4px;color:#fff;text-decoration:none;font-size:12.5px;transition:.15s}
+.quick-contact a:hover{background:var(--red);border-color:var(--red)}
+.quick-contact span{font-size:19px;height:24px;display:flex;align-items:center}
+.quick-contact .qc-k{background:#FEE500;color:#3A1D1D;font-weight:900;font-size:12px;width:22px;height:22px;border-radius:6px;justify-content:center}
+.consult-card{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.consult-card>div{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:14px 16px;color:#fff}
+.consult-card .cc-ic{display:inline-flex;width:26px;height:26px;border-radius:50%;background:var(--red);align-items:center;justify-content:center;font-size:13px;margin-bottom:6px}
+.consult-card b{display:block;font-size:14px}.consult-card small{display:block;color:#c9cbd1;font-size:12.5px;margin-top:2px}
+@media(max-width:560px){.quick-contact{grid-template-columns:repeat(5,1fr)}.quick-contact b{font-size:10.5px}.consult-card{grid-template-columns:1fr}}
