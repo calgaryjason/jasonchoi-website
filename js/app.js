@@ -219,7 +219,7 @@ function catPhoto(c) {
   return hit ? (hit.photos ? hit.photos[0] : hit.photo) : "";
 }
 function allDealPhotos() {
-  const seen = new Set(), out = [];
+  const seen = new Set(), out = ["uploads/brand/sold-sign-1.jpg", "uploads/brand/sold-sign-2.jpg"];
   SOLD.concat(MINE.filter(l => l.status === "active")).forEach(x => {
     const p = (x.photos && x.photos[0]) || x.photo;
     if (p && !seen.has(p)) { seen.add(p); out.push(p); }

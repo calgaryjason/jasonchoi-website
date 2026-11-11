@@ -427,3 +427,12 @@ footer a:hover{color:#fff}
   .hero h1{font-size:32px}
   .topbar .hide-sm,.social-mini{display:none}
 }
+
+/* SOLD sign band */
+.sold-band{display:grid;grid-template-columns:1fr 1fr 1.3fr;gap:14px;margin:0 0 28px;align-items:stretch}
+.sold-band img{width:100%;height:260px;object-fit:cover;object-position:75% center;border-radius:10px;display:block}
+.sold-band-txt{background:#1d1f24;color:#fff;border-radius:10px;padding:26px;display:flex;flex-direction:column;justify-content:center}
+.sold-band-txt h3{margin:10px 0 8px;font-size:1.3rem}
+.sold-band-txt p{margin:0;color:#c9cbd1;line-height:1.6}
+.sold-tag{align-self:flex-start;background:var(--red);color:#fff;font-weight:800;letter-spacing:.12em;padding:4px 12px;border-radius:4px;transform:rotate(-4deg)}
+@media(max-width:800px){.sold-band{grid-template-columns:1fr 1fr}.sold-band-txt{grid-column:1/-1}.sold-band img{height:200px}}
