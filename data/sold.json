@@ -196,5 +196,243 @@
       "uploads/sold/stettler-hotel-4.jpg",
       "uploads/sold/stettler-hotel-5.jpg"
     ]
+  },
+  {
+    "title_en": "Detached Home",
+    "title_ko": "단독 주택",
+    "group": "res",
+    "result": "sold",
+    "side": "buyer",
+    "city": "Timberstone, Red Deer",
+    "note_en": "4 bed · 3.5 bath · 1,863 sq.ft. · Walkout backing onto a park · double garage · built 2022",
+    "note_ko": "침실 4 · 욕실 3.5 · 1,863 sq.ft. · 공원 뒤편 워크아웃 · 더블 차고 · 2022년 건축",
+    "photos": [
+      "uploads/sold/timberstone-red-deer-1.jpg",
+      "uploads/sold/timberstone-red-deer-2.jpg",
+      "uploads/sold/timberstone-red-deer-3.jpg",
+      "uploads/sold/timberstone-red-deer-4.jpg",
+      "uploads/sold/timberstone-red-deer-5.jpg"
+    ]
+  },
+  {
+    "title_en": "Apartment Condo",
+    "title_ko": "아파트 콘도",
+    "group": "res",
+    "result": "sold",
+    "side": "seller",
+    "city": "Carrington, Calgary NW",
+    "note_en": "2 bed · 2 bath · 1,103 sq.ft. · Built 2024",
+    "note_ko": "침실 2 · 욕실 2 · 1,103 sq.ft. · 2024년 건축",
+    "photos": [
+      "uploads/sold/carrington-apartment-1.jpg",
+      "uploads/sold/carrington-apartment-2.jpg",
+      "uploads/sold/carrington-apartment-3.jpg",
+      "uploads/sold/carrington-apartment-4.jpg",
+      "uploads/sold/carrington-apartment-5.jpg"
+    ]
+  },
+  {
+    "title_en": "Townhome",
+    "title_ko": "타운하우스",
+    "group": "res",
+    "result": "sold",
+    "side": "seller",
+    "city": "Cougar Ridge, Calgary SW",
+    "note_en": "3 bed · 3.5 bath · 1,845 sq.ft. · Built 2013",
+    "note_ko": "침실 3 · 욕실 3.5 · 1,845 sq.ft. · 2013년 건축",
+    "photos": [
+      "uploads/sold/cougar-ridge-townhome-1.jpg",
+      "uploads/sold/cougar-ridge-townhome-2.jpg",
+      "uploads/sold/cougar-ridge-townhome-3.jpg",
+      "uploads/sold/cougar-ridge-townhome-4.jpg",
+      "uploads/sold/cougar-ridge-townhome-5.jpg"
+    ]
+  },
+  {
+    "title_en": "Townhome",
+    "title_ko": "타운하우스",
+    "group": "res",
+    "result": "sold",
+    "side": "seller",
+    "city": "Carrington, Calgary NW",
+    "note_en": "4 bed · 3.5 bath · 1,534 sq.ft. · Built 2019",
+    "note_ko": "침실 4 · 욕실 3.5 · 1,534 sq.ft. · 2019년 건축",
+    "photos": [
+      "uploads/sold/carrington-townhome-1.jpg",
+      "uploads/sold/carrington-townhome-2.jpg",
+      "uploads/sold/carrington-townhome-3.jpg",
+      "uploads/sold/carrington-townhome-4.jpg",
+      "uploads/sold/carrington-townhome-5.jpg"
+    ]
+  },
+  {
+    "title_en": "Townhome",
+    "title_ko": "타운하우스",
+    "group": "res",
+    "result": "sold",
+    "side": "seller",
+    "city": "Canyon Meadows, Calgary SW",
+    "note_en": "3 bed · 2.5 bath · 1,104 sq.ft.",
+    "note_ko": "침실 3 · 욕실 2.5 · 1,104 sq.ft.",
+    "photos": [
+      "uploads/sold/canyon-meadows-townhome-1.jpg",
+      "uploads/sold/canyon-meadows-townhome-2.jpg",
+      "uploads/sold/canyon-meadows-townhome-3.jpg",
+      "uploads/sold/canyon-meadows-townhome-4.jpg",
+      "uploads/sold/canyon-meadows-townhome-5.jpg"
+    ]
+  },
+  {
+    "title_en": "Detached Home",
+    "title_ko": "단독 주택",
+    "group": "res",
+    "result": "sold",
+    "side": "buyer",
+    "city": "Arbour Lake, Calgary NW",
+    "note_en": "5 bed · 4 bath · 2,339 sq.ft. · Built 2023",
+    "note_ko": "침실 5 · 욕실 4 · 2,339 sq.ft. · 2023년 건축",
+    "photos": [
+      "uploads/sold/arbour-lake-detached-1.jpg",
+      "uploads/sold/arbour-lake-detached-2.jpg",
+      "uploads/sold/arbour-lake-detached-3.jpg",
+      "uploads/sold/arbour-lake-detached-4.jpg",
+      "uploads/sold/arbour-lake-detached-5.jpg"
+    ]
+  },
+  {
+    "title_en": "Semi-Detached Home",
+    "title_ko": "세미 단독 주택 (반 듀플렉스)",
+    "group": "res",
+    "result": "sold",
+    "side": "seller",
+    "city": "Montgomery, Calgary NW",
+    "note_en": "4 bed · 3.5 bath · 1,921 sq.ft. · Built 2014",
+    "note_ko": "침실 4 · 욕실 3.5 · 1,921 sq.ft. · 2014년 건축",
+    "photos": [
+      "uploads/sold/montgomery-half-duplex-1.jpg",
+      "uploads/sold/montgomery-half-duplex-2.jpg",
+      "uploads/sold/montgomery-half-duplex-3.jpg",
+      "uploads/sold/montgomery-half-duplex-4.jpg",
+      "uploads/sold/montgomery-half-duplex-5.jpg"
+    ]
+  },
+  {
+    "title_en": "Detached Home",
+    "title_ko": "단독 주택",
+    "group": "res",
+    "result": "sold",
+    "side": "seller",
+    "city": "Edgemont, Calgary NW",
+    "note_en": "5 bed · 3.5 bath · 2,407 sq.ft.",
+    "note_ko": "침실 5 · 욕실 3.5 · 2,407 sq.ft.",
+    "photos": [
+      "uploads/sold/edgemont-detached-1.jpg",
+      "uploads/sold/edgemont-detached-2.jpg",
+      "uploads/sold/edgemont-detached-3.jpg",
+      "uploads/sold/edgemont-detached-4.jpg",
+      "uploads/sold/edgemont-detached-5.jpg"
+    ]
+  },
+  {
+    "title_en": "Detached Home",
+    "title_ko": "단독 주택",
+    "group": "res",
+    "result": "sold",
+    "side": "buyer",
+    "city": "Evanston, Calgary NW",
+    "note_en": "4 bed · 2.5 bath · 2,766 sq.ft. · Built 2015",
+    "note_ko": "침실 4 · 욕실 2.5 · 2,766 sq.ft. · 2015년 건축",
+    "photos": [
+      "uploads/sold/evanston-detached-1.jpg",
+      "uploads/sold/evanston-detached-2.jpg",
+      "uploads/sold/evanston-detached-3.jpg",
+      "uploads/sold/evanston-detached-4.jpg",
+      "uploads/sold/evanston-detached-5.jpg"
+    ]
+  },
+  {
+    "title_en": "Apartment Condo",
+    "title_ko": "아파트 콘도",
+    "group": "res",
+    "result": "sold",
+    "side": "seller",
+    "city": "Beltline, Calgary",
+    "note_en": "1 bed · 1 bath · 545 sq.ft. · Built 2016",
+    "note_ko": "침실 1 · 욕실 1 · 545 sq.ft. · 2016년 건축",
+    "photos": [
+      "uploads/sold/beltline-apartment-1.jpg",
+      "uploads/sold/beltline-apartment-2.jpg",
+      "uploads/sold/beltline-apartment-3.jpg",
+      "uploads/sold/beltline-apartment-4.jpg",
+      "uploads/sold/beltline-apartment-5.jpg"
+    ]
+  },
+  {
+    "title_en": "Apartment Condo",
+    "title_ko": "아파트 콘도",
+    "group": "res",
+    "result": "sold",
+    "side": "buyer",
+    "city": "Downtown West End, Calgary",
+    "note_en": "1 bed · 1 bath · 572 sq.ft.",
+    "note_ko": "침실 1 · 욕실 1 · 572 sq.ft.",
+    "photos": [
+      "uploads/sold/downtown-west-apartment-1.jpg",
+      "uploads/sold/downtown-west-apartment-2.jpg",
+      "uploads/sold/downtown-west-apartment-3.jpg",
+      "uploads/sold/downtown-west-apartment-4.jpg",
+      "uploads/sold/downtown-west-apartment-5.jpg"
+    ]
+  },
+  {
+    "title_en": "Apartment Condo",
+    "title_ko": "아파트 콘도",
+    "group": "res",
+    "result": "sold",
+    "side": "seller",
+    "city": "Panorama Hills, Calgary NW",
+    "note_en": "2 bed · 1 bath · 716 sq.ft.",
+    "note_ko": "침실 2 · 욕실 1 · 716 sq.ft.",
+    "photos": [
+      "uploads/sold/panorama-hills-apartment-1.jpg",
+      "uploads/sold/panorama-hills-apartment-2.jpg",
+      "uploads/sold/panorama-hills-apartment-3.jpg",
+      "uploads/sold/panorama-hills-apartment-4.jpg",
+      "uploads/sold/panorama-hills-apartment-5.jpg"
+    ]
+  },
+  {
+    "title_en": "Townhome",
+    "title_ko": "타운하우스",
+    "group": "res",
+    "result": "sold",
+    "side": "buyer",
+    "city": "Glenbrook, Calgary SW",
+    "note_en": "4 bed · 2.5 bath · 1,602 sq.ft. · Built 2015",
+    "note_ko": "침실 4 · 욕실 2.5 · 1,602 sq.ft. · 2015년 건축",
+    "photos": [
+      "uploads/sold/glenbrook-townhome-1.jpg",
+      "uploads/sold/glenbrook-townhome-2.jpg",
+      "uploads/sold/glenbrook-townhome-3.jpg",
+      "uploads/sold/glenbrook-townhome-4.jpg",
+      "uploads/sold/glenbrook-townhome-5.jpg"
+    ]
+  },
+  {
+    "title_en": "Apartment Condo",
+    "title_ko": "아파트 콘도",
+    "group": "res",
+    "result": "sold",
+    "side": "buyer",
+    "city": "Wolf Willow, Calgary SE",
+    "note_en": "3 bed · 2 bath · 834 sq.ft. · Built 2024",
+    "note_ko": "침실 3 · 욕실 2 · 834 sq.ft. · 2024년 건축",
+    "photos": [
+      "uploads/sold/wolf-willow-apartment-1.jpg",
+      "uploads/sold/wolf-willow-apartment-2.jpg",
+      "uploads/sold/wolf-willow-apartment-3.jpg",
+      "uploads/sold/wolf-willow-apartment-4.jpg",
+      "uploads/sold/wolf-willow-apartment-5.jpg"
+    ]
   }
 ]
