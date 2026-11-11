@@ -567,3 +567,11 @@ footer a:hover{color:#fff}
 @media(max-width:1100px){.pillars{grid-template-columns:1fr 1fr}.foot-grid{grid-template-columns:1fr 1fr 1fr}}
 @media(max-width:900px){.two-paths{grid-template-columns:1fr}.timeline.tl5{grid-template-columns:1fr 1fr}}
 @media(max-width:600px){.pillars{grid-template-columns:1fr}.foot-grid{grid-template-columns:1fr 1fr}.hq-label{min-width:100%}}
+
+.biz-tip{display:flex;gap:14px;align-items:center;flex-wrap:wrap;background:#fff5f5;border:1px solid #f3d4d4;border-radius:12px;padding:16px 20px;margin:18px 0 6px}
+.biz-tip b{font-size:1.02rem}.biz-tip span{flex:1 1 320px;color:#4b4f58;font-size:.93rem}
+
+#homeCats{grid-template-columns:repeat(6,1fr)}
+#bizCats{grid-template-columns:repeat(8,1fr)}
+@media(max-width:1100px){#homeCats{grid-template-columns:repeat(4,1fr)}#bizCats{grid-template-columns:repeat(4,1fr)}}
+@media(max-width:600px){#homeCats,#bizCats{grid-template-columns:repeat(2,1fr)}}

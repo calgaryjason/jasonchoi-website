@@ -13,10 +13,10 @@ const D = {
   all:["All","전체"], allRegions:["All Regions","전체 지역"], calgary:["Calgary","캘거리"], alberta:["Other Alberta","앨버타 기타 지역"], bc:["British Columbia","브리티시컬럼비아"],
   anyPrice:["Any Price","가격 무관"], sortNew:["Newest","최신순"], sortLow:["Price: Low to High","가격 낮은 순"], sortHigh:["Price: High to Low","가격 높은 순"], sortSize:["Size: Largest","면적 큰 순"],
   "c.restaurant":["Restaurant","레스토랑"], "c.gas-station":["Gas Station","주유소"], "c.hotel":["Hotel & Motel","호텔 & 모텔"], "c.liquor-store":["Liquor Store","리커스토어"],
-  "c.car-wash":["Car Wash","세차장"], "c.retail-office":["Retail & Office","상가 & 오피스"], "c.industrial":["Industrial","산업용"], "c.land":["Land","토지"],
-  "c.multi-family":["Multi-Family","다세대 주택"], "c.other-business":["Other Business","기타 비즈니스"],
+  "c.grocery":["Grocery & Convenience","식료품점 & 편의점"], "c.car-wash":["Car Wash","세차장"], "c.retail-office":["Retail & Office","상가 & 오피스"], "c.industrial":["Industrial","산업용"], "c.land":["Land","토지"],
+  "c.multi-family":["Multi-Family","다세대 주택"], "c.home":["Residential Homes","주거용 주택"], "cs.home":["Houses, condos, townhomes","주택, 콘도, 타운하우스"], "c.other-business":["Other Business","기타 비즈니스"],
   "cs.restaurant":["Restaurants & cafés","레스토랑, 카페"], "cs.gas-station":["Gas & convenience","주유소, 편의점"], "cs.hotel":["Hotel, motel, campground","호텔, 모텔, 캠핑장"],
-  "cs.liquor-store":["Liquor stores","리커스토어"], "cs.car-wash":["Self-serve & automatic","셀프, 자동 세차"], "cs.retail-office":["Plazas, retail, office","상가, 오피스"],
+  "cs.liquor-store":["Liquor stores","리커스토어"], "cs.grocery":["Grocery, convenience, Asian markets","식료품점, 편의점, 마켓"], "cs.car-wash":["Self-serve & automatic","셀프, 자동 세차"], "cs.retail-office":["Plazas, retail, office","상가, 오피스"],
   "cs.industrial":["Warehouse & shop","창고, 공장"], "cs.land":["Commercial land","상업용 토지"], "cs.multi-family":["Apartment buildings","아파트, 다가구"], "cs.other-business":["Dry cleaning, salon, etc.","세탁소, 미용실 등"],
   sale:["For Sale","매매"], lease:["For Lease","리스"], sold:["Sold","판매 완료"], active:["Active","판매 중"],
   "off.business":["Business Only","비즈니스만"], "off.business_property":["Business + Property","비즈니스 + 건물"], "off.property":["Property","부동산"],
@@ -89,6 +89,7 @@ const ICONS = {
   "gas-station":'<path d="M4 21V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v16M3 21h12M6 8h6M14 10h2a2 2 0 0 1 2 2v4a1.5 1.5 0 0 0 3 0V8l-3-3"/>',
   "hotel":'<path d="M3 21V7l9-4 9 4v14M3 21h18M8 10h2M14 10h2M8 14h2M14 14h2M10 21v-3h4v3"/>',
   "liquor-store":'<path d="M10 2h4M10 2v5l-2 3v11h8V10l-2-3V2M8 14h8"/>',
+  "grocery":'<path d="M3 4h2l2.4 11.2a1 1 0 0 0 1 .8h9.2a1 1 0 0 0 1-.8L21 8H6.2M9 20.5a1 1 0 1 0 0-.1M17 20.5a1 1 0 1 0 0-.1"/>',
   "car-wash":'<path d="M5 17h14v-4l-2-5H7l-2 5zM5 17v2M19 17v2M7.5 14h1M15.5 14h1M8 4c0 1-1 1-1 2M12 3c0 1-1 1-1 2M16 4c0 1-1 1-1 2"/>',
   "retail-office":'<path d="M3 9l2-5h14l2 5M3 9v12h18V9M3 9h18M9 21v-6h6v6"/>',
   "industrial":'<path d="M3 21V11l6 4v-4l6 4V5h6v16zM3 21h18"/>',
@@ -118,9 +119,9 @@ function renderSocial() {
 }
 
 /* ---------- Categories ---------- */
-const BIZ_CATS = ["restaurant","gas-station","hotel","liquor-store","car-wash","other-business"];
+const BIZ_CATS = ["restaurant","gas-station","grocery","hotel","liquor-store","car-wash","other-business"];
 const INV_CATS = ["retail-office","industrial","multi-family","hotel","gas-station","land"];
-const HOME_CATS = ["restaurant","gas-station","hotel","liquor-store","car-wash","retail-office","industrial","multi-family","land","other-business"];
+const HOME_CATS = ["home","restaurant","gas-station","grocery","hotel","liquor-store","car-wash","retail-office","industrial","multi-family","land","other-business"];
 const RES_TYPES = ["all","residential","condo","townhome","land"];
 
 /* ---------- Data & state ---------- */
@@ -215,6 +216,7 @@ const catTiles = (cats, cur, base) => ["all", ...cats].map(c =>
 /* ---------- Home ---------- */
 /* ---------- Real deal photos (warmer look) ---------- */
 const CAT_PHOTO = {   /* chosen photos per category; others are picked automatically */
+  "home": "uploads/sold/arbour-lake-detached-1.jpg",
   "gas-station": "uploads/sold/longview-gas-station.jpg",
   "restaurant": "uploads/sold/cochrane-restaurant.jpg",
   "liquor-store": "uploads/sold/calgary-ne-liquor.jpg",
@@ -222,7 +224,8 @@ const CAT_PHOTO = {   /* chosen photos per category; others are picked automatic
   "retail-office": "uploads/listings/new-horizon-mall-g11b-1.jpg",
   "industrial": "uploads/sold/manchester-office-industrial.jpg",
   "multi-family": "uploads/sold/panorama-hills-apartment-1.jpg",
-  "other-business": "uploads/listings/convenience-store-condo-eau-claire-2.jpg"
+  "grocery": "uploads/listings/convenience-store-condo-eau-claire-2.jpg",
+  "other-business": "uploads/listings/dry-cleaning-depot-chestermere-1.jpg"
 };
 function catPhoto(c) {
   if (CAT_PHOTO[c]) return CAT_PHOTO[c];
@@ -250,10 +253,11 @@ function renderPhotos() {
 function renderHome() {
   $("homeCats").innerHTML = HOME_CATS.map(c => {
     const base = BIZ_CATS.includes(c) ? "business" : "investment";
-    const n = ALL().filter(l => l.category === c && l.status === "active").length;
+    const href = c === "home" ? "#residential" : `#${base}-${c}`;
+    const n = c === "home" ? MINE.filter(l => kind(l) === "res" && l.status === "active").length : ALL().filter(l => l.category === c && l.status === "active").length;
     const ph = catPhoto(c);
-    if (ph) return `<a class="cat cat-photo" href="#${base}-${c}"><img src="${ph}" alt="" loading="lazy"><span class="cat-txt"><b>${t("c." + c)}</b><small>${t("cs." + c)}${n ? " · " + n : ""}</small></span></a>`;
-    return `<a class="cat cat-photo cat-noimg" href="#${base}-${c}"><span class="cat-bigic">${icon(c, 64)}</span><span class="cat-txt"><b>${t("c." + c)}</b><small>${t("cs." + c)}${n ? " · " + n : ""}</small></span></a>`;
+    if (ph) return `<a class="cat cat-photo" href="${href}"><img src="${ph}" alt="" loading="lazy"><span class="cat-txt"><b>${t("c." + c)}</b><small>${t("cs." + c)}${n ? " · " + n : ""}</small></span></a>`;
+    return `<a class="cat cat-photo cat-noimg" href="${href}"><span class="cat-bigic">${icon(c, 64)}</span><span class="cat-txt"><b>${t("c." + c)}</b><small>${t("cs." + c)}${n ? " · " + n : ""}</small></span></a>`;
   }).join("");
   const tabs = [["biz","tabBiz"],["lease","tabLease"],["inv","tabInv"],["res","tabRes"]];
   $("featTabs").innerHTML = tabs.map(([k, l]) => `<button class="${featTab === k ? "on" : ""}" data-k="${k}">${t(l)}</button>`).join("");
@@ -272,6 +276,10 @@ function renderHome() {
 const region = (l, v) => v === "all" || l.region === v;
 function renderBusiness() {
   $("bizCats").innerHTML = catTiles(BIZ_CATS, bizCat, "business");
+  let tip = $("bizTip"); if (!tip) { tip = document.createElement("div"); tip.id = "bizTip"; $("bizCats").after(tip); }
+  tip.innerHTML = bizCat === "grocery" ? `<div class="biz-tip"><b>${lang === "ko" ? "식료품점·편의점 인수를 고려하세요?" : "Thinking of buying a grocery or convenience store?"}</b>
+    <span>${lang === "ko" ? "재고 정산, 냉장 설비 점검, 면허(담배·로또), 업종별 멀티플을 정리한 무료 가이드를 받아 보세요." : "My free guide covers the inventory count, refrigeration checks, tobacco and lottery licences, and typical multiples."}</span>
+    <a class="btn btn-red" href="uploads/guides/Grocery_Store_Purchase_Guide_AB_BC.pdf" target="_blank" rel="noopener">${lang === "ko" ? "무료 가이드 (영문) →" : "Free Grocery Store Guide →"}</a></div>` : "";
   $("bizTitle").textContent = bizCat === "all" ? t("bizAll") : t("c." + bizCat) + t("forSaleSuffix");
   const max = +$("bMax").value, off = $("bOffer").value, rg = $("bRegion").value, srt = $("bSort").value;
   const f = l => isBiz(l) && l.status === "active" && (bizCat === "all" || l.category === bizCat) && (off === "all" || l.offering === off) && region(l, rg) && (!max || !l.price || l.price <= max);
@@ -470,7 +478,7 @@ function renderDetail(id) {
 
 /* ---------- Track record, testimonials, resources ---------- */
 const tr = (l, k) => (lang === "ko" && l[k + "_ko"]) ? l[k + "_ko"] : (l[k + "_en"] || "");
-const soldGroup = s => s.group || (["restaurant","gas-station","liquor-store","car-wash","other-business"].includes(s.category) ? "biz" : "inv");
+const soldGroup = s => s.group || (["restaurant","gas-station","grocery","liquor-store","car-wash","other-business"].includes(s.category) ? "biz" : "inv");
 const soldPhotos = s => (s.photos && s.photos.length ? s.photos : (s.photo ? [s.photo] : [])).filter(Boolean).slice(0, MAX_PHOTOS);
 function soldCard(s, idx) {
   const ph = soldPhotos(s), cat = s.category || "other-business";

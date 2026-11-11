@@ -15,7 +15,7 @@ const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), "..")
 const read = f => { try { return JSON.parse(fs.readFileSync(path.join(root, f), "utf8")); } catch { return []; } };
 
 const CAT = { "restaurant":"Restaurant", "gas-station":"Gas Station", "hotel":"Hotel & Motel", "liquor-store":"Liquor Store",
-  "car-wash":"Car Wash", "retail-office":"Retail & Office", "industrial":"Industrial", "multi-family":"Multi-Family",
+  "grocery":"Grocery & Convenience", "car-wash":"Car Wash", "retail-office":"Retail & Office", "industrial":"Industrial", "multi-family":"Multi-Family",
   "land":"Land", "other-business":"Business" };
 const TYPE = { residential:"House", condo:"Condo", townhome:"Townhome", land:"Land" };
 const esc = s => String(s ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");

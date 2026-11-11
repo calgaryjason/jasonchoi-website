@@ -14,7 +14,7 @@ content:
       - { name: id, label: "Listing ID (lowercase, no spaces – e.g. bowness-retail)", type: string, required: true }
       - { name: status, label: Status, type: select, options: { values: [active, sold, private] }, default: active, description: "private = hidden from lists; only people with the direct link can see it" }
       - { name: type, label: "Property Type", type: select, options: { values: [commercial, residential, condo, townhome, land] }, default: commercial }
-      - { name: category, label: "Commercial Category", type: select, options: { values: [restaurant, gas-station, hotel, liquor-store, car-wash, retail-office, industrial, land, multi-family, other-business] } }
+      - { name: category, label: "Commercial Category", type: select, options: { values: [restaurant, gas-station, grocery, hotel, liquor-store, car-wash, retail-office, industrial, land, multi-family, other-business] } }
       - { name: offering, label: "Offering", type: select, options: { values: [business, business_property, property] } }
       - { name: deal, label: "Sale or Lease", type: select, options: { values: [sale, lease] }, default: sale }
       - { name: featured, label: "Show on Home Page", type: boolean }
@@ -58,7 +58,7 @@ content:
       - { name: title_en, label: "Title (English) – e.g. Liquor Store – Business Sale", type: string, required: true }
       - { name: title_ko, label: "Title (한국어)", type: string }
       - { name: group, label: "Group", type: select, options: { values: [biz, lease, inv, res] }, default: biz, description: "biz = business sale, lease = lease, inv = investment property, res = residential" }
-      - { name: category, label: "Category", type: select, options: { values: [restaurant, gas-station, hotel, liquor-store, car-wash, retail-office, industrial, land, multi-family, other-business] } }
+      - { name: category, label: "Category", type: select, options: { values: [restaurant, gas-station, grocery, hotel, liquor-store, car-wash, retail-office, industrial, land, multi-family, other-business] } }
       - { name: result, label: "Result", type: select, options: { values: [sold, leased, purchased] }, default: sold }
       - { name: side, label: "My Role", type: select, options: { values: [seller, buyer, landlord, tenant, both] }, default: seller }
       - { name: city, label: "City / Area – e.g. Calgary NE", type: string }
@@ -104,7 +104,7 @@ content:
       - { name: status, label: "Status", type: select, options: { values: [active, closed] }, default: active, description: "closed = hidden from the website" }
       - { name: title_en, label: "Title (English) – do not include the business name", type: string, required: true }
       - { name: title_ko, label: "Title (한국어)", type: string }
-      - { name: category, label: "Category", type: select, options: { values: [restaurant, gas-station, hotel, liquor-store, car-wash, retail-office, industrial, land, multi-family, other-business] } }
+      - { name: category, label: "Category", type: select, options: { values: [restaurant, gas-station, grocery, hotel, liquor-store, car-wash, retail-office, industrial, land, multi-family, other-business] } }
       - { name: offering, label: "Offering", type: select, options: { values: [business, business_property, property] } }
       - { name: deal, label: "Sale or Lease", type: select, options: { values: [sale, lease] }, default: sale }
       - { name: area, label: "General area only – e.g. Calgary NE, Central Alberta", type: string }

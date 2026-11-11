@@ -21,6 +21,7 @@ const PROVINCES = ["Alberta", "British Columbia"];
 /* Category rules: first match wins. Words are checked in property type, business type and remarks. */
 const CATEGORY_RULES = [
   ["gas-station",   /gas station|service station|fuel|petro|esso|shell|husky|co-op gas/i],
+  ["grocery",       /grocery|convenience store|supermarket|mini[- ]?mart|c-store|food store|asian market|korean market|ethnic food/i],
   ["car-wash",      /car ?wash|auto ?wash|detailing/i],
   ["liquor-store",  /liquor|wine store|beer store|off[- ]sale/i],
   ["hotel",         /hotel|motel|inn\b|lodge|campground|rv park|hospitality/i],
