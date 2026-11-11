@@ -7,7 +7,7 @@ EN = [
  ("Is there a Korean-speaking REALTOR® in Calgary?",
   "Yes. Jason Choi (최재봉) is a Calgary REALTOR® who serves clients in both English and Korean. He has worked in real estate since 2007 and is licensed in Alberta (First Place Realty) and British Columbia (Maple Supreme Realty Inc.)."),
  ("What kinds of real estate does Jason Choi handle?",
-  "Business sales (restaurants, gas stations, hotels and motels, liquor stores, car washes, convenience and grocery stores, dry cleaners, salons and more), commercial leasing, investment properties, and residential homes and condos."),
+  "Both residential and commercial. Residential: buying and selling houses, condos, townhomes and new homes across all 8 Calgary districts. Commercial: business sales (restaurants, gas stations, hotels and motels, liquor stores, car washes, convenience and grocery stores, dry cleaners, salons and more), commercial leasing and investment properties."),
  ("Which areas does he serve?",
   "Calgary and surrounding communities such as Airdrie, Chestermere, Cochrane and Okotoks, other Alberta towns (including Red Deer and Lethbridge), and British Columbia."),
  ("How do I buy a business in Calgary?",
@@ -31,7 +31,7 @@ KO = [
  ("캘거리에 한국어가 가능한 부동산 리얼터가 있나요?",
   "네. 최재봉(Jason Choi)은 영어와 한국어로 상담하는 캘거리 REALTOR®입니다. 2007년부터 부동산 업무를 해 왔으며, 앨버타(First Place Realty)와 BC(Maple Supreme Realty Inc.) 두 개 주의 면허를 갖고 있습니다."),
  ("어떤 부동산을 주로 다루나요?",
-  "비즈니스 매매(식당, 주유소, 호텔·모텔, 리커스토어, 세차장, 편의점·그로서리, 세탁소, 미용실 등), 상업용 리스, 투자 부동산, 주택과 콘도 매매를 모두 다룹니다."),
+  "주거용과 상업용을 모두 다룹니다. 주거용은 캘거리 8개 지역 전체의 주택, 콘도, 타운하우스, 신축 매매입니다. 상업용은 비즈니스 매매(식당, 주유소, 호텔·모텔, 리커스토어, 세차장, 편의점·그로서리, 세탁소, 미용실 등), 상업용 리스, 투자 부동산입니다."),
  ("어느 지역에서 활동하나요?",
   "캘거리와 에어드리, 체스터미어, 코크런, 오코톡스 등 주변 도시, 레드디어·레스브리지 등 앨버타 지역, 그리고 BC에서 활동합니다."),
  ("캘거리에서 비즈니스를 인수하려면 어떻게 하나요?",
@@ -57,7 +57,7 @@ def page(lang, items):
     url = f"{SITE}/ko/faq/" if ko else f"{SITE}/faq/"
     title = "자주 묻는 질문 | 최재봉 부동산 – 캘거리 한인 리얼터" if ko else "FAQ | Jason Choi Real Estate – Korean-Speaking REALTOR® in Calgary"
     desc = ("캘거리 한인 리얼터 최재봉(Jason Choi)에게 자주 묻는 질문: 비즈니스 매매, 가치 평가, 상업용 리스, 주택 구매 비용, 한국어 상담."
-            if ko else "Frequently asked questions for Jason Choi, a Korean-speaking Calgary REALTOR® since 2007: business sales, valuations, commercial leasing, home buying costs.")
+            if ko else "Frequently asked questions for Jason Choi, a Korean-speaking Calgary REALTOR® since 2007: Calgary homes, business sales, valuations, commercial leasing, home buying costs.")
     ld = {"@context": "https://schema.org", "@type": "FAQPage", "inLanguage": lang,
           "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in items]}
     qa = "\n".join(f'<div class="qa"><h2>{html.escape(q)}</h2><p>{html.escape(a)}</p></div>' for q, a in items)

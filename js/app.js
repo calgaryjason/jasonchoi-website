@@ -581,7 +581,7 @@ function renderBrokers() {
 
 /* ---------- Router ---------- */
 const VIEWS = ["privacy","off-market","track-record","home","business","leasing","investment","sell-business","residential","mortgage","home-evaluation","guides","about"];
-const JUMPS = { "leasing-calc": ["leasing","leasing-calc-box"], "space-request": ["leasing","space-request-box"], "cap-calc": ["investment","cap-calc-box"], "investor-list": ["investment","investor-list-box"], "listing-alerts": ["home","listing-alerts"], "market": ["home","marketSection"] };
+const JUMPS = { "afford": ["residential","afford-calc-box"], "leasing-calc": ["leasing","leasing-calc-box"], "space-request": ["leasing","space-request-box"], "cap-calc": ["investment","cap-calc-box"], "investor-list": ["investment","investor-list-box"], "listing-alerts": ["home","listing-alerts"], "market": ["home","marketSection"] };
 function router() {
   let h = (location.hash || "#home").slice(1);
   document.querySelector("nav.menu").classList.remove("open");
