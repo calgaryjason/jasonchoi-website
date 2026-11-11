@@ -61,12 +61,11 @@ content:
       - { name: result, label: "Result", type: select, options: { values: [sold, leased, purchased] }, default: sold }
       - { name: side, label: "My Role", type: select, options: { values: [seller, buyer, landlord, tenant, both] }, default: seller }
       - { name: city, label: "City / Area – e.g. Calgary NE", type: string }
-      - { name: year, label: "Year", type: number }
       - { name: price, label: "Price ($)", type: number }
       - { name: showPrice, label: "Show price (only with client consent)", type: boolean, default: false }
       - { name: note_en, label: "Short note (English) – optional", type: text }
       - { name: note_ko, label: "Short note (한국어) – optional", type: text }
-      - { name: photo, label: "Photo (optional – avoid photos that identify a confidential business)", type: image }
+      - { name: photos, label: "Photos (up to 5) · 사진 최대 5장", type: image, list: { max: 5 } }
 
   - name: testimonials
     label: Testimonials · 고객 후기

@@ -340,29 +340,60 @@ function renderDetail(id) {
 /* ---------- Track record, testimonials, resources ---------- */
 const tr = (l, k) => (lang === "ko" && l[k + "_ko"]) ? l[k + "_ko"] : (l[k + "_en"] || "");
 const soldGroup = s => s.group || (["restaurant","gas-station","liquor-store","car-wash","other-business"].includes(s.category) ? "biz" : "inv");
-function soldCard(s) {
-  const p = (s.photo || "").trim(), cat = s.category || "other-business";
+const soldPhotos = s => (s.photos && s.photos.length ? s.photos : (s.photo ? [s.photo] : [])).filter(Boolean).slice(0, MAX_PHOTOS);
+function soldCard(s, idx) {
+  const ph = soldPhotos(s), cat = s.category || "other-business";
   const badge = s.result === "leased" ? t("leasedB") : s.result === "purchased" ? t("boughtB") : t("soldB");
   const isRes = soldGroup(s) === "res";
-  return `<div class="card">
-    <div class="card-img">${p ? `<img src="${p}" alt="" loading="lazy">` : `<div class="ph">${icon(isRes ? "home" : cat, 44)}</div>`}
-      <span class="badge sold">${badge}</span>${isRes ? "" : `<span class="badge cat-b">${t("c." + cat)}</span>`}</div>
+  return `<div class="card ${ph.length ? "clickable" : ""}" data-sold="${idx}">
+    <div class="card-img">${ph[0] ? `<img src="${ph[0]}" alt="" loading="lazy">` : `<div class="ph">${icon(isRes ? "home" : cat, 44)}</div>`}
+      <span class="badge sold">${badge}</span>${isRes ? "" : `<span class="badge cat-b">${t("c." + cat)}</span>`}
+      ${ph.length > 1 ? `<span class="photo-count">📷 ${ph.length}</span>` : ""}</div>
     <div class="card-body">
       ${s.side ? `<div class="offer">${t("side." + s.side)}</div>` : ""}
       ${s.showPrice && s.price ? `<div class="price">${money(s.price)}</div>` : ""}
       <div class="addr">${tr(s, "title")}</div>
-      <div class="city">${[s.city, s.year].filter(Boolean).join(" · ")}</div>
+      <div class="city">${s.city || ""}</div>
       ${tr(s, "note") ? `<p class="muted" style="font-size:14px;margin-top:10px">${tr(s, "note")}</p>` : ""}
     </div></div>`;
 }
+/* Simple photo viewer for track-record cards */
+let lbPhotos = [], lbIdx = 0;
+function openLightbox(photos, title) {
+  lbPhotos = photos; lbIdx = 0;
+  let lb = $("lightbox");
+  if (!lb) {
+    lb = document.createElement("div"); lb.id = "lightbox";
+    lb.innerHTML = `<div class="lb-inner"><button class="lb-close" aria-label="Close">×</button><img id="lbImg" alt=""><button class="g-nav g-prev lb-prev" aria-label="Previous">‹</button><button class="g-nav g-next lb-next" aria-label="Next">›</button><div class="lb-cap"><span id="lbTitle"></span><span id="lbCount"></span></div></div>`;
+    document.body.appendChild(lb);
+    lb.onclick = e => { if (e.target === lb || e.target.classList.contains("lb-close")) lb.classList.remove("on"); };
+    lb.querySelector(".lb-prev").onclick = () => showLb(lbIdx - 1);
+    lb.querySelector(".lb-next").onclick = () => showLb(lbIdx + 1);
+    document.addEventListener("keydown", e => { if (!lb.classList.contains("on")) return;
+      if (e.key === "Escape") lb.classList.remove("on"); if (e.key === "ArrowLeft") showLb(lbIdx - 1); if (e.key === "ArrowRight") showLb(lbIdx + 1); });
+  }
+  $("lbTitle").textContent = title; lb.classList.add("on"); showLb(0);
+}
+function showLb(i) {
+  lbIdx = (i + lbPhotos.length) % lbPhotos.length;
+  $("lbImg").src = lbPhotos[lbIdx]; $("lbCount").textContent = (lbIdx + 1) + " / " + lbPhotos.length;
+  document.querySelectorAll("#lightbox .g-nav").forEach(b => b.style.display = lbPhotos.length > 1 ? "" : "none");
+}
+function bindSold(container, list) {
+  container.querySelectorAll(".card[data-sold]").forEach(c => c.onclick = () => {
+    const s = list[+c.dataset.sold]; const ph = soldPhotos(s); if (ph.length) openLightbox(ph, tr(s, "title"));
+  });
+}
 function renderTrack() {
   $("trackSection").style.display = SOLD.length ? "" : "none";
-  $("trackHome").innerHTML = SOLD.slice(0, 6).map(soldCard).join("");
+  const homeList = SOLD.slice(0, 6);
+  $("trackHome").innerHTML = homeList.map(soldCard).join(""); bindSold($("trackHome"), homeList);
   const groups = ["all","biz","lease","inv","res"].filter(g => g === "all" || SOLD.some(s => soldGroup(s) === g));
   $("trackChips").innerHTML = groups.length > 2 ? groups.map(g => `<button class="chip ${trackGrp === g ? "on" : ""}" data-g="${g}">${t("grp." + g)}</button>`).join("") : "";
   $("trackChips").querySelectorAll(".chip").forEach(b => b.onclick = () => { trackGrp = b.dataset.g; renderTrack(); });
   const items = SOLD.filter(s => trackGrp === "all" || soldGroup(s) === trackGrp);
   $("trackAll").innerHTML = items.length ? items.map(soldCard).join("") : `<div class="empty">${t("trackEmpty")}</div>`;
+  bindSold($("trackAll"), items);
 }
 function renderReviews() {
   $("testimonials").style.display = REVIEWS.length ? "" : "none";
@@ -477,7 +508,6 @@ async function getJSON(url, fb) {
 (async () => {
   [MINE, DDF, SOLD, REVIEWS, RES] = await Promise.all([getJSON("data/listings.json", "fallback-data"), getJSON("data/ddf-listings.json", "fallback-ddf"),
     getJSON("data/sold.json", "fallback-sold"), getJSON("data/testimonials.json", "fallback-reviews"), getJSON("data/resources.json", "fallback-res")]);
-  SOLD.sort((x, y) => (y.year || 0) - (x.year || 0));
   MINE.forEach(l => l.source = "jason"); DDF.forEach(l => l.source = "ddf");
   fillSelects(); applyLang(); router();
 })();

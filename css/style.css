@@ -313,6 +313,15 @@ nav.menu .btn:hover{color:#fff}
 .contact-list small{display:block;color:#9a9ca1;font-size:13px}
 .big-link{font-weight:700;font-size:18px}
 
+/* Photo viewer */
+.card.clickable{cursor:zoom-in}
+#lightbox{display:none;position:fixed;inset:0;background:rgba(10,10,12,.88);z-index:200;align-items:center;justify-content:center;padding:24px}
+#lightbox.on{display:flex}
+.lb-inner{position:relative;max-width:900px;width:100%}
+.lb-inner img{width:100%;max-height:78vh;object-fit:contain;border-radius:8px;background:#000}
+.lb-close{position:absolute;top:-44px;right:0;background:none;border:0;color:#fff;font-size:36px;cursor:pointer;line-height:1}
+.lb-cap{display:flex;justify-content:space-between;color:#ddd;margin-top:10px;font-size:15px;gap:12px}
+
 /* QR contact block */
 .qr-block{display:flex;gap:18px;align-items:center;margin-top:26px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:16px}
 .qr-block img{width:132px;height:132px;border-radius:8px;background:#fff;flex:none}

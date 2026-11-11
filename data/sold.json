@@ -7,10 +7,15 @@
     "result": "sold",
     "side": "seller",
     "city": "Didsbury, AB",
-    "year": 2026,
     "note_en": "Business, land and building · 2,732 sq.ft. on 0.32 acres · QEII corridor",
     "note_ko": "비즈니스, 토지, 건물 일괄 매매 · 2,732 sq.ft. · 0.32에이커 · QEII 고속도로 인근",
-    "photo": "uploads/sold/didsbury-gas-station.jpg"
+    "photos": [
+      "uploads/sold/didsbury-gas-station.jpg",
+      "uploads/sold/didsbury-gas-station-2.jpg",
+      "uploads/sold/didsbury-gas-station-3.jpg",
+      "uploads/sold/didsbury-gas-station-4.jpg",
+      "uploads/sold/didsbury-gas-station-5.jpg"
+    ]
   },
   {
     "title_en": "Two-Storey Office / Industrial Building",
@@ -20,10 +25,15 @@
     "result": "sold",
     "side": "seller",
     "city": "Manchester, Calgary SE",
-    "year": 2026,
     "note_en": "16,704 sq.ft. leasable area · 0.83-acre site · 45 parking stalls",
     "note_ko": "임대 면적 16,704 sq.ft. · 대지 0.83에이커 · 주차 45대",
-    "photo": "uploads/sold/manchester-office-industrial.jpg"
+    "photos": [
+      "uploads/sold/manchester-office-industrial.jpg",
+      "uploads/sold/manchester-office-industrial-2.jpg",
+      "uploads/sold/manchester-office-industrial-3.jpg",
+      "uploads/sold/manchester-office-industrial-4.jpg",
+      "uploads/sold/manchester-office-industrial-5.jpg"
+    ]
   },
   {
     "title_en": "Restaurant – Asset Sale",
@@ -33,10 +43,15 @@
     "result": "sold",
     "side": "seller",
     "city": "Cochrane, AB",
-    "year": 2026,
     "note_en": "1,258 sq.ft. · 53 seats plus 24-seat patio · historic main street",
     "note_ko": "1,258 sq.ft. · 53석 + 24석 패티오 · 다운타운 메인 스트리트",
-    "photo": "uploads/sold/cochrane-restaurant.jpg"
+    "photos": [
+      "uploads/sold/cochrane-restaurant.jpg",
+      "uploads/sold/cochrane-restaurant-2.jpg",
+      "uploads/sold/cochrane-restaurant-3.jpg",
+      "uploads/sold/cochrane-restaurant-4.jpg",
+      "uploads/sold/cochrane-restaurant-5.jpg"
+    ]
   },
   {
     "title_en": "Liquor Store – Business Sale",
@@ -46,10 +61,15 @@
     "result": "sold",
     "side": "seller",
     "city": "Calgary NE",
-    "year": 2026,
     "note_en": "1,878 sq.ft. in a shopping centre · long-term lease",
     "note_ko": "쇼핑센터 내 1,878 sq.ft. · 장기 리스",
-    "photo": "uploads/sold/calgary-ne-liquor.jpg"
+    "photos": [
+      "uploads/sold/calgary-ne-liquor.jpg",
+      "uploads/sold/calgary-ne-liquor-2.jpg",
+      "uploads/sold/calgary-ne-liquor-3.jpg",
+      "uploads/sold/calgary-ne-liquor-4.jpg",
+      "uploads/sold/calgary-ne-liquor-5.jpg"
+    ]
   },
   {
     "title_en": "Branded Gas Station with Store and Residence",
@@ -59,10 +79,15 @@
     "result": "sold",
     "side": "seller",
     "city": "Longview, AB",
-    "year": 2026,
     "note_en": "2,367 sq.ft. store with upstairs residence · 0.35 acres · gateway to Kananaskis",
     "note_ko": "2,367 sq.ft. 매장 + 2층 주거 공간 · 0.35에이커 · 카나나스키스 관문",
-    "photo": "uploads/sold/longview-gas-station.jpg"
+    "photos": [
+      "uploads/sold/longview-gas-station.jpg",
+      "uploads/sold/longview-gas-station-2.jpg",
+      "uploads/sold/longview-gas-station-3.jpg",
+      "uploads/sold/longview-gas-station-4.jpg",
+      "uploads/sold/longview-gas-station-5.jpg"
+    ]
   },
   {
     "title_en": "Juice & Smoothie Franchise",
@@ -72,10 +97,15 @@
     "result": "sold",
     "side": "seller",
     "city": "West Lethbridge, AB",
-    "year": 2026,
     "note_en": "1,569 sq.ft. inside a major recreation centre · franchise transfer",
     "note_ko": "대형 레크리에이션 센터 내 1,569 sq.ft. · 프랜차이즈 양도",
-    "photo": "uploads/sold/lethbridge-juice-franchise.jpg"
+    "photos": [
+      "uploads/sold/lethbridge-juice-franchise.jpg",
+      "uploads/sold/lethbridge-juice-franchise-2.jpg",
+      "uploads/sold/lethbridge-juice-franchise-3.jpg",
+      "uploads/sold/lethbridge-juice-franchise-4.jpg",
+      "uploads/sold/lethbridge-juice-franchise-5.jpg"
+    ]
   },
   {
     "title_en": "Korean Restaurant & Dessert – Business Sale",
@@ -85,10 +115,15 @@
     "result": "sold",
     "side": "seller",
     "city": "Calgary NW",
-    "year": 2025,
     "note_en": "739 sq.ft. on a busy street · Korean food and ice cream",
     "note_ko": "739 sq.ft. · 번화한 거리 · 한식과 아이스크림",
-    "photo": "uploads/sold/calgary-nw-korean-restaurant.jpg"
+    "photos": [
+      "uploads/sold/calgary-nw-korean-restaurant.jpg",
+      "uploads/sold/calgary-nw-korean-restaurant-2.jpg",
+      "uploads/sold/calgary-nw-korean-restaurant-3.jpg",
+      "uploads/sold/calgary-nw-korean-restaurant-4.jpg",
+      "uploads/sold/calgary-nw-korean-restaurant-5.jpg"
+    ]
   },
   {
     "title_en": "Pizza & Convenience Take-Out",
@@ -98,10 +133,15 @@
     "result": "sold",
     "side": "seller",
     "city": "Calgary NW",
-    "year": 2024,
     "note_en": "1,267 sq.ft. across from a high school · single shift",
     "note_ko": "1,267 sq.ft. · 고등학교 맞은편 · 주간 단일 근무",
-    "photo": "uploads/sold/calgary-nw-pizza-takeout.jpg"
+    "photos": [
+      "uploads/sold/calgary-nw-pizza-takeout.jpg",
+      "uploads/sold/calgary-nw-pizza-takeout-2.jpg",
+      "uploads/sold/calgary-nw-pizza-takeout-3.jpg",
+      "uploads/sold/calgary-nw-pizza-takeout-4.jpg",
+      "uploads/sold/calgary-nw-pizza-takeout-5.jpg"
+    ]
   },
   {
     "title_en": "Sushi & Asian Take-Out",
@@ -111,10 +151,15 @@
     "result": "sold",
     "side": "seller",
     "city": "Calgary SE",
-    "year": 2024,
     "note_en": "1,038 sq.ft. on a major road · near three schools",
     "note_ko": "1,038 sq.ft. · 대로변 · 학교 3곳 인근",
-    "photo": "uploads/sold/calgary-se-asian-takeout.jpg"
+    "photos": [
+      "uploads/sold/calgary-se-asian-takeout.jpg",
+      "uploads/sold/calgary-se-asian-takeout-2.jpg",
+      "uploads/sold/calgary-se-asian-takeout-3.jpg",
+      "uploads/sold/calgary-se-asian-takeout-4.jpg",
+      "uploads/sold/calgary-se-asian-takeout-5.jpg"
+    ]
   },
   {
     "title_en": "Restaurant – Asset Sale",
@@ -124,10 +169,15 @@
     "result": "sold",
     "side": "seller",
     "city": "Bridgeland, Calgary NE",
-    "year": 2024,
     "note_en": "1,310 sq.ft. · 20 seats · fully equipped kitchen",
     "note_ko": "1,310 sq.ft. · 20석 · 주방 설비 완비",
-    "photo": "uploads/sold/bridgeland-restaurant.jpg"
+    "photos": [
+      "uploads/sold/bridgeland-restaurant.jpg",
+      "uploads/sold/bridgeland-restaurant-2.jpg",
+      "uploads/sold/bridgeland-restaurant-3.jpg",
+      "uploads/sold/bridgeland-restaurant-4.jpg",
+      "uploads/sold/bridgeland-restaurant-5.jpg"
+    ]
   },
   {
     "title_en": "Hotel, Coin Laundry & Restaurant Space with Land and Building",
@@ -137,9 +187,14 @@
     "result": "sold",
     "side": "seller",
     "city": "Stettler, AB",
-    "year": 2024,
     "note_en": "5,300 sq.ft. · 12 rooms · business, land and building",
     "note_ko": "5,300 sq.ft. · 객실 12개 · 비즈니스, 토지, 건물 일괄 매매",
-    "photo": "uploads/sold/stettler-hotel.jpg"
+    "photos": [
+      "uploads/sold/stettler-hotel.jpg",
+      "uploads/sold/stettler-hotel-2.jpg",
+      "uploads/sold/stettler-hotel-3.jpg",
+      "uploads/sold/stettler-hotel-4.jpg",
+      "uploads/sold/stettler-hotel-5.jpg"
+    ]
   }
 ]
