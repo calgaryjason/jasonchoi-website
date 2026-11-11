@@ -1,8 +1,8 @@
 # Pages CMS settings (free – https://pagescms.org)
 # This gives you a simple admin screen to add and edit your listings and upload photos.
 media:
-  input: images/listings
-  output: images/listings
+  input: uploads
+  output: uploads
 
 content:
   - name: listings
@@ -12,7 +12,7 @@ content:
     list: true
     fields:
       - { name: id, label: "Listing ID (lowercase, no spaces – e.g. bowness-retail)", type: string, required: true }
-      - { name: status, label: Status, type: select, options: { values: [active, sold] }, default: active }
+      - { name: status, label: Status, type: select, options: { values: [active, sold, private] }, default: active, description: "private = hidden from lists; only people with the direct link can see it" }
       - { name: type, label: "Property Type", type: select, options: { values: [commercial, residential, condo, townhome, land] }, default: commercial }
       - { name: category, label: "Commercial Category", type: select, options: { values: [restaurant, gas-station, hotel, liquor-store, car-wash, retail-office, industrial, land, multi-family, other-business] } }
       - { name: offering, label: "Offering", type: select, options: { values: [business, business_property, property] } }
@@ -47,3 +47,49 @@ content:
       - { name: desc_ko, label: "Description (한국어)", type: text }
       - { name: photos, label: "Photos (up to 5) · 사진 최대 5장", type: image, list: { max: 5 } }
       - { name: brochure, label: "Brochure PDF", type: file }
+
+  - name: sold
+    label: Track Record · 거래 실적
+    type: file
+    path: data/sold.json
+    list: true
+    fields:
+      - { name: title_en, label: "Title (English) – e.g. Liquor Store – Business Sale", type: string, required: true }
+      - { name: title_ko, label: "Title (한국어)", type: string }
+      - { name: group, label: "Group", type: select, options: { values: [biz, lease, inv, res] }, default: biz, description: "biz = business sale, lease = lease, inv = investment property, res = residential" }
+      - { name: category, label: "Category", type: select, options: { values: [restaurant, gas-station, hotel, liquor-store, car-wash, retail-office, industrial, land, multi-family, other-business] } }
+      - { name: result, label: "Result", type: select, options: { values: [sold, leased, purchased] }, default: sold }
+      - { name: side, label: "My Role", type: select, options: { values: [seller, buyer, landlord, tenant, both] }, default: seller }
+      - { name: city, label: "City / Area – e.g. Calgary NE", type: string }
+      - { name: year, label: "Year", type: number }
+      - { name: price, label: "Price ($)", type: number }
+      - { name: showPrice, label: "Show price (only with client consent)", type: boolean, default: false }
+      - { name: note_en, label: "Short note (English) – optional", type: text }
+      - { name: note_ko, label: "Short note (한국어) – optional", type: text }
+      - { name: photo, label: "Photo (optional – avoid photos that identify a confidential business)", type: image }
+
+  - name: testimonials
+    label: Testimonials · 고객 후기
+    type: file
+    path: data/testimonials.json
+    list: true
+    fields:
+      - { name: name, label: "Client name – e.g. Mr. Kim or Restaurant Owner", type: string, required: true }
+      - { name: role_en, label: "Client type (English) – e.g. Business Seller", type: string }
+      - { name: role_ko, label: "Client type (한국어) – e.g. 비즈니스 매도인", type: string }
+      - { name: text_en, label: "Review (English)", type: text, required: true }
+      - { name: text_ko, label: "Review (한국어)", type: text }
+      - { name: stars, label: "Stars", type: number, default: 5 }
+
+  - name: resources
+    label: Guides & Files · 자료
+    type: file
+    path: data/resources.json
+    list: true
+    fields:
+      - { name: title_en, label: "Title (English)", type: string, required: true }
+      - { name: title_ko, label: "Title (한국어)", type: string }
+      - { name: desc_en, label: "Short description (English)", type: text }
+      - { name: desc_ko, label: "Short description (한국어)", type: text }
+      - { name: lang, label: "Language label – e.g. EN, 한국어, EN + 한국어", type: string }
+      - { name: file, label: "File (PDF)", type: file, required: true }

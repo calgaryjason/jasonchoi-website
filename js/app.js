@@ -43,7 +43,13 @@ const D = {
   bizAll:["Businesses for Sale","비즈니스 매물"], invAll:["Income-Producing Investment Properties","수익형 투자 부동산"], forSaleSuffix:[" for Sale"," 매물"],
   emptyT:["New listings coming soon","새 매물 준비 중"], emptyD:["Many of my business opportunities are shared privately. Tell me what you are looking for and I will contact you first.","많은 비즈니스 매물은 비공개로 소개됩니다. 원하시는 조건을 알려주시면 가장 먼저 연락드리겠습니다."],
   emptyF:["No listings match these filters.","조건에 맞는 매물이 없습니다."], contactBtn:["Contact Jason","상담 문의"],
-  leaseAll:["All Space","전체"], foodSpace:["Restaurant / Food Space","레스토랑 / 식당 공간"], otherSpace:["Other","기타"]
+  leaseAll:["All Space","전체"],
+  soldB:["Sold","판매 완료"], leasedB:["Leased","리스 완료"], boughtB:["Purchased","구매 완료"],
+  "side.seller":["Represented the Seller","매도인 대리"], "side.buyer":["Represented the Buyer","매수인 대리"],
+  "side.landlord":["Represented the Landlord","임대인 대리"], "side.tenant":["Represented the Tenant","임차인 대리"], "side.both":["Represented Both Sides","양측 대리"],
+  "grp.all":["All","전체"], "grp.biz":["Business Sales","비즈니스 매매"], "grp.lease":["Leasing","리스"], "grp.inv":["Investment","투자"], "grp.res":["Residential","주거용"],
+  resEmpty:["New guides are coming soon. Contact me for any information you need.","새 자료를 준비 중입니다. 필요한 자료가 있으면 연락 주세요."], download:["Download →","다운로드 →"],
+  trackEmpty:["Transaction history is being updated.","거래 실적을 업데이트하고 있습니다."], foodSpace:["Restaurant / Food Space","레스토랑 / 식당 공간"], otherSpace:["Other","기타"]
 };
 let lang = "en";
 try { lang = localStorage.getItem("jc_lang") || "en"; } catch (e) {}
@@ -102,7 +108,8 @@ const HOME_CATS = ["restaurant","gas-station","hotel","liquor-store","car-wash",
 const RES_TYPES = ["all","residential","condo","townhome","land"];
 
 /* ---------- Data & state ---------- */
-let MINE = [], DDF = [];
+let MINE = [], DDF = [], SOLD = [], REVIEWS = [], RES = [];
+let trackGrp = "all";
 const ALL = () => MINE.concat(DDF);
 let bizCat = "all", invCat = "all", featTab = "biz", resType = "all", resStatus = "active";
 let shown = { biz: PAGE, lease: PAGE, inv: PAGE };
@@ -203,7 +210,6 @@ function renderHome() {
   $("statActive").textContent = nActive;
   $("statListings").style.display = nActive ? "" : "none"; $("statService").style.display = nActive ? "none" : "";
   $("featuredSection").style.display = nActive ? "" : "none";
-  $("testimonials").style.display = SITE.showTestimonials ? "" : "none";
   document.querySelectorAll(".ddf-block").forEach(b => b.style.display = DDF.length ? "" : "none");
   document.querySelectorAll(".pillar-ic[data-icon]").forEach(e => e.innerHTML = icon(e.dataset.icon, 30));
 }
@@ -330,8 +336,46 @@ function renderDetail(id) {
   $("copyLink").onclick = async () => { try { await navigator.clipboard.writeText(url); $("copyNote").textContent = t("copied"); } catch (e) { $("copyNote").textContent = url; } };
 }
 
+/* ---------- Track record, testimonials, resources ---------- */
+const tr = (l, k) => (lang === "ko" && l[k + "_ko"]) ? l[k + "_ko"] : (l[k + "_en"] || "");
+const soldGroup = s => s.group || (["restaurant","gas-station","liquor-store","car-wash","other-business"].includes(s.category) ? "biz" : "inv");
+function soldCard(s) {
+  const p = (s.photo || "").trim(), cat = s.category || "other-business";
+  const badge = s.result === "leased" ? t("leasedB") : s.result === "purchased" ? t("boughtB") : t("soldB");
+  const isRes = soldGroup(s) === "res";
+  return `<div class="card">
+    <div class="card-img">${p ? `<img src="${p}" alt="" loading="lazy">` : `<div class="ph">${icon(isRes ? "home" : cat, 44)}</div>`}
+      <span class="badge sold">${badge}</span>${isRes ? "" : `<span class="badge cat-b">${t("c." + cat)}</span>`}</div>
+    <div class="card-body">
+      ${s.side ? `<div class="offer">${t("side." + s.side)}</div>` : ""}
+      ${s.showPrice && s.price ? `<div class="price">${money(s.price)}</div>` : ""}
+      <div class="addr">${tr(s, "title")}</div>
+      <div class="city">${[s.city, s.year].filter(Boolean).join(" · ")}</div>
+      ${tr(s, "note") ? `<p class="muted" style="font-size:14px;margin-top:10px">${tr(s, "note")}</p>` : ""}
+    </div></div>`;
+}
+function renderTrack() {
+  $("trackSection").style.display = SOLD.length ? "" : "none";
+  $("trackHome").innerHTML = SOLD.slice(0, 6).map(soldCard).join("");
+  const groups = ["all","biz","lease","inv","res"].filter(g => g === "all" || SOLD.some(s => soldGroup(s) === g));
+  $("trackChips").innerHTML = groups.length > 2 ? groups.map(g => `<button class="chip ${trackGrp === g ? "on" : ""}" data-g="${g}">${t("grp." + g)}</button>`).join("") : "";
+  $("trackChips").querySelectorAll(".chip").forEach(b => b.onclick = () => { trackGrp = b.dataset.g; renderTrack(); });
+  const items = SOLD.filter(s => trackGrp === "all" || soldGroup(s) === trackGrp);
+  $("trackAll").innerHTML = items.length ? items.map(soldCard).join("") : `<div class="empty">${t("trackEmpty")}</div>`;
+}
+function renderReviews() {
+  $("testimonials").style.display = REVIEWS.length ? "" : "none";
+  $("quotesGrid").innerHTML = REVIEWS.map(r => `<div class="quote"><div class="stars">${"★".repeat(r.stars || 5)}</div>
+    <p>${tr(r, "text")}</p><cite>— ${r.name || ""}${tr(r, "role") ? ", " + tr(r, "role") : ""}</cite></div>`).join("");
+}
+function renderResources() {
+  $("resGrid").innerHTML = RES.length ? RES.map(r => `<div class="res-card"><div class="res-tag">${(r.file || "").toLowerCase().endsWith(".pdf") ? "PDF" : "FILE"}${r.lang ? " · " + r.lang : ""}</div>
+    <h3>${tr(r, "title")}</h3><p>${tr(r, "desc")}</p>${r.file ? `<a href="${r.file}" target="_blank" rel="noopener">${t("download")}</a>` : ""}</div>`).join("")
+    : `<div class="empty empty-cta" style="grid-column:1/-1"><p>${t("resEmpty")}</p><a class="btn btn-red" href="#contact">${t("contactBtn")}</a></div>`;
+}
+
 /* ---------- Router ---------- */
-const VIEWS = ["home","business","leasing","investment","sell-business","residential","mortgage","home-evaluation","guides","about"];
+const VIEWS = ["track-record","home","business","leasing","investment","sell-business","residential","mortgage","home-evaluation","guides","about"];
 const JUMPS = { "leasing-calc": ["leasing","leasing-calc-box"], "space-request": ["leasing","space-request-box"], "cap-calc": ["investment","cap-calc-box"], "investor-list": ["investment","investor-list-box"] };
 function router() {
   let h = (location.hash || "#home").slice(1);
@@ -360,6 +404,7 @@ function router() {
 }
 window.addEventListener("hashchange", router);
 function renderAll() {
+  renderTrack(); renderReviews(); renderResources();
   renderSocial(); renderHome(); renderBusiness(); renderLeasing(); renderInvestment(); renderResidential();
   if (ALL().some(l => l.id === route)) renderDetail(route);
   calcMortgage(); calcLease(); calcCap();
@@ -418,7 +463,9 @@ async function getJSON(url, fb) {
   catch (e) { try { return JSON.parse($(fb).textContent); } catch (_) { return []; } }
 }
 (async () => {
-  [MINE, DDF] = await Promise.all([getJSON("data/listings.json", "fallback-data"), getJSON("data/ddf-listings.json", "fallback-ddf")]);
+  [MINE, DDF, SOLD, REVIEWS, RES] = await Promise.all([getJSON("data/listings.json", "fallback-data"), getJSON("data/ddf-listings.json", "fallback-ddf"),
+    getJSON("data/sold.json", "fallback-sold"), getJSON("data/testimonials.json", "fallback-reviews"), getJSON("data/resources.json", "fallback-res")]);
+  SOLD.sort((x, y) => (y.year || 0) - (x.year || 0));
   MINE.forEach(l => l.source = "jason"); DDF.forEach(l => l.source = "ddf");
   fillSelects(); applyLang(); router();
 })();
