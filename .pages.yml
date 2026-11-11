@@ -21,6 +21,7 @@ content:
       - { name: price, label: "Price ($) – leave empty for lease", type: number }
       - { name: leaseRate, label: "Base Rent ($/sq.ft./yr)", type: number }
       - { name: addRent, label: "Additional Rent / Op Costs ($/sq.ft./yr)", type: number }
+      - { name: monthlyRent, label: "Total Monthly Rent – e.g. $7,401.13 (business listings)", type: string }
       - { name: leaseTerm, label: "Lease Term", type: string }
       - { name: available, label: "Available Date", type: string }
       - { name: address, label: Address, type: string, required: true }

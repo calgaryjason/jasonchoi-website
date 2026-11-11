@@ -49,6 +49,7 @@ const D = {
   "side.landlord":["Represented the Landlord","임대인 대리"], "side.tenant":["Represented the Tenant","임차인 대리"], "side.both":["Represented Both Sides","양측 대리"],
   "grp.all":["All","전체"], "grp.biz":["Business Sales","비즈니스 매매"], "grp.lease":["Leasing","리스"], "grp.inv":["Investment","투자"], "grp.res":["Residential","주거용"],
   resEmpty:["New guides are coming soon. Contact me for any information you need.","새 자료를 준비 중입니다. 필요한 자료가 있으면 연락 주세요."], download:["Download →","다운로드 →"],
+  rentM:["Total Rent / Month","월 총 임대료"],
   pocketB:["Off-Market","비공개"], reqDetails:["Request Details →","상세 정보 요청 →"], priceReq:["Price on request","가격 문의"],
   pocketEmpty:["New off-market opportunities are shared privately. Register below to hear about them first.","새 비공개 매물은 개별적으로 안내됩니다. 아래에 등록하시면 가장 먼저 연락드립니다."],
   ndaNote:["NDA required","NDA 필요"],
@@ -157,6 +158,7 @@ function photoHTML(l, i = 0) {
 }
 function kpiHTML(l) {
   const k = [], k2 = kind(l);
+  if (k2 === "biz" && l.monthlyRent) k.push([t("rentM"), l.monthlyRent]);
   if (k2 === "lease") {
     if (l.leaseRate) k.push([t("leaseRate"), "$" + l.leaseRate]);
     if (l.addRent) k.push(["Op Costs", "$" + l.addRent]);
@@ -169,6 +171,7 @@ function kpiHTML(l) {
   } else if (k2 === "biz") {
     if (l.annualSales) k.push([t("sales"), money(l.annualSales)]);
     if (l.sqft) k.push([t("sqft"), num(l.sqft)]);
+    if (l.leaseTerm && !l.annualSales) k.push([t("term"), l.leaseTerm.split(" to ").pop().split(" +")[0]]);
     if (l.seats) k.push([t("seats"), l.seats]); else if (l.rooms) k.push([t("rooms"), l.rooms]); else if (l.landSize) k.push([t("land"), l.landSize]);
   }
   return k.length ? `<div class="kpis">${k.slice(0, 3).map(([a, b]) => `<div><small>${a}</small><b>${b}</b></div>`).join("")}</div>` : "";
@@ -277,6 +280,7 @@ function renderDetail(id) {
     com && l.offering ? ["offering", t("off." + l.offering)] : null,
     l.leaseRate ? ["leaseRate", "$" + l.leaseRate + " " + t("persf")] : null,
     l.addRent ? ["addRent", "$" + l.addRent + " " + t("persf")] : null,
+    l.monthlyRent ? ["rentM", l.monthlyRent] : null,
     l.leaseTerm ? ["term", l.leaseTerm] : null, l.available ? ["avail", l.available] : null,
     l.beds != null ? ["beds", l.beds] : null, l.baths != null ? ["baths", l.baths] : null,
     l.sqft ? ["sqft", num(l.sqft)] : null, l.landSize ? ["land", l.landSize] : null,
