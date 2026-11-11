@@ -115,13 +115,14 @@ body{background:#f4f4f5}.lp{max-width:980px;margin:0 auto;padding:28px 20px 60px
     .replace(/<meta property="og:title" content="[^"]*">/, '<meta property="og:title" content="최재봉 부동산 – 2007년부터 캘거리 상업용 부동산 전문">')
     .replace(/<meta property="og:description" content="[^"]*">/, '<meta property="og:description" content="캘거리와 앨버타, BC의 비즈니스 매매, 상업용 리스, 투자 부동산. 한국어 상담 가능.">')
     .replace('<meta property="og:url" content="https://jasonchoirealestate.com/">', '<meta property="og:url" content="https://jasonchoirealestate.com/ko/">\n<meta property="og:locale" content="ko_KR">')
-    .replace('<link rel="canonical" href="https://jasonchoirealestate.com/">', '<link rel="canonical" href="https://jasonchoirealestate.com/ko/">');
+    .replace('<link rel="canonical" href="https://jasonchoirealestate.com/">', '<link rel="canonical" href="https://jasonchoirealestate.com/ko/">')
+    .replace(/href="\/faq\/"/g, 'href="/ko/faq/"');
   fs.mkdirSync(path.join(root, "ko"), { recursive: true });
   fs.writeFileSync(path.join(root, "ko", "index.html"), h);
 }
 
 const today = new Date().toISOString().slice(0, 10);
-const urls = [`${SITE}/`, `${SITE}/ko/`, ...listings.map(l => `${SITE}/listing/${l.id}/`)];
+const urls = [`${SITE}/`, `${SITE}/ko/`, `${SITE}/faq/`, `${SITE}/ko/faq/`, ...listings.map(l => `${SITE}/listing/${l.id}/`)];
 fs.writeFileSync(path.join(root, "sitemap.xml"),
   `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
   urls.map(u => `  <url><loc>${u}</loc><lastmod>${today}</lastmod></url>`).join("\n") + `\n</urlset>\n`);
