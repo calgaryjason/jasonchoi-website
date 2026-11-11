@@ -312,6 +312,21 @@ nav.menu .btn:hover{color:#fff}
 .contact-list small{display:block;color:#9a9ca1;font-size:13px}
 .big-link{font-weight:700;font-size:18px}
 
+/* Brokerage logos */
+.brokers-slot{display:flex;gap:16px;flex-wrap:wrap}
+.broker{display:flex;flex-direction:column;align-items:center;gap:6px}
+.broker small{font-size:12px;color:var(--gray);letter-spacing:.04em}
+.broker-box{background:#fff;border:1px solid var(--line);border-radius:8px;height:72px;min-width:200px;padding:10px 18px;display:flex;align-items:center;justify-content:center}
+.broker-box img{max-height:50px;max-width:220px;width:auto}
+.broker-name{display:none;font-family:Montserrat,sans-serif;font-weight:700;font-size:15px;color:#1f3b57;text-align:center}
+.broker-box.nologo img{display:none}
+.broker-box.nologo .broker-name{display:block}
+.dark-slot{margin-top:24px}
+.dark-slot .broker small{color:#9a9ca1}
+.brokers-row{display:flex;align-items:center;gap:24px;flex-wrap:wrap;border-top:1px solid #26272b;padding:24px 0}
+.brokers-label{color:#fff;font-weight:700;font-size:14px}
+footer .broker small{color:#85878c}
+
 /* Footer */
 footer{background:#0f1012;color:#b2b4b9;font-size:14px;padding:56px 0 28px}
 .foot-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:32px;margin-bottom:36px}

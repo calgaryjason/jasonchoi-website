@@ -374,6 +374,16 @@ function renderResources() {
     : `<div class="empty empty-cta" style="grid-column:1/-1"><p>${t("resEmpty")}</p><a class="btn btn-red" href="#contact">${t("contactBtn")}</a></div>`;
 }
 
+/* ---------- Brokerage logos ---------- */
+const BROKERS = [
+  { name: "First Place Realty", prov: ["Alberta", "앨버타"], logo: "assets/first-place-realty.jpg" },
+  { name: "Maple Supreme Realty Inc.", prov: ["British Columbia", "브리티시컬럼비아"], logo: "assets/maple-supreme-realty.png" }
+];
+function renderBrokers() {
+  const html = BROKERS.map(b => `<div class="broker"><div class="broker-box"><img src="${b.logo}" alt="${b.name}" onerror="this.parentNode.classList.add('nologo')"><span class="broker-name">${b.name}</span></div><small>${b.prov[lang === "ko" ? 1 : 0]}</small></div>`).join("");
+  document.querySelectorAll(".brokers-slot").forEach(s => s.innerHTML = html);
+}
+
 /* ---------- Router ---------- */
 const VIEWS = ["track-record","home","business","leasing","investment","sell-business","residential","mortgage","home-evaluation","guides","about"];
 const JUMPS = { "leasing-calc": ["leasing","leasing-calc-box"], "space-request": ["leasing","space-request-box"], "cap-calc": ["investment","cap-calc-box"], "investor-list": ["investment","investor-list-box"] };
@@ -404,6 +414,7 @@ function router() {
 }
 window.addEventListener("hashchange", router);
 function renderAll() {
+  renderBrokers();
   renderTrack(); renderReviews(); renderResources();
   renderSocial(); renderHome(); renderBusiness(); renderLeasing(); renderInvestment(); renderResidential();
   if (ALL().some(l => l.id === route)) renderDetail(route);
