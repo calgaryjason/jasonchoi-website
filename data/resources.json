@@ -1,5 +1,21 @@
 [
   {
+    "title_en": "What It Really Costs to Buy a Home (AB & BC, 2026)",
+    "title_ko": "주택 구매 비용 가이드 (앨버타·BC, 2026년)",
+    "desc_en": "Down payment, mortgage insurance, closing costs and first-time buyer programs in Alberta and BC, updated for 2026 — with a worked example on a $600,000 home and a cost worksheet.",
+    "desc_ko": "앨버타와 BC의 다운페이먼트, 모기지 보험, 클로징 비용, 첫 주택 구매자 혜택을 2026년 기준으로 정리했습니다. $600,000 주택 계산 예시와 비용 계산표 포함 (영문).",
+    "lang": "EN",
+    "file": "uploads/guides/Home_Purchase_Cost_Guide_AB_BC_2026.pdf"
+  },
+  {
+    "title_en": "Condo & Strata Red Flags Checklist",
+    "title_ko": "콘도·스트라타 위험 신호 체크리스트",
+    "desc_en": "The warning signs to look for in condo documents before you remove conditions, the documents to ask for, questions for the property manager, and your options if you find a problem.",
+    "desc_ko": "조건 해제 전에 콘도 서류에서 확인해야 할 위험 신호, 요청할 서류, 관리 회사에 물어볼 질문, 문제가 있을 때의 대처 방법 (영문).",
+    "lang": "EN",
+    "file": "uploads/guides/Condo_Strata_Red_Flags_Checklist.pdf"
+  },
+  {
     "title_en": "Business Valuation: The Multiplier Explained",
     "title_ko": "비즈니스 가치 평가: 멀티플(배수) 쉽게 이해하기",
     "desc_en": "How businesses are priced using SDE, EBITDA and revenue multiples. Typical ranges by business type, a full worked example, common mistakes and 14 questions every buyer should ask.",
