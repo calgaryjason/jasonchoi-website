@@ -436,3 +436,11 @@ footer a:hover{color:#fff}
 .sold-band-txt p{margin:0;color:#c9cbd1;line-height:1.6}
 .sold-tag{align-self:flex-start;background:var(--red);color:#fff;font-weight:800;letter-spacing:.12em;padding:4px 12px;border-radius:4px;transform:rotate(-4deg)}
 @media(max-width:800px){.sold-band{grid-template-columns:1fr 1fr}.sold-band-txt{grid-column:1/-1}.sold-band img{height:200px}}
+
+/* Calgary districts */
+.dist-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.dist{background:#fff;border:1px solid var(--line,#e5e6ea);border-radius:10px;padding:18px}
+.dist b{display:block;margin:8px 0 6px;font-size:1.05rem}
+.dist p{margin:0;font-size:.9rem;line-height:1.55;color:#5b5f68}
+.dist-code{display:inline-block;background:var(--red);color:#fff;font-weight:800;font-size:.8rem;padding:3px 9px;border-radius:4px}
+@media(max-width:900px){.dist-grid{grid-template-columns:1fr 1fr}}
