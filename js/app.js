@@ -32,7 +32,7 @@ const D = {
   call:["Call","전화하기"], ask:["Ask About This Listing","이 매물 문의하기"], ndaBtn:["Request NDA & Financials","NDA 및 재무 자료 요청"],
   nda:["🔒 Financial details are shared after a signed NDA.","🔒 재무 자료는 NDA 서명 후 제공됩니다."],
   askMsg:["I am interested in this listing: ","다음 매물에 대해 문의드립니다: "], ndaMsg:["Please send me the NDA and financial details for: ","다음 매물의 NDA와 재무 자료를 요청합니다: "],
-  brochure:["Download Brochure (PDF)","브로슈어 PDF 다운로드"], realtor:["View on REALTOR.ca","REALTOR.ca에서 보기"], map:["View on Google Maps","구글 지도에서 보기"],
+  brochure:["Download Brochure (PDF)","브로슈어 PDF 다운로드"], sheet:["Print Feature Sheet","매물 안내서 인쇄"], qrT:["Listing QR Code","매물 QR 코드"], qrDl:["Download QR","QR 다운로드"], scan:["Scan for photos & details","스캔하면 사진과 상세 정보를 볼 수 있습니다"], realtor:["View on REALTOR.ca","REALTOR.ca에서 보기"], map:["View on Google Maps","구글 지도에서 보기"],
   share:["Share This Listing","이 매물 공유하기"], copy:["Copy Link","링크 복사"], copied:["Link copied!","링크가 복사되었습니다!"],
   igTip:["Instagram: copy the link and add it to your story or bio.","인스타그램: 링크를 복사해 스토리나 프로필에 넣으세요."],
   ddf:["This listing is provided through REALTOR.ca DDF®. This REALTOR.ca listing content is owned and licensed by REALTOR® members of The Canadian Real Estate Association.",
@@ -302,6 +302,37 @@ function renderResidential() {
   $("listGrid").innerHTML = gridHTML(MINE.filter(l => !isCom(l) && (resType === "all" || l.type === resType) && l.status === resStatus));
 }
 
+
+/* ---------- QR code + printable feature sheet ---------- */
+function qrURL(text, cell = 4) {
+  try { const q = qrcode(0, "M"); q.addData(text); q.make(); return q.createDataURL(cell, cell * 2); } catch (e) { return ""; }
+}
+function printSheet(l, url) {
+  const p = photos(l), com = isCom(l);
+  const facts = [
+    [t(com ? "category" : "type"), com ? t("c." + (l.category || "other-business")) : t("t." + l.type)],
+    l.offering ? [t("offering"), t("off." + l.offering)] : null,
+    l.sqft ? [t("sqft"), num(l.sqft)] : null, l.monthlyRent ? [t("rentM"), l.monthlyRent] : null,
+    l.leaseTerm ? [t("term"), l.leaseTerm] : null, l.beds != null ? [t("beds"), l.beds] : null,
+    l.baths != null ? [t("baths"), l.baths] : null, l.yearBuilt ? [t("year"), l.yearBuilt] : null,
+    l.mls ? [t("mls"), l.mls] : null
+  ].filter(Boolean).map(r => `<tr><td>${r[0]}</td><td>${r[1]}</td></tr>`).join("");
+  const s = $("sheet");
+  s.innerHTML = `<div class="sh-head"><img src="assets/logo.jpg" alt=""><span>${com && l.deal === "lease" ? t("lease") : (lang === "ko" ? "매물 안내" : "FOR SALE")}</span></div>
+    ${p[0] ? `<img class="sh-main" src="${p[0]}" alt="">` : ""}
+    ${p.length > 1 ? `<div class="sh-thumbs">${p.slice(1, 4).map(x => `<img src="${x}" alt="">`).join("")}</div>` : ""}
+    <div class="sh-body">
+      <div class="sh-left"><h1>${title(l) || l.address}</h1><div class="sh-addr">${l.address}${l.city ? ", " + l.city : ""}</div>
+        <div class="sh-price">${priceText(l)}</div><table>${facts}</table>
+        <p>${(desc(l) || "").slice(0, 900)}${(desc(l) || "").length > 900 ? "…" : ""}</p></div>
+      <div class="sh-right"><img class="sh-qr" src="${qrURL(url, 5)}" alt=""><small>${t("scan")}</small>
+        <div class="sh-agent"><img src="assets/jason-choi.jpg" alt=""><b>Jason Choi 최재봉</b><span>REALTOR®</span><span>(403) 399-8124</span><span>CalgaryJason@gmail.com</span><span>jasonchoirealestate.com</span></div></div>
+    </div>
+    <div class="sh-foot"><img src="assets/first-place-realty.jpg" alt="First Place Realty"><span>${lang === "ko" ? "모든 정보는 정확성을 보장하지 않으며 확인이 필요합니다." : "Information is believed accurate but not guaranteed and should be verified."}</span></div>`;
+  const imgs = [...s.querySelectorAll("img")];
+  Promise.all(imgs.map(i => i.complete ? 0 : new Promise(r => { i.onload = i.onerror = r; }))).then(() => window.print());
+}
+
 /* ---------- Listing detail ---------- */
 function renderDetail(id) {
   const w = $("detailWrap"), l = ALL().find(x => x.id === id);
@@ -327,7 +358,7 @@ function renderDetail(id) {
     l.yearBuilt ? ["year", l.yearBuilt] : null, l.mls ? ["mls", l.mls] : null,
     l.source === "ddf" && l.listOffice ? ["listedBy", l.listOffice] : null
   ].filter(Boolean).map(r => `<tr><td>${t(r[0])}</td><td><b>${r[1]}</b></td></tr>`).join("");
-  const url = (SITE.siteUrl ? SITE.siteUrl.replace(/\/$/, "") + "/" : location.href.split("#")[0]) + "#" + l.id;
+  const url = SITE.siteUrl && (l.status === "active" || l.source === "ddf") ? SITE.siteUrl.replace(/\/$/, "") + "/listing/" + l.id + "/" : (SITE.siteUrl ? SITE.siteUrl.replace(/\/$/, "") + "/" : location.href.split("#")[0]) + "#" + l.id;
   const shareText = `${title(l) || l.address} – ${priceText(l)}`;
   w.innerHTML = `${back}
   <div class="detail">
@@ -350,6 +381,7 @@ function renderDetail(id) {
         <div style="display:flex;gap:12px;flex-wrap:wrap">
           ${l.brochure ? `<a class="btn btn-outline" href="${l.brochure}" target="_blank">${t("brochure")}</a>` : ""}
           ${l.realtorUrl ? `<a class="btn btn-outline" href="${l.realtorUrl}" target="_blank" rel="noopener">${t("realtor")}</a>` : ""}
+          <button type="button" class="btn btn-outline" id="printSheet">${t("sheet")}</button>
           <a class="btn btn-outline" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(l.address + ", " + (l.city || ""))}">${t("map")}</a>
         </div>
         ${l.source === "ddf" ? `<p class="ddf-note"><span class="ddf-logo" style="font-size:11px;padding:2px 6px">REALTOR.ca</span> ${t("ddf")}</p>` : ""}
@@ -360,6 +392,7 @@ function renderDetail(id) {
       <a class="btn btn-red w100" href="tel:4033998124">${t("call")} (403) 399-8124</a>
       <a class="btn btn-outline w100" href="#contact" data-msg="askMsg">${t("ask")}</a>
       ${l.nda ? `<a class="btn btn-outline w100" href="#contact" data-msg="ndaMsg">${t("ndaBtn")}</a>` : ""}
+      <div class="qr-side"><img src="${qrURL(url)}" alt="QR"><div><b>${t("qrT")}</b><small>${t("scan")}</small><a href="${qrURL(url, 10)}" download="${l.id}-qr.gif">${t("qrDl")} ↓</a></div></div>
       <div class="share"><small>${t("share")}</small>
         <div class="share-btns">
           <a target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}">${socIcon("facebook", 15)} Facebook</a>
@@ -377,6 +410,7 @@ function renderDetail(id) {
   w.querySelectorAll("[data-msg]").forEach(a => a.onclick = () => {
     $("contactMsg").value = t(a.dataset.msg) + l.address + " (" + priceText(l) + (l.mls ? ", MLS® " + l.mls : "") + ")";
   });
+  $("printSheet").onclick = () => printSheet(l, url);
   $("copyLink").onclick = async () => { try { await navigator.clipboard.writeText(url); $("copyNote").textContent = t("copied"); } catch (e) { $("copyNote").textContent = url; } };
 }
 
@@ -493,7 +527,7 @@ function renderBrokers() {
 
 /* ---------- Router ---------- */
 const VIEWS = ["off-market","track-record","home","business","leasing","investment","sell-business","residential","mortgage","home-evaluation","guides","about"];
-const JUMPS = { "leasing-calc": ["leasing","leasing-calc-box"], "space-request": ["leasing","space-request-box"], "cap-calc": ["investment","cap-calc-box"], "investor-list": ["investment","investor-list-box"] };
+const JUMPS = { "leasing-calc": ["leasing","leasing-calc-box"], "space-request": ["leasing","space-request-box"], "cap-calc": ["investment","cap-calc-box"], "investor-list": ["investment","investor-list-box"], "listing-alerts": ["home","listing-alerts"], "market": ["home","marketSection"] };
 function router() {
   let h = (location.hash || "#home").slice(1);
   document.querySelector("nav.menu").classList.remove("open");
@@ -605,6 +639,10 @@ document.querySelectorAll(".lead-form").forEach(form => form.addEventListener("s
 }));
 
 /* ---------- Start ---------- */
+if (SITE.analyticsToken) {
+  const s = document.createElement("script"); s.defer = true; s.src = "https://static.cloudflareinsights.com/beacon.min.js";
+  s.setAttribute("data-cf-beacon", JSON.stringify({ token: SITE.analyticsToken })); document.head.appendChild(s);
+}
 const yrs = new Date().getFullYear() - (SITE.startYear || 2007);
 document.querySelectorAll(".yrs").forEach(e => e.textContent = yrs);
 $("yr").textContent = new Date().getFullYear();

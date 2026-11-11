@@ -43,6 +43,8 @@ canvas{max-width:100%;max-height:78vh;box-shadow:0 10px 30px rgba(0,0,0,.18);bor
         <option value="1080x1350">Instagram / Facebook Post (4:5) · 피드</option>
         <option value="1080x1080">Square (1:1) · 정사각형</option>
         <option value="1080x1920">Story / Reel cover (9:16) · 스토리</option>
+        <option value="1800x1200">Postcard 6×4 in (print) · 엽서 인쇄용</option>
+        <option value="1500x2100">Postcard 5×7 in (print) · 엽서 인쇄용 (세로)</option>
         <option value="1200x630">Facebook link / Threads (1.91:1) · 가로형</option>
       </select>
       <label>Headline · 헤드라인</label>
@@ -101,7 +103,8 @@ function facts(l) {
 }
 function cover(ctx, img, x, y, w, h) {
   const r = Math.max(w / img.width, h / img.height), iw = img.width * r, ih = img.height * r;
-  ctx.drawImage(img, x + (w - iw) / 2, y + (h - ih) / 2, iw, ih);
+  ctx.save(); ctx.beginPath(); ctx.rect(x, y, w, h); ctx.clip();
+  ctx.drawImage(img, x + (w - iw) / 2, y + (h - ih) / 2, iw, ih); ctx.restore();
 }
 function wrapText(ctx, text, x, y, maxW, lh, maxLines = 2) {
   const words = text.split(" "); let line = "", lines = [];

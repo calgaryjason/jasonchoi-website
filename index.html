@@ -7,7 +7,13 @@
 <meta name="description" content="Jason Choi, REALTOR® since 2007. Business sales, commercial leasing and investment properties in Calgary, Alberta and British Columbia. English and Korean service.">
 <meta property="og:title" content="Jason Choi Real Estate – Commercial REALTOR® Since 2007">
 <meta property="og:description" content="Business sales, commercial leasing and investment properties in Calgary, Alberta and British Columbia.">
-<meta property="og:image" content="assets/jason-choi.jpg">
+<meta property="og:image" content="https://jasonchoirealestate.com/assets/jason-choi.jpg">
+<meta property="og:url" content="https://jasonchoirealestate.com/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://jasonchoirealestate.com/">
+<link rel="icon" href="assets/logo.jpg">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "RealEstateAgent", "name": "Jason Choi Real Estate", "alternateName": "최재봉 부동산", "url": "https://jasonchoirealestate.com/", "image": "https://jasonchoirealestate.com/assets/jason-choi.jpg", "logo": "https://jasonchoirealestate.com/assets/logo.jpg", "telephone": "+1-403-399-8124", "address": {"@type": "PostalAddress", "streetAddress": "#305, 1822 10th Avenue SW", "addressLocality": "Calgary", "addressRegion": "AB", "postalCode": "T3C 0J8", "addressCountry": "CA"}, "areaServed": ["Calgary", "Alberta", "British Columbia"], "knowsLanguage": ["en", "ko"], "memberOf": {"@type": "Organization", "name": "First Place Realty"}, "sameAs": ["https://www.instagram.com/jasonchoirealestate/", "https://www.facebook.com/jasonchoirealestate1", "https://www.threads.net/@jasonchoirealestate"]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Noto+Sans+KR:wght@400;500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -47,6 +53,8 @@
       <div class="dd">
         <button class="dd-btn" data-ko="자료 ▾">Resources ▾</button>
         <div class="dd-menu">
+          <a href="#listing-alerts" data-ko="새 매물 알림 신청">New Listing Alerts</a>
+          <a href="#market" data-ko="캘거리 시장 통계">Calgary Market Stats</a>
           <a href="#mortgage" data-ko="모기지 계산기">Mortgage Calculator</a>
           <a href="#leasing-calc" data-ko="리스 비용 계산기">Lease Cost Calculator</a>
           <a href="#cap-calc" data-ko="Cap Rate 계산기">Cap Rate Calculator</a>
@@ -276,6 +284,40 @@
   </div>
 
   <!-- Social -->
+  <!-- New listing alerts (lead capture) -->
+  <div class="section" id="listing-alerts">
+    <div class="wrap">
+      <div class="form-section">
+        <div>
+          <div class="eyebrow" data-ko="새 매물 알림">New Listing Alerts</div>
+          <h2 class="h2-sm" data-ko="조건에 맞는 새 매물을 이메일로 받아보세요">Get New Listings by Email</h2>
+          <p class="muted" data-ko="찾고 계신 매물 조건을 알려주세요. 조건에 맞는 새 매물이 나오면 이메일로 보내드립니다. 비공개 매물도 포함됩니다.">Tell me what you are looking for. When a matching listing comes up, I will email it to you – including off-market opportunities.</p>
+          <ul class="checks">
+            <li data-ko="무료이며 언제든지 수신을 중단할 수 있습니다">Free, and you can stop at any time</li>
+            <li data-ko="영어 또는 한국어로 받아보실 수 있습니다">Available in English or Korean</li>
+            <li data-ko="20년 경력 리얼터가 직접 골라서 보내드립니다">Hand-picked by a REALTOR® with 19+ years of experience</li>
+          </ul>
+        </div>
+        <form class="lead-form form-card bordered" data-subject="New Listing Alert Sign-Up">
+          <div class="form-grid">
+            <div class="field"><label data-ko="관심 분야">I Am Looking For</label>
+              <select name="looking_for"><option data-ko="비즈니스 매매">Business for Sale</option><option data-ko="상업용 리스">Commercial Lease Space</option><option data-ko="투자 부동산">Investment Property</option><option data-ko="주택 구매">Home to Buy</option><option data-ko="모두">All of the Above</option></select></div>
+            <div class="field"><label data-ko="업종 / 매물 종류">Business Type / Property Type</label><input name="type" placeholder="e.g. restaurant, liquor store, condo"></div>
+            <div class="field"><label data-ko="예산">Budget</label><input name="budget" placeholder="e.g. $200,000 – $500,000"></div>
+            <div class="field"><label data-ko="선호 지역">Preferred Area</label><input name="area" placeholder="e.g. NW Calgary, Airdrie"></div>
+            <div class="field"><label data-ko="이름">Name</label><input name="name" required></div>
+            <div class="field"><label data-ko="이메일">Email</label><input name="email" type="email" required></div>
+            <div class="field"><label data-ko="전화번호 (선택)">Phone (optional)</label><input name="phone" type="tel"></div>
+            <div class="field"><label data-ko="받을 언어">Language</label><select name="language"><option>English</option><option>한국어</option></select></div>
+            <label class="consent full"><input type="checkbox" name="consent" value="yes" required> <span data-ko="새 매물 정보를 이메일로 받는 데 동의합니다. 언제든지 수신을 중단할 수 있습니다.">I agree to receive emails about new listings. I can unsubscribe at any time.</span></label>
+            <div class="full"><button class="btn btn-red w100" type="submit" data-ko="알림 신청하기">Sign Up for Alerts</button></div>
+          </div>
+          <div class="form-msg" data-ko="감사합니다! 조건에 맞는 새 매물이 나오면 이메일로 보내드리겠습니다.">Thank you! I will email you when a matching listing comes up.</div>
+        </form>
+      </div>
+    </div>
+  </div>
+
   <div class="section section-alt social-band">
     <div class="wrap">
       <div class="center-head" style="margin-bottom:24px">
@@ -865,6 +907,8 @@
 <script id="fallback-res" type="application/json">[]</script>
 <script id="fallback-pocket" type="application/json">[]</script>
 <script id="fallback-market" type="application/json">{}</script>
+<div id="sheet" class="sheet" aria-hidden="true"></div>
+<script src="js/vendor/qrcode.js"></script>
 <script src="js/config.js"></script>
 <script src="js/app.js"></script>
 </body>

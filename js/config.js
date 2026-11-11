@@ -3,7 +3,7 @@
    ========================================================= */
 window.SITE = {
   /* Your website address (used in share links and Instagram captions). */
-  siteUrl: "https://www.jasonchoirealestate.com",
+  siteUrl: "https://jasonchoirealestate.com",
 
   /* Your social media pages. Replace with your real addresses.
      Leave a value empty ("") to hide that icon. */
@@ -21,6 +21,11 @@ window.SITE = {
   /* Free form key from https://web3forms.com – messages go to CalgaryJason@gmail.com.
      Empty = preview mode (forms only show a thank-you message). */
   formAccessKey: "f5c5f3c1-9ea2-4a7c-9b5f-9179bd184062",
+
+  /* Visitor statistics (free): Cloudflare Web Analytics token.
+     Cloudflare → Analytics & Logs → Web Analytics → Add a site → copy the "token" value.
+     Empty = off. (If you choose Cloudflare's "automatic setup", leave this empty.) */
+  analyticsToken: "",
 
   /* Maximum photos per listing. */
   maxPhotos: 5,
