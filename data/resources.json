@@ -24,12 +24,28 @@
     "file": "uploads/guides/Condo_Strata_Red_Flags_Checklist.pdf"
   },
   {
+    "title_en": "Condo & Strata Red Flags Checklist (Korean)",
+    "title_ko": "콘도·스트라타 위험 신호 체크리스트",
+    "desc_en": "Korean version: warning signs in condo documents, documents to request for Alberta and BC, questions for the manager and your options.",
+    "desc_ko": "조건 해제 전 콘도 서류의 위험 신호, 앨버타·BC별 요청 서류, 관리 회사 질문, 문제가 있을 때 대처 방법.",
+    "lang": "한국어",
+    "file": "uploads/guides/Condo_Strata_Red_Flags_Checklist_KO.pdf"
+  },
+  {
     "title_en": "Business Valuation: The Multiplier Explained",
     "title_ko": "비즈니스 가치 평가: 멀티플(배수) 쉽게 이해하기",
     "desc_en": "How businesses are priced using SDE, EBITDA and revenue multiples. Typical ranges by business type, a full worked example, common mistakes and 14 questions every buyer should ask.",
     "desc_ko": "SDE, EBITDA, 매출 배수로 비즈니스 가격을 정하는 방법. 업종별 일반적인 배수 범위, 계산 예시, 흔한 실수, 구매자가 꼭 물어야 할 질문 14가지 (영문).",
     "lang": "EN",
     "file": "uploads/guides/Business_Valuation_Multiplier_Guide.pdf"
+  },
+  {
+    "title_en": "Business Valuation: The Multiplier (Korean)",
+    "title_ko": "비즈니스 가치 평가: 멀티플(배수) 쉽게 이해하기",
+    "desc_en": "Korean version: SDE, EBITDA and revenue multiples, typical ranges by business type, a worked example and 14 buyer questions.",
+    "desc_ko": "SDE, EBITDA, 매출 배수로 가격을 정하는 방법, 업종별 멀티플 범위, 계산 예시, 구매자가 꼭 물어야 할 질문 14가지.",
+    "lang": "한국어",
+    "file": "uploads/guides/Business_Valuation_Multiplier_Guide_KO.pdf"
   },
   {
     "title_en": "Commercial Lease Review: Key Points",
@@ -70,6 +86,14 @@
     "desc_ko": "비즈니스를 사고팔 때 거래 구조에 따라 달라지는 세금, 위험, 라이선스, 기간 비교. 2026년 세법, BC 양도세 예시, 주유소·호텔·세차장 참고 사항 (영문).",
     "lang": "EN",
     "file": "uploads/guides/Asset_vs_Share_Sale_Guide_AB_BC.pdf"
+  },
+  {
+    "title_en": "Asset Sale vs. Share Sale (Korean)",
+    "title_ko": "자산 매매 vs 주식 매매 (앨버타·BC)",
+    "desc_en": "Korean version: tax, risk, licences and timing compared, GST Section 167 election, LCGE and industry notes.",
+    "desc_ko": "세금, 위험, 면허, 기간 비교. GST 167조 선택, 평생 자본이득 면제(LCGE), 업종별 참고 사항.",
+    "lang": "한국어",
+    "file": "uploads/guides/Asset_vs_Share_Sale_Guide_KO.pdf"
   },
   {
     "title_en": "Buying a Business: Offer to Closing Checklist",
@@ -134,6 +158,14 @@
     "desc_ko": "핵심 지표(NOI, Cap Rate, 현금 흐름), 캘거리 임대 계산 예시, 융자 규정, 앨버타·BC 차이, 2026년 세금 기본, 실사 체크리스트 (영문).",
     "lang": "EN",
     "file": "uploads/guides/Investment_Property_Guide_AB_BC_2026.pdf"
+  },
+  {
+    "title_en": "Investment Property Guide (Korean, 2026)",
+    "title_ko": "투자 부동산 가이드: 임대 수입, 숫자, 세금 (2026)",
+    "desc_en": "Korean version: key numbers, a Calgary townhouse example, rental financing, Alberta vs. BC rules and tax basics.",
+    "desc_ko": "캡레이트와 현금 흐름 계산, 캘거리 타운하우스 예시, 임대 부동산 대출, 앨버타와 BC 비교, 세금 기본.",
+    "lang": "한국어",
+    "file": "uploads/guides/Investment_Property_Guide_KO_2026.pdf"
   },
   {
     "title_en": "Environmental Site Assessments (Phase I, II, III)",
