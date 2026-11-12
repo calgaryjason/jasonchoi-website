@@ -589,3 +589,4 @@ footer a:hover{color:#fff}
 #bizCats{grid-template-columns:repeat(8,1fr)}
 @media(max-width:1100px){#homeCats{grid-template-columns:repeat(4,1fr)}#bizCats{grid-template-columns:repeat(4,1fr)}}
 @media(max-width:600px){#homeCats,#bizCats{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.stat-lang b{font-size:1.45rem;white-space:nowrap}}
