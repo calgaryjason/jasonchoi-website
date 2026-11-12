@@ -226,6 +226,7 @@ const CAT_PHOTO = {   /* chosen photos per category; others are picked automatic
   "multi-family": "uploads/sold/panorama-hills-apartment-1.jpg",
   "grocery": "uploads/listings/convenience-store-condo-eau-claire-2.jpg",
   "car-wash": "uploads/listings/car-wash-category.jpg",
+  "land": "uploads/listings/land-category.jpg",
   "other-business": "uploads/listings/dry-cleaning-depot-chestermere-1.jpg"
 };
 function catPhoto(c) {
