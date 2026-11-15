@@ -594,3 +594,4 @@ footer a:hover{color:#fff}
 .btn-white:hover{background:#f1f1f3}
 
 .pb-0{padding-bottom:0}
+#marketSection,#afford-calc-box,#leasing-calc-box,#cap-calc-box,#space-request-box,#investor-list-box,#listing-alerts{scroll-margin-top:100px}
