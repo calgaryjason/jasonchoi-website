@@ -112,7 +112,7 @@ const socIcon = (k, s = 18) => `<svg width="${s}" height="${s}" viewBox="0 0 24 
 function renderSocial() {
   const keys = Object.keys(SOC).filter(k => SITE[k] && k !== "whatsapp");
   const links = s => keys.map(k => `<a href="${SITE[k]}" target="_blank" rel="noopener" aria-label="${SOC[k].n}" title="${SOC[k].n}" style="--c:${SOC[k].c}">${socIcon(k, s)}</a>`).join("");
-  $("socialTop").innerHTML = links(19); $("socialFoot").innerHTML = links(24); $("socialContact").innerHTML = links(24);
+  $("socialTop").innerHTML = links(19); $("socialFoot").innerHTML = links(24); if ($("socialContact")) $("socialContact").innerHTML = links(24);
   if ($("socialCards")) $("socialCards").innerHTML = ["instagram","facebook","threads","a9ent"].filter(k => SITE[k]).map(k =>
     `<a class="social-card" href="${SITE[k]}" target="_blank" rel="noopener"><span class="s-ic" style="background:${SOC[k].c}">${socIcon(k, 34)}</span>
      <b>${SOC[k].n}</b><small class="s-handle">${k === "a9ent" ? "a9ent.co/jasonchoirealestate" : "@" + (k === "facebook" ? (SITE.facebookHandle || SITE.handle || "") : (SITE.handle || ""))}</small><small>${t(SOC[k].s)}</small><span class="s-go">${lang === "ko" ? "팔로우 →" : "Follow →"}</span></a>`).join("");
@@ -591,7 +591,7 @@ function renderBrokers() {
 
 /* ---------- Router ---------- */
 const VIEWS = ["privacy","off-market","track-record","home","business","leasing","investment","sell-business","residential","mortgage","home-evaluation","guides","about"];
-const JUMPS = { "afford": ["residential","afford-calc-box"], "leasing-calc": ["leasing","leasing-calc-box"], "space-request": ["leasing","space-request-box"], "cap-calc": ["investment","cap-calc-box"], "investor-list": ["investment","investor-list-box"], "listing-alerts": ["home","listing-alerts"], "market": ["residential","marketSection"] };
+const JUMPS = { "afford": ["residential","afford-calc-box"], "leasing-calc": ["leasing","leasing-calc-box"], "space-request": ["leasing","space-request-box"], "cap-calc": ["investment","cap-calc-box"], "investor-list": ["investment","investor-list-box"], "market": ["residential","marketSection"] };
 function router() {
   let h = (location.hash || "#home").slice(1);
   document.querySelector("nav.menu").classList.remove("open");

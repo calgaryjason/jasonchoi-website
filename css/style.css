@@ -85,7 +85,7 @@ nav.menu .btn:hover{color:#fff}
 .hero{position:relative;background:linear-gradient(120deg,#131417 0%,#23252b 58%,#3a1f21 100%);color:#fff;overflow:hidden}
 .hero-grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:48px 48px;mask-image:linear-gradient(90deg,transparent,#000 60%)}
 .hero-wrap{position:relative;display:grid;grid-template-columns:1.35fr .65fr;gap:48px;align-items:center;padding-top:72px;padding-bottom:72px}
-.hero h1{font-size:52px;font-weight:800;margin-bottom:18px}
+.hero h1{font-size:46px;font-weight:800;margin-bottom:18px;line-height:1.15;max-width:760px;letter-spacing:-.01em}
 .hero .lead{font-size:18.5px;color:#cfd1d6;max-width:620px;margin-bottom:30px}
 .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
 .hero-quick{display:flex;flex-wrap:wrap;gap:8px;margin-top:30px}
@@ -337,7 +337,7 @@ nav.menu .btn:hover{color:#fff}
 .hero-wrap,.stats-strip{z-index:2}
 .cat-photo{position:relative;overflow:hidden;min-height:170px;padding:0;border:0;color:#fff;text-align:left;display:flex;align-items:flex-end;background:#222}
 .cat-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s}
-.cat-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 30%,rgba(0,0,0,.78) 100%)}
+.cat-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.05) 20%,rgba(0,0,0,.35) 50%,rgba(0,0,0,.85) 100%)}
 .cat-photo:hover img{transform:scale(1.07)}
 .cat-photo .cat-txt{position:relative;z-index:1;padding:14px 16px}
 .cat-photo b{font-size:16px;color:#fff}
@@ -595,3 +595,18 @@ footer a:hover{color:#fff}
 
 .pb-0{padding-bottom:0}
 #marketSection,#afford-calc-box,#leasing-calc-box,#cap-calc-box,#space-request-box,#investor-list-box,#listing-alerts{scroll-margin-top:100px}
+
+/* refined contact band */
+.contact-band .contact-list a{text-decoration:none;color:#fff}
+.contact-band .contact-list a:hover{color:#ffb3b3}
+.contact-band .contact-list small{color:#9fa2a9}
+.contact-band .consult-card{margin:26px 0}
+.contact-band .qr-block{margin-top:0}
+.cat-photo b{text-shadow:0 1px 6px rgba(0,0,0,.5)}
+.hero .hero-actions{margin-bottom:8px}
+.contact-side .qr-block{margin-top:18px}
+.side-map{position:relative}
+.side-map .office-map-btns{position:absolute;right:12px;bottom:28px;margin:0}
+.side-map .office-map-btns .btn{background:#fff;color:#1d1f24;border-color:#fff;padding:8px 14px;font-size:14px;box-shadow:0 4px 12px rgba(0,0,0,.25)}
+.contact-side .qr-block img{width:96px;height:96px}
+.contact-side .qr-block{padding:16px 18px}
