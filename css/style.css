@@ -28,7 +28,7 @@ img{max-width:100%;display:block}
 .eyebrow.light{color:#ff8a8c}
 .muted{color:var(--gray)} .muted-l{color:#c3c5ca}
 .small-mt{margin-top:6px}
-.section{padding:84px 0}
+.section{padding:64px 0}
 .section.pt-sm{padding-top:36px}
 .section-alt{background:var(--bg)}
 .dark-section{background:linear-gradient(120deg,#16171a,#25272d);color:#fff}
@@ -592,3 +592,5 @@ footer a:hover{color:#fff}
 @media(max-width:600px){.stat-lang b{font-size:1.45rem;white-space:nowrap}}
 .btn-white{background:#fff;color:#1d1f24;border:1px solid #fff}
 .btn-white:hover{background:#f1f1f3}
+
+.pb-0{padding-bottom:0}

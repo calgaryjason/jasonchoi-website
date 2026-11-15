@@ -113,7 +113,7 @@ function renderSocial() {
   const keys = Object.keys(SOC).filter(k => SITE[k] && k !== "whatsapp");
   const links = s => keys.map(k => `<a href="${SITE[k]}" target="_blank" rel="noopener" aria-label="${SOC[k].n}" title="${SOC[k].n}" style="--c:${SOC[k].c}">${socIcon(k, s)}</a>`).join("");
   $("socialTop").innerHTML = links(19); $("socialFoot").innerHTML = links(24); $("socialContact").innerHTML = links(24);
-  $("socialCards").innerHTML = ["instagram","facebook","threads","a9ent"].filter(k => SITE[k]).map(k =>
+  if ($("socialCards")) $("socialCards").innerHTML = ["instagram","facebook","threads","a9ent"].filter(k => SITE[k]).map(k =>
     `<a class="social-card" href="${SITE[k]}" target="_blank" rel="noopener"><span class="s-ic" style="background:${SOC[k].c}">${socIcon(k, 34)}</span>
      <b>${SOC[k].n}</b><small class="s-handle">${k === "a9ent" ? "a9ent.co/jasonchoirealestate" : "@" + (k === "facebook" ? (SITE.facebookHandle || SITE.handle || "") : (SITE.handle || ""))}</small><small>${t(SOC[k].s)}</small><span class="s-go">${lang === "ko" ? "팔로우 →" : "Follow →"}</span></a>`).join("");
 }
@@ -265,7 +265,7 @@ function renderHome() {
   $("featTabs").innerHTML = tabs.map(([k, l]) => `<button class="${featTab === k ? "on" : ""}" data-k="${k}">${t(l)}</button>`).join("");
   $("featTabs").querySelectorAll("button").forEach(b => b.onclick = () => { featTab = b.dataset.k; renderHome(); });
   const pick = MINE.filter(l => l.status === "active" && kind(l) === featTab);
-  $("featuredGrid").innerHTML = gridHTML(pick.sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0)).slice(0, 6));
+  $("featuredGrid").innerHTML = gridHTML(pick.sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0)).slice(0, 3));
   const nActive = MINE.filter(l => l.status === "active").length;
   $("statActive").textContent = nActive;
   $("statListings").style.display = nActive ? "" : "none"; $("statService").style.display = nActive ? "none" : "";
@@ -527,7 +527,7 @@ function bindSold(container, list) {
 }
 function renderTrack() {
   $("trackSection").style.display = SOLD.length ? "" : "none";
-  const homeList = SOLD.slice(0, 6);
+  const homeList = SOLD.slice(0, 3);
   $("trackHome").innerHTML = homeList.map(soldCard).join(""); bindSold($("trackHome"), homeList);
   const groups = ["all","biz","lease","inv","res"].filter(g => g === "all" || SOLD.some(s => soldGroup(s) === g));
   $("trackChips").innerHTML = groups.length > 2 ? groups.map(g => `<button class="chip ${trackGrp === g ? "on" : ""}" data-g="${g}">${t("grp." + g)}</button>`).join("") : "";
