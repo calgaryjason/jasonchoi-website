@@ -741,6 +741,15 @@ document.querySelectorAll(".lead-form").forEach(form => form.addEventListener("s
   form.querySelector(".form-msg").style.display = "block"; form.reset();
 }));
 
+/* ---------- Google Analytics 4 ---------- */
+if (SITE.ga4Id) {
+  const g = document.createElement("script"); g.async = true; g.src = "https://www.googletagmanager.com/gtag/js?id=" + SITE.ga4Id; document.head.appendChild(g);
+  window.dataLayer = window.dataLayer || []; window.gtag = function () { dataLayer.push(arguments); };
+  gtag("js", new Date()); gtag("config", SITE.ga4Id);
+  document.addEventListener("submit", e => { if (e.target.classList.contains("lead-form")) gtag("event", "generate_lead", { form: e.target.dataset.subject || "form" }); }, true);
+  document.addEventListener("click", e => { const a = e.target.closest("a[href^='tel:'],a[href^='mailto:']"); if (a) gtag("event", a.href.startsWith("tel") ? "click_call" : "click_email"); });
+}
+
 /* ---------- Start ---------- */
 if (SITE.analyticsToken) {
   const s = document.createElement("script"); s.defer = true; s.src = "https://static.cloudflareinsights.com/beacon.min.js";

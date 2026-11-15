@@ -40,6 +40,9 @@ window.SITE = {
      Empty = off. (If you choose Cloudflare's "automatic setup", leave this empty.) */
   analyticsToken: "",
 
+  /* Google Analytics 4 Measurement ID, e.g. "G-ABC123XYZ". Empty = off. */
+  ga4Id: "",
+
   /* Maximum photos per listing. */
   maxPhotos: 5,
 

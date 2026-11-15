@@ -9,6 +9,8 @@ on:
       - "data/ddf-listings.json"
       - "scripts/build-pages.mjs"
       - "index.html"
+      - "data/market.json"
+      - "scripts/seo_pages.py"
   workflow_dispatch:
 permissions:
   contents: write
@@ -20,11 +22,12 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
+      - run: python3 scripts/seo_pages.py
       - run: node scripts/build-pages.mjs
       - name: Save changes
         run: |
           git config user.name "site-bot"
           git config user.email "site-bot@users.noreply.github.com"
-          git add listing ko sitemap.xml robots.txt
+          git add listing ko sitemap.xml robots.txt calgary-home-buyers calgary-home-sellers airdrie-real-estate cochrane-real-estate okotoks-real-estate
           git diff --staged --quiet || git commit -m "Rebuild listing pages"
           git push
