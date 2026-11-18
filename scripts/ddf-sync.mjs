@@ -16,6 +16,7 @@ const TOKEN_URL = "https://identity.crea.ca/connect/token";
 const API = "https://ddfapi.realtor.ca/odata/v1";
 const OUT = "data/ddf-listings.json";
 const MAX_LISTINGS = 600;              // keep the file small
+const LOCAL_CITIES = ["Calgary", "Airdrie", "Cochrane", "Chestermere", "Okotoks", "Rocky View County", "Foothills County", "Strathmore", "High River"];
 const PROVINCES = ["Alberta", "British Columbia"];
 
 /* Category rules: first match wins. Words are checked in property type, business type and remarks. */
@@ -44,12 +45,10 @@ async function getToken() {
   return (await r.json()).access_token;
 }
 
-async function getAll(token) {
-  const provinceFilter = PROVINCES.map(p => `StateOrProvince eq '${p}'`).join(" or ");
-  const filter = `(${provinceFilter}) and (PropertySubType ne 'Single Family')`;
+async function fetchPages(token, filter, limit) {
   let url = `${API}/Property?$filter=${encodeURIComponent(filter)}&$top=100&$orderby=ModificationTimestamp desc`;
   const rows = [];
-  while (url && rows.length < MAX_LISTINGS) {
+  while (url && rows.length < limit) {
     const r = await fetch(url, { headers: { Authorization: "Bearer " + token, Accept: "application/json" } });
     if (!r.ok) throw new Error("API error " + r.status + " " + await r.text());
     const j = await r.json();
@@ -57,6 +56,16 @@ async function getAll(token) {
     url = j["@odata.nextLink"] || null;
   }
   return rows;
+}
+/* Calgary-area listings first (all of them), then the newest from the rest of Alberta and BC. */
+async function getAll(token) {
+  const base = "PropertySubType ne 'Single Family'";
+  const local = `(${LOCAL_CITIES.map(c => `City eq '${c}'`).join(" or ")}) and StateOrProvince eq 'Alberta' and ${base}`;
+  const rest = `(${PROVINCES.map(p => `StateOrProvince eq '${p}'`).join(" or ")}) and ${base}`;
+  const first = await fetchPages(token, local, MAX_LISTINGS);
+  const seen = new Set(first.map(r => r.ListingKey));
+  const more = (await fetchPages(token, rest, MAX_LISTINGS + first.length)).filter(r => !seen.has(r.ListingKey));
+  return first.concat(more).slice(0, MAX_LISTINGS);
 }
 
 const officeCache = {};
@@ -70,14 +79,34 @@ async function officeName(token, key) {
   return officeCache[key];
 }
 
+/* Property type and business type decide first; the description is used only when they say nothing specific. */
 function classify(p) {
-  const text = [p.PropertySubType, [].concat(p.BusinessType || []).join(" "), p.PublicRemarks].join(" ");
-  for (const [cat, rx] of CATEGORY_RULES) if (rx.test(text)) return cat;
+  const typeText = [p.PropertySubType, [].concat(p.BusinessType || []).join(" ")].join(" ");
+  for (const [cat, rx] of CATEGORY_RULES) if (rx.test(typeText)) return cat;
+  const remarks = (p.PublicRemarks || "").replace(/liquor licen[cs]e[ds]?/gi, "");
+  for (const [cat, rx] of CATEGORY_RULES) if (rx.test(remarks)) return cat;
   return "other-business";
 }
+const LABEL = { "gas-station": "Gas Station", grocery: "Grocery / Convenience Store", "car-wash": "Car Wash", "liquor-store": "Liquor Store",
+  hotel: "Hotel / Motel", restaurant: "Restaurant", "multi-family": "Multi-Family Property", industrial: "Industrial Property",
+  land: "Land", "retail-office": "Retail / Office Property", "other-business": "Business" };
+function cityOf(p) {
+  if (p.City) return p.City;
+  const m = (p.ListingURL || "").match(/real-estate\/\d+\/([^/?#]+)/);
+  return m ? m[1].split("-").map(w => w[0].toUpperCase() + w.slice(1)).join(" ") : "";
+}
+/* Some listings come without a province; the postal code tells us (T = Alberta, V = BC). */
+function provOf(p) {
+  if (p.StateOrProvince === "Alberta") return "AB";
+  if (p.StateOrProvince === "British Columbia") return "BC";
+  const pc = (p.PostalCode || "").trim().toUpperCase();
+  if (pc.startsWith("T")) return "AB";
+  if (pc.startsWith("V")) return "BC";
+  return /calgary|edmonton|airdrie|cochrane|chestermere|okotoks|red deer|lethbridge|medicine hat|grande prairie|strathmore|high river|canmore/i.test(cityOf(p)) ? "AB" : "BC";
+}
 function region(p) {
-  if (p.StateOrProvince === "British Columbia") return "bc";
-  return /calgary/i.test(p.City || "") ? "calgary" : "alberta";
+  if (provOf(p) === "BC") return "bc";
+  return /calgary/i.test(cityOf(p)) ? "calgary" : "alberta";
 }
 function offering(p) {
   const hasBiz = [].concat(p.BusinessType || []).length > 0 || /business/i.test(p.PropertySubType || "");
@@ -95,24 +124,26 @@ const raw = await getAll(token);
 const out = [];
 for (const p of raw) {
   const isLease = !p.ListPrice && !!p.LeaseAmount;
+  const cat = classify(p), prov = provOf(p), city = cityOf(p);
   out.push({
     id: "ddf-" + p.ListingKey,
     source: "ddf",
     status: "active",
     type: "commercial",
-    category: classify(p),
+    category: cat,
     offering: offering(p),
     deal: isLease ? "lease" : "sale",
     price: p.ListPrice || null,
     leaseRate: isLease ? p.LeaseAmount : null,
     address: p.UnparsedAddress || "",
-    city: [p.City, p.StateOrProvince === "Alberta" ? "AB" : "BC"].filter(Boolean).join(", "),
+    city: [city, prov].filter(Boolean).join(", "),
     region: region(p),
     sqft: p.BuildingAreaTotal || null,
     landSize: p.LotSizeArea ? `${p.LotSizeArea} ${p.LotSizeUnits || ""}`.trim() : null,
     zoning: p.ZoningDescription || null,
     mls: p.ListingId || "",
-    title_en: [p.PropertySubType, [].concat(p.BusinessType || []).join(", ")].filter(Boolean).join(" – "),
+    title_en: `${LABEL[cat]} for ${isLease ? "Lease" : "Sale"}${city ? " – " + city + ", " + prov : ""}`,
+    subType: [p.PropertySubType, [].concat(p.BusinessType || []).join(", ")].filter(Boolean).join(" – "),
     desc_en: p.PublicRemarks || "",
     listOffice: await officeName(token, p.ListOfficeKey),
     realtorUrl: p.ListingURL ? (p.ListingURL.startsWith("http") ? p.ListingURL : "https://" + p.ListingURL) : "https://www.realtor.ca/",
