@@ -610,3 +610,15 @@ footer a:hover{color:#fff}
 .side-map .office-map-btns .btn{background:#fff;color:#1d1f24;border-color:#fff;padding:8px 14px;font-size:14px;box-shadow:0 4px 12px rgba(0,0,0,.25)}
 .contact-side .qr-block img{width:96px;height:96px}
 .contact-side .qr-block{padding:16px 18px}
+
+/* listing search */
+.kw-row{margin-top:20px}
+.kw-row input{width:100%;padding:14px 18px 14px 46px;border:1px solid var(--line);border-radius:var(--radius);font:inherit;font-size:15px;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' fill='none' stroke='%236b6f78' stroke-width='2' viewBox='0 0 24 24'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m20 20-3.5-3.5'/%3E%3C/svg%3E") no-repeat 16px center}
+.kw-row input:focus{outline:none;border-color:var(--red);box-shadow:0 0 0 3px rgba(200,40,43,.12)}
+.kw-row + .filter-bar{margin-top:10px}
+.ddf-count{color:#6b6f78;font-size:14px;margin:-6px 0 14px}
+.hero-search{display:flex;gap:8px;margin-top:22px;max-width:760px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:8px;backdrop-filter:blur(4px)}
+.hero-search select,.hero-search input{border:0;border-radius:8px;padding:12px 14px;font:inherit;font-size:15px}
+.hero-search select{background:#fff;max-width:220px}
+.hero-search input{flex:1;min-width:0}
+@media(max-width:700px){.hero-search{flex-wrap:wrap}.hero-search select{max-width:none;flex:1 1 100%}.hero-search input{flex:1 1 60%}}

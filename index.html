@@ -93,6 +93,11 @@
           <a href="#home-evaluation" class="btn btn-white btn-lg" data-ko="내 집 가치는 얼마일까요?">What's My Home Worth?</a>
           <a href="#business" class="btn btn-ghost btn-lg" data-ko="상업용 & 비즈니스 매물">Commercial &amp; Business Opportunities</a>
         </div>
+        <form class="hero-search" id="heroSearch">
+          <select id="hsType" aria-label="Listing type"><option value="business" data-ko="비즈니스 매매">Businesses for Sale</option><option value="investment" data-ko="투자 부동산">Investment Properties</option><option value="leasing" data-ko="리스 공간">Space for Lease</option></select>
+          <input id="hsQ" type="search" placeholder="City or keyword – e.g. Calgary restaurant" data-ko-ph="도시 또는 키워드 – 예: Calgary 식당" aria-label="City or keyword">
+          <button class="btn btn-red" type="submit" data-ko="검색">Search</button>
+        </form>
       </div>
       <div class="hero-card">
         <img src="assets/jason-choi.jpg" alt="Jason Choi, REALTOR®">
@@ -264,6 +269,7 @@
   <div class="section pt-sm">
     <div class="wrap">
       <div class="cats cats-sm" id="bizCats"></div>
+      <div class="kw-row"><input id="bQ" type="search" placeholder="Search city, address or keyword – e.g. Calgary, sushi, NE" data-ko-ph="도시, 주소, 키워드 검색 – 예: Calgary, 스시, NE" aria-label="Search listings"></div>
       <div class="filter-bar">
         <div class="field"><label data-ko="매매 형태">Offering</label>
           <select id="bOffer"><option value="all" data-ko="전체">All</option><option value="business" data-ko="비즈니스만">Business Only</option><option value="business_property" data-ko="비즈니스 + 건물">Business + Property</option></select></div>
@@ -279,6 +285,7 @@
         <p class="muted small-mt" data-ko="REALTOR.ca DDF®를 통해 자동으로 업데이트되는 다른 브로커리지의 매물입니다. 관심 있는 매물은 저에게 연락 주세요.">Listings from other brokerages, updated through REALTOR.ca DDF®. Contact me to view any of them.</p></div>
         <span class="ddf-logo">REALTOR.ca DDF®</span>
       </div>
+      <p class="ddf-count" id="bizDdfCount"></p>
       <div class="grid" id="bizDdf"></div>
       <div class="more-wrap"><button class="btn btn-outline more-btn" data-target="biz" data-ko="더 보기">Show More</button></div>
       </div>
@@ -335,6 +342,7 @@
         </div>
       </div>
 
+      <div class="kw-row"><input id="lQ" type="search" placeholder="Search city, address or keyword – e.g. Calgary, sushi, NE" data-ko-ph="도시, 주소, 키워드 검색 – 예: Calgary, 스시, NE" aria-label="Search listings"></div>
       <div class="filter-bar mt">
         <div class="field"><label data-ko="매물 종류">Space Type</label><select id="lCat"></select></div>
         <div class="field"><label data-ko="지역">Region</label><select id="lRegion" class="region-sel"></select></div>
@@ -349,6 +357,7 @@
         <div><div class="eyebrow" data-ko="MLS® 매물 · 매일 자동 업데이트">MLS® Listings · Updated Daily</div><h2 data-ko="다른 리스 매물">More Space for Lease</h2></div>
         <span class="ddf-logo">REALTOR.ca DDF®</span>
       </div>
+      <p class="ddf-count" id="leaseDdfCount"></p>
       <div class="grid" id="leaseDdf"></div>
       <div class="more-wrap"><button class="btn btn-outline more-btn" data-target="lease" data-ko="더 보기">Show More</button></div>
       </div>
@@ -413,6 +422,7 @@
   <div class="section pt-sm">
     <div class="wrap">
       <div class="cats cats-sm" id="invCats"></div>
+      <div class="kw-row"><input id="iQ" type="search" placeholder="Search city, address or keyword – e.g. Calgary, sushi, NE" data-ko-ph="도시, 주소, 키워드 검색 – 예: Calgary, 스시, NE" aria-label="Search listings"></div>
       <div class="filter-bar">
         <div class="field"><label data-ko="지역">Region</label><select id="iRegion" class="region-sel"></select></div>
         <div class="field"><label data-ko="최대 가격">Max Price</label><select id="iMax" class="price-sel"></select></div>
@@ -427,6 +437,7 @@
         <div><div class="eyebrow" data-ko="MLS® 매물 · 매일 자동 업데이트">MLS® Listings · Updated Daily</div><h2 data-ko="다른 투자 매물">More Investment Properties</h2></div>
         <span class="ddf-logo">REALTOR.ca DDF®</span>
       </div>
+      <p class="ddf-count" id="invDdfCount"></p>
       <div class="grid" id="invDdf"></div>
       <div class="more-wrap"><button class="btn btn-outline more-btn" data-target="inv" data-ko="더 보기">Show More</button></div>
       </div>

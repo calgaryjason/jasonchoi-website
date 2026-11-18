@@ -90,6 +90,9 @@ function classify(p) {
 const LABEL = { "gas-station": "Gas Station", grocery: "Grocery / Convenience Store", "car-wash": "Car Wash", "liquor-store": "Liquor Store",
   hotel: "Hotel / Motel", restaurant: "Restaurant", "multi-family": "Multi-Family Property", industrial: "Industrial Property",
   land: "Land", "retail-office": "Retail / Office Property", "other-business": "Business" };
+const LABEL_KO = { "gas-station": "주유소", grocery: "식료품점·편의점", "car-wash": "세차장", "liquor-store": "리커스토어",
+  hotel: "호텔·모텔", restaurant: "레스토랑", "multi-family": "다세대 건물", industrial: "산업용 부동산",
+  land: "토지", "retail-office": "상가·사무실", "other-business": "비즈니스" };
 function cityOf(p) {
   if (p.City) return p.City;
   const m = (p.ListingURL || "").match(/real-estate\/\d+\/([^/?#]+)/);
@@ -143,6 +146,7 @@ for (const p of raw) {
     zoning: p.ZoningDescription || null,
     mls: p.ListingId || "",
     title_en: `${LABEL[cat]} for ${isLease ? "Lease" : "Sale"}${city ? " – " + city + ", " + prov : ""}`,
+    title_ko: `${LABEL_KO[cat]} ${isLease ? "임대" : "매매"}${city ? " – " + city + ", " + prov : ""}`,
     subType: [p.PropertySubType, [].concat(p.BusinessType || []).join(", ")].filter(Boolean).join(" – "),
     desc_en: p.PublicRemarks || "",
     listOffice: await officeName(token, p.ListOfficeKey),

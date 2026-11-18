@@ -5,7 +5,7 @@
    ========================================================= */
 const SITE = window.SITE || {};
 const MAX_PHOTOS = SITE.maxPhotos || 5;
-const PAGE = 6;
+const PAGE = 9;
 const $ = id => document.getElementById(id);
 
 /* ---------- Dictionary for script-made text: [English, Korean] ---------- */
@@ -79,6 +79,7 @@ function applyLang() {
   document.body.classList.toggle("ko", lang === "ko");
   document.querySelectorAll("[data-ko]").forEach(el => el.textContent = lang === "ko" ? el.dataset.ko : el.dataset.en);
   document.querySelectorAll(".lang button").forEach(b => b.classList.toggle("on", b.dataset.lang === lang));
+  document.querySelectorAll("[data-ko-ph]").forEach(e => { if (!e.dataset.enPh) e.dataset.enPh = e.placeholder; e.placeholder = lang === "ko" ? e.dataset.koPh : e.dataset.enPh; });
   fillSelects(); renderAll();
 }
 
@@ -276,6 +277,13 @@ function renderHome() {
 
 /* ---------- Business / Leasing / Investment ---------- */
 const region = (l, v) => v === "all" || l.region === v;
+const KO_WORDS = { "식당": "restaurant", "레스토랑": "restaurant", "편의점": "convenience", "주유소": "gas", "호텔": "hotel", "모텔": "motel", "세차": "car wash", "리커": "liquor", "스시": "sushi", "카페": "cafe", "토지": "land", "창고": "warehouse", "사무실": "office", "캘거리": "calgary" };
+const kwMatch = (l, q) => {
+  q = (q || "").trim().toLowerCase(); if (!q) return true;
+  const hay = [l.title_en, l.title_ko, l.city, l.address, l.desc_en, l.subType, l.mls, l.category, t("c." + l.category)].join(" ").toLowerCase();
+  return q.split(/\s+/).every(w => hay.includes(w) || (KO_WORDS[w] && hay.includes(KO_WORDS[w])));
+};
+const countLine = (id, n) => { const e = $(id); if (e) e.textContent = n ? (lang === "ko" ? `MLS® 매물 ${num(n)}개` : `${num(n)} MLS® listings`) : (lang === "ko" ? "조건에 맞는 MLS® 매물이 없습니다. 조건을 바꾸거나 저에게 문의해 주세요." : "No MLS® listings match. Try other filters or contact me."); };
 function renderBusiness() {
   $("bizCats").innerHTML = catTiles(BIZ_CATS, bizCat, "business");
   let tip = $("bizTip"); if (!tip) { tip = document.createElement("div"); tip.id = "bizTip"; $("bizCats").after(tip); }
@@ -284,32 +292,45 @@ function renderBusiness() {
     <a class="btn btn-red" href="uploads/guides/Grocery_Store_Purchase_Guide_AB_BC.pdf" target="_blank" rel="noopener">${lang === "ko" ? "무료 가이드 (영문) →" : "Free Grocery Store Guide →"}</a></div>` : "";
   $("bizTitle").textContent = bizCat === "all" ? t("bizAll") : t("c." + bizCat) + t("forSaleSuffix");
   const max = +$("bMax").value, off = $("bOffer").value, rg = $("bRegion").value, srt = $("bSort").value;
-  const f = l => isBiz(l) && l.status === "active" && (bizCat === "all" || l.category === bizCat) && (off === "all" || l.offering === off) && region(l, rg) && (!max || !l.price || l.price <= max);
+  const q = $("bQ").value;
+  const f = l => isBiz(l) && l.status === "active" && kwMatch(l, q) && (bizCat === "all" || l.category === bizCat) && (off === "all" || l.offering === off) && region(l, rg) && (!max || !l.price || l.price <= max);
   $("bizMine").innerHTML = gridHTML(sortItems(MINE.filter(f), srt));
   const d = sortItems(DDF.filter(f), srt);
-  $("bizDdf").innerHTML = gridHTML(d.slice(0, shown.biz));
+  $("bizDdf").innerHTML = gridHTML(d.slice(0, shown.biz)); countLine("bizDdfCount", d.length);
   document.querySelector('[data-target="biz"]').style.display = d.length > shown.biz ? "" : "none";
 }
 function renderLeasing() {
   const cat = $("lCat").value, rg = $("lRegion").value, min = +$("lMin").value, srt = $("lSort").value;
-  const f = l => isLease(l) && l.status === "active" && region(l, rg) && (!min || (l.sqft || 0) >= min) &&
+  const q = $("lQ").value;
+  const f = l => isLease(l) && l.status === "active" && kwMatch(l, q) && region(l, rg) && (!min || (l.sqft || 0) >= min) &&
     (cat === "all" || (cat === "other" ? !["retail-office","restaurant","industrial"].includes(l.category) : l.category === cat));
   $("leaseMine").innerHTML = gridHTML(sortItems(MINE.filter(f), srt));
   const d = sortItems(DDF.filter(f), srt);
-  $("leaseDdf").innerHTML = gridHTML(d.slice(0, shown.lease));
+  $("leaseDdf").innerHTML = gridHTML(d.slice(0, shown.lease)); countLine("leaseDdfCount", d.length);
   document.querySelector('[data-target="lease"]').style.display = d.length > shown.lease ? "" : "none";
 }
 function renderInvestment() {
   $("invCats").innerHTML = catTiles(INV_CATS, invCat, "investment");
   $("invTitle").textContent = invCat === "all" ? t("invAll") : t("c." + invCat);
   const max = +$("iMax").value, rg = $("iRegion").value, cap = +$("iCap").value, srt = $("iSort").value;
-  const f = l => isInv(l) && l.status === "active" && (invCat === "all" || l.category === invCat) && region(l, rg) && (!max || !l.price || l.price <= max) && (!cap || (l.capRate || 0) >= cap);
+  const q = $("iQ").value;
+  const f = l => isInv(l) && l.status === "active" && kwMatch(l, q) && (invCat === "all" || l.category === invCat) && region(l, rg) && (!max || !l.price || l.price <= max) && (!cap || (l.capRate || 0) >= cap);
   $("invMine").innerHTML = gridHTML(sortItems(MINE.filter(f), srt));
   const d = sortItems(DDF.filter(f), srt);
-  $("invDdf").innerHTML = gridHTML(d.slice(0, shown.inv));
+  $("invDdf").innerHTML = gridHTML(d.slice(0, shown.inv)); countLine("invDdfCount", d.length);
   document.querySelector('[data-target="inv"]').style.display = d.length > shown.inv ? "" : "none";
 }
 ["bOffer","bRegion","bMax","bSort"].forEach(id => $(id).addEventListener("change", () => { shown.biz = PAGE; renderBusiness(); }));
+$("bQ").addEventListener("input", () => { shown.biz = PAGE; renderBusiness(); });
+$("lQ").addEventListener("input", () => { shown.lease = PAGE; renderLeasing(); });
+$("iQ").addEventListener("input", () => { shown.inv = PAGE; renderInvestment(); });
+$("heroSearch").addEventListener("submit", e => {
+  e.preventDefault();
+  const v = $("hsType").value, q = $("hsQ").value;
+  $({ business: "bQ", investment: "iQ", leasing: "lQ" }[v]).value = q;
+  location.hash = v;
+});
+
 ["lCat","lRegion","lMin","lSort"].forEach(id => $(id).addEventListener("change", () => { shown.lease = PAGE; renderLeasing(); }));
 ["iRegion","iMax","iCap","iSort"].forEach(id => $(id).addEventListener("change", () => { shown.inv = PAGE; renderInvestment(); }));
 document.querySelectorAll(".more-btn").forEach(b => b.onclick = () => { shown[b.dataset.target] += PAGE; renderAll(); });
