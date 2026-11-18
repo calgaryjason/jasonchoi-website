@@ -3153,7 +3153,7 @@
   "source": "ddf",
   "status": "active",
   "type": "commercial",
-  "category": "retail-office",
+  "category": "laundry",
   "offering": "business",
   "deal": "sale",
   "price": 1399999,
@@ -3165,7 +3165,7 @@
   "landSize": null,
   "zoning": "CB",
   "mls": "A2327546",
-  "title_en": "Retail / Office Property for Sale – Strathmore, AB",
+  "title_en": "Dry Cleaning Business for Sale – Strathmore, AB",
   "desc_en": "One of the finest buildings in downtown Strathmore. Former ATB Financial Services Branch Office located on busy Second Ave and Second Street intersection with high visibility. Currently operated as a fitness centre looking for new owners.  Includes building and all fitness paid for fitness equipment.  There are also two physio rooms leased out one to a massage therapist and the other to an esthetician. The fitness business is showing good returns in revenue and the client list is growing along with the population growth that Strathmore is experiencing.  The building is divided into two fitness rooms with fitness equipment and a yoga studio with a floating hardwood floor and floor to ceiling mirrors.  There are male and female washrooms complete with shower stalls and secure lockers and a laundry area with front load washer and dryer.  The building has been meticulously maintained over the years.  It doesn't get much better than this.  A turnkey business opportunity for the fitness inspired.  Needs nothing.  Purchase and enjoy the rewards. (id:68043)",
   "listOffice": "CIR Realty",
   "realtorUrl": "https://www.realtor.ca/real-estate/30011365/137-second-avenue-strathmore-downtownstrathmore",
@@ -3184,7 +3184,7 @@
    "https://ddfcdn.realtor.ca/listing/TS639193902930870000/reb9/highres/6/A2327546_12.jpg"
   ],
   "subType": "Business – Recreation",
-  "title_ko": "상가·사무실 매매 – Strathmore, AB"
+  "title_ko": "세탁소·수선 매매 – Strathmore, AB"
  },
  {
   "id": "ddf-29938877",
@@ -4037,7 +4037,7 @@
   "source": "ddf",
   "status": "active",
   "type": "commercial",
-  "category": "industrial",
+  "category": "laundry",
   "offering": "business",
   "deal": "sale",
   "price": 12500000,
@@ -4049,7 +4049,7 @@
   "landSize": "39 acres",
   "zoning": "Non-Res/Com.(B&S)",
   "mls": "A2356458",
-  "title_en": "Industrial Property for Sale – Rural Rocky View County, AB",
+  "title_en": "Dry Cleaning Business for Sale – Rural Rocky View County, AB",
   "desc_en": "A RARE COMMERCIAL PET BOARDING FACILITY JUST EAST OF CALGARY – NEARLY 40 ACRES | 3 TITLES | 44,000+ SQ. FT. OF DEVELOPED SPACE | 15 BUILDINGS PLUS ONE RESIDENCEAn exceptional opportunity to acquire one of Canada's most recognized purpose-built pet care facilities, currently operating as The Country Club Pet Resort. This is being offered as an asset sale. Strategically located just minutes east of Calgary along Highway 22X, this remarkable commercial property encompasses nearly 40 acres across three separate titles and offers an impressive combination of specialized infrastructure, established facilities and future potential.Currently home to a luxury pet resort offering boarding, private off-leash park rentals and pet memorial services, the property features an extensive collection of improvements designed to support a wide range of commercial operations.The main boarding operation occupies 16.79 acres and includes four kennel buildings with approximately 14,000 sq. ft. of indoor dog boarding space, complemented by outdoor concrete and gravel runs, romping corrals and secure off-leash areas. The upper level of the main kennel building features an additional 4,000 sq. ft. cattery for cats and other small animals. Supporting amenities include paved parking, a heated workshop, tool shop, laundry facilities and a commercial-grade crematory.A separate 2.71-acre parcel features a 2,207 sq. ft. walkout bungalow with panoramic views toward downtown Calgary, mature landscaping, a tranquil waterfall and pond, a double attached garage, additional triple garage and several outbuildings. The residence offers flexibility for owner occupancy, staff accommodation or other specialized uses.The third parcel encompasses 19.50 acres and features six fully fenced private off-leash parks. Each park is designed with privacy screening, secure chain-link gates and paved parking, providing an attractive setting for recreational and commercial use.The three properties benefit from  extensive shared infrastructure, including paved internal roads, underground utilities and backup power generation. With five wells, substantial electrical service, approximately 40 paved parking stalls and a combination of commercial, warehouse, service and residential improvements, the property offers an extraordinary foundation for continued operations or an alternative business venture.Beyond its existing use, this is an opportunity to acquire a substantial commercial landholding in a strategic location near Calgary and the Prairie Economic Gateway inland port. Whether continuing a pet care operation, expanding specialized services or exploring other permitted and discretionary commercial opportunities, the possibilities are extensive. (id:68043)",
   "listOffice": "Royal LePage Benchmark",
   "realtorUrl": "https://www.realtor.ca/real-estate/30487753/282063-township-road-224a-rural-rocky-view-county",
@@ -4068,7 +4068,7 @@
    "https://ddfcdn.realtor.ca/listing/TS639299088881830000/reb9/highres/8/A2356458_11.jpg"
   ],
   "subType": "Other – Other",
-  "title_ko": "산업용 부동산 매매 – Rural Rocky View County, AB"
+  "title_ko": "세탁소·수선 매매 – Rural Rocky View County, AB"
  },
  {
   "id": "ddf-30415505",

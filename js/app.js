@@ -14,10 +14,10 @@ const D = {
   anyPrice:["Any Price","가격 무관"], sortNew:["Newest","최신순"], sortLow:["Price: Low to High","가격 낮은 순"], sortHigh:["Price: High to Low","가격 높은 순"], sortSize:["Size: Largest","면적 큰 순"],
   "c.restaurant":["Restaurant","레스토랑"], "c.gas-station":["Gas Station","주유소"], "c.hotel":["Hotel & Motel","호텔 & 모텔"], "c.liquor-store":["Liquor Store","리커스토어"],
   "c.grocery":["Grocery & Convenience","식료품점 & 편의점"], "c.car-wash":["Car Wash","세차장"], "c.retail-office":["Retail & Office","상가 & 오피스"], "c.industrial":["Industrial","산업용"], "c.land":["Land","토지"],
-  "c.multi-family":["Multi-Family","다세대 주택"], "c.home":["Residential Homes","주거용 주택"], "cs.home":["Houses, condos, townhomes","주택, 콘도, 타운하우스"], "c.other-business":["Other Business","기타 비즈니스"],
+  "c.multi-family":["Multi-Family","다세대 주택"], "c.home":["Residential Homes","주거용 주택"], "cs.home":["Houses, condos, townhomes","주택, 콘도, 타운하우스"], "c.other-business":["Other Business","기타 비즈니스"], "c.laundry":["Dry Cleaning & Alterations","세탁소·수선"], "cs.laundry":["Dry cleaning, laundromat, tailor","세탁소, 코인세탁, 수선"], "c.beauty":["Hair, Nail & Spa","미용실·네일"], "cs.beauty":["Salon, nails, spa, barber","미용실, 네일, 스파, 이발소"],
   "cs.restaurant":["Restaurants & cafés","레스토랑, 카페"], "cs.gas-station":["Gas & convenience","주유소, 편의점"], "cs.hotel":["Hotel, motel, campground","호텔, 모텔, 캠핑장"],
   "cs.liquor-store":["Liquor stores","리커스토어"], "cs.grocery":["Grocery, convenience, Asian markets","식료품점, 편의점, 마켓"], "cs.car-wash":["Self-serve & automatic","셀프, 자동 세차"], "cs.retail-office":["Plazas, retail, office","상가, 오피스"],
-  "cs.industrial":["Warehouse & shop","창고, 공장"], "cs.land":["Commercial land","상업용 토지"], "cs.multi-family":["Apartment buildings","아파트, 다가구"], "cs.other-business":["Dry cleaning, salon, etc.","세탁소, 미용실 등"],
+  "cs.industrial":["Warehouse & shop","창고, 공장"], "cs.land":["Commercial land","상업용 토지"], "cs.multi-family":["Apartment buildings","아파트, 다가구"], "cs.other-business":["Fitness, school, auto & more","피트니스, 학원, 정비 등"],
   sale:["For Sale","매매"], lease:["For Lease","리스"], sold:["Sold","판매 완료"], active:["Active","판매 중"],
   "off.business":["Business Only","비즈니스만"], "off.business_property":["Business + Property","비즈니스 + 건물"], "off.property":["Property","부동산"],
   "t.all":["All","전체"], "t.residential":["House","단독 주택"], "t.condo":["Condo","콘도"], "t.townhome":["Townhome","타운하우스"], "t.land":["Land","토지"],
@@ -97,6 +97,8 @@ const ICONS = {
   "land":'<path d="M3 20l6-9 4 5 3-4 5 8zM16 7a2 2 0 1 0 0-.1"/>',
   "multi-family":'<path d="M4 21V5h10v16M14 9h6v12M4 21h16M7 8h2M7 12h2M7 16h2M11 8h0M17 13h0M17 17h0"/>',
   "other-business":'<path d="M3 7h18v13H3zM8 7V4h8v3M3 12h18"/>',
+  "laundry":'<path d="M12 4a2 2 0 1 1 2 2c-1 0-2 .7-2 1.7V9M12 9l9 7H3z"/>',
+  "beauty":'<circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4 8.1 15.9M14.5 14.5 20 20M8.1 8.1 12 12"/>',
   "home":'<path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>'
 };
 const icon = (k, s = 26) => `<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">${ICONS[k] || ICONS["other-business"]}</svg>`;
@@ -120,9 +122,38 @@ function renderSocial() {
 }
 
 /* ---------- Categories ---------- */
-const BIZ_CATS = ["restaurant","gas-station","grocery","hotel","liquor-store","car-wash","other-business"];
+const BIZ_CATS = ["restaurant","grocery","laundry","beauty","gas-station","liquor-store","hotel","car-wash","other-business"];
+/* Sub-types inside each business category (detected from the listing text). First match wins; the rest go to "other". */
+const SUBS = {
+  restaurant: [["korean", /korean|한식|bibimbap|bulgogi|k-?bbq|korean fried chicken/i, "Korean", "한식"],
+    ["asian", /sushi|japanese|ramen|chinese|vietnamese|\bpho\b|thai|asian|dumpling|noodle|teriyaki|izakaya|dim sum/i, "Sushi & Asian", "일식·아시안"],
+    ["cafe", /caf[eé]|coffee|bakery|dessert|ice cream|bubble tea|tea shop|gelato|donut|creamery|juice/i, "Café, Bakery & Dessert", "카페·베이커리·디저트"],
+    ["pub", /\bpub\b|\bbar\b|lounge|brewery|night ?club|tavern/i, "Pub & Bar", "펍·바"],
+    ["fast", /pizza|burger|subway|sandwich|fast food|quick service|donair|shawarma|chicken|taco|sub shop|wings/i, "Pizza & Fast Food", "피자·패스트푸드"]],
+  grocery: [["conv", /convenience|c-store|mini ?mart|7-eleven|circle k|corner store|variety store/i, "Convenience Store", "편의점"],
+    ["groc", /grocery|supermarket|market|food store/i, "Grocery & Market", "식료품점·마켓"]],
+  laundry: [["dry", /dry ?clean/i, "Dry Cleaning", "드라이클리닝"], ["coin", /laundromat|coin laundry|laundry/i, "Laundromat", "코인세탁"],
+    ["alter", /alteration|tailor|shoe|seamstress/i, "Alterations & Shoe Repair", "수선·구두"]],
+  beauty: [["hair", /hair|salon|barber/i, "Hair Salon & Barber", "미용실·이발소"], ["nail", /nail|lash|brow|esthetic/i, "Nails & Lashes", "네일·속눈썹"],
+    ["spa", /\bspa\b|massage|wellness/i, "Spa & Massage", "스파·마사지"]],
+  hotel: [["motel", /motel|\binn\b/i, "Motel & Inn", "모텔"], ["hotel", /hotel/i, "Hotel", "호텔"],
+    ["camp", /campground|rv park|cabin|lodge|resort/i, "Campground & Lodge", "캠핑장·로지"]],
+  "other-business": [["fit", /fitness|gym|yoga|martial|pilates|crossfit/i, "Fitness", "피트니스"],
+    ["edu", /school|tutor|daycare|child ?care|preschool|academy|learning centre|learning center/i, "School & Daycare", "학원·데이케어"],
+    ["auto", /auto repair|mechanic|tire|collision|auto body|oil change|automotive/i, "Auto Repair", "자동차 정비"],
+    ["vape", /vape|tobacco|cannabis|smoke shop/i, "Vape & Cannabis", "베이프·대마초"],
+    ["health", /clinic|dental|physio|pharmacy|optical|chiropract/i, "Health & Clinic", "클리닉·약국"],
+    ["retail", /clothing|boutique|apparel|gift|furniture|flower|florist|retail store|jewel/i, "Retail Store", "소매점"],
+    ["trade", /construction|contractor|trucking|transport|manufactur|wholesale|distribution|warehous|industrial/i, "Trades & Industrial", "건설·운송·제조"]]
+};
+const ltext = l => [l.title_en, l.subType, l.desc_en].join(" ");
+const subOf = l => { const s = SUBS[bizCatOf(l)]; if (!s) return ""; const m = s.find(([, rx]) => rx.test(ltext(l))); return m ? m[0] : "other"; };
+const bizCatOf = l => BIZ_CATS.includes(l.category) ? l.category : "other-business";
+const FRANCHISE_RX = /franchise|subway|tim hortons|a&w|domino|pizza hut|booster juice|mr\.? sub|edo japan|quesada|freshii|mary brown|marble slab|dairy queen|7-eleven|circle k|mac's|petro-canada|esso|shell|husky|co-op|panago|little caesars|boston pizza|a & w|pizza 73|osmow|mucho burrito|chatime|coco fresh|gong cha|popeyes|kfc|wendy|mcdonald|starbucks|second cup|cobs bread|orange julius|fatburger|thai express|sushi shop|jugo juice/i;
+const isFranchise = l => FRANCHISE_RX.test(ltext(l));
+let bizSub = "all";
 const INV_CATS = ["retail-office","industrial","multi-family","hotel","gas-station","land"];
-const HOME_CATS = ["home","restaurant","gas-station","grocery","hotel","liquor-store","car-wash","retail-office","industrial","multi-family","land","other-business"];
+const HOME_CATS = ["home","restaurant","grocery","laundry","beauty","gas-station","liquor-store","hotel","retail-office","industrial","land","other-business"];
 const RES_TYPES = ["all","residential","condo","townhome","land"];
 
 /* ---------- Data & state ---------- */
@@ -228,7 +259,8 @@ const CAT_PHOTO = {   /* chosen photos per category; others are picked automatic
   "grocery": "uploads/listings/convenience-store-condo-eau-claire-2.jpg",
   "car-wash": "uploads/listings/car-wash-category.jpg",
   "land": "uploads/listings/land-category.jpg",
-  "other-business": "uploads/listings/dry-cleaning-depot-chestermere-1.jpg"
+  "laundry": "uploads/listings/dry-cleaning-depot-chestermere-1.jpg",
+  "other-business": "uploads/listings/shoe-care-alterations-mission-1.jpg"
 };
 function catPhoto(c) {
   if (CAT_PHOTO[c]) return CAT_PHOTO[c];
@@ -284,6 +316,16 @@ const kwMatch = (l, q) => {
   return q.split(/\s+/).every(w => hay.includes(w) || (KO_WORDS[w] && hay.includes(KO_WORDS[w])));
 };
 const countLine = (id, n) => { const e = $(id); if (e) e.textContent = n ? (lang === "ko" ? `MLS® 매물 ${num(n)}개` : `${num(n)} MLS® listings`) : (lang === "ko" ? "조건에 맞는 MLS® 매물이 없습니다. 조건을 바꾸거나 저에게 문의해 주세요." : "No MLS® listings match. Try other filters or contact me."); };
+function renderSubChips(items) {
+  let box = $("bizSubs"); if (!box) { box = document.createElement("div"); box.id = "bizSubs"; box.className = "sub-chips"; $("bizCats").after(box); }
+  const subs = SUBS[bizCat];
+  if (!subs) { box.innerHTML = ""; bizSub = "all"; return; }
+  const cnt = {}; items.forEach(l => { const s = subOf(l); cnt[s] = (cnt[s] || 0) + 1; });
+  const list = [["all", "All", "전체"], ...subs.map(([k, , en, ko]) => [k, en, ko]), ["other", "Other", "기타"]].filter(([k]) => k === "all" || cnt[k]);
+  if (bizSub !== "all" && !cnt[bizSub]) bizSub = "all";
+  box.innerHTML = list.map(([k, en, ko]) => `<button class="${bizSub === k ? "on" : ""}" data-s="${k}">${lang === "ko" ? ko : en}${k === "all" ? "" : ` <span>${cnt[k]}</span>`}</button>`).join("");
+  box.querySelectorAll("button").forEach(b => b.onclick = () => { bizSub = b.dataset.s; shown.biz = PAGE; renderBusiness(); });
+}
 function renderBusiness() {
   $("bizCats").innerHTML = catTiles(BIZ_CATS, bizCat, "business");
   let tip = $("bizTip"); if (!tip) { tip = document.createElement("div"); tip.id = "bizTip"; $("bizCats").after(tip); }
@@ -291,9 +333,13 @@ function renderBusiness() {
     <span>${lang === "ko" ? "재고 정산, 냉장 설비 점검, 면허(담배·로또), 업종별 멀티플을 정리한 무료 가이드를 받아 보세요." : "My free guide covers the inventory count, refrigeration checks, tobacco and lottery licences, and typical multiples."}</span>
     <a class="btn btn-red" href="uploads/guides/Grocery_Store_Purchase_Guide_AB_BC.pdf" target="_blank" rel="noopener">${lang === "ko" ? "무료 가이드 (영문) →" : "Free Grocery Store Guide →"}</a></div>` : "";
   $("bizTitle").textContent = bizCat === "all" ? t("bizAll") : t("c." + bizCat) + t("forSaleSuffix");
-  const max = +$("bMax").value, off = $("bOffer").value, rg = $("bRegion").value, srt = $("bSort").value;
+  const pr = $("bPrice").value, fr = $("bFran").value, off = $("bOffer").value, rg = $("bRegion").value, srt = $("bSort").value;
+  const [pLo, pHi] = pr === "all" ? [0, Infinity] : pr.split("-").map(Number);
   const q = $("bQ").value;
-  const f = l => isBiz(l) && l.status === "active" && kwMatch(l, q) && (bizCat === "all" || l.category === bizCat) && (off === "all" || l.offering === off) && region(l, rg) && (!max || !l.price || l.price <= max);
+  const base = l => isBiz(l) && l.status === "active" && kwMatch(l, q) && (bizCat === "all" || bizCatOf(l) === bizCat) && (off === "all" || l.offering === off) && region(l, rg) &&
+    (pr === "all" || (l.price && l.price >= pLo && l.price < pHi)) && (fr === "all" || (fr === "yes") === isFranchise(l));
+  const f = l => base(l) && (bizSub === "all" || subOf(l) === bizSub);
+  renderSubChips(MINE.concat(DDF).filter(base));
   $("bizMine").innerHTML = gridHTML(sortItems(MINE.filter(f), srt));
   const d = sortItems(DDF.filter(f), srt);
   $("bizDdf").innerHTML = gridHTML(d.slice(0, shown.biz)); countLine("bizDdfCount", d.length);
@@ -320,7 +366,7 @@ function renderInvestment() {
   $("invDdf").innerHTML = gridHTML(d.slice(0, shown.inv)); countLine("invDdfCount", d.length);
   document.querySelector('[data-target="inv"]').style.display = d.length > shown.inv ? "" : "none";
 }
-["bOffer","bRegion","bMax","bSort"].forEach(id => $(id).addEventListener("change", () => { shown.biz = PAGE; renderBusiness(); }));
+["bOffer","bRegion","bPrice","bFran","bSort"].forEach(id => $(id).addEventListener("change", () => { shown.biz = PAGE; renderBusiness(); }));
 $("bQ").addEventListener("input", () => { shown.biz = PAGE; renderBusiness(); });
 $("lQ").addEventListener("input", () => { shown.lease = PAGE; renderLeasing(); });
 $("iQ").addEventListener("input", () => { shown.inv = PAGE; renderInvestment(); });
@@ -620,9 +666,9 @@ function router() {
   if (h.startsWith("commercial")) h = h.replace("commercial", "business");   // old links
   let view, jump = null;
   if (JUMPS[h]) { [view, jump] = JUMPS[h]; }
-  else if (h.startsWith("business-") && BIZ_CATS.includes(h.slice(9))) { view = "business"; bizCat = h.slice(9); }
+  else if (h.startsWith("business-") && BIZ_CATS.includes(h.slice(9))) { view = "business"; bizCat = h.slice(9); bizSub = "all"; }
   else if (h.startsWith("investment-") && INV_CATS.includes(h.slice(11))) { view = "investment"; invCat = h.slice(11); }
-  else if (VIEWS.includes(h)) { view = h; if (h === "business") bizCat = "all"; if (h === "investment") invCat = "all"; }
+  else if (VIEWS.includes(h)) { view = h; if (h === "business") { bizCat = "all"; bizSub = "all"; } if (h === "investment") invCat = "all"; }
   else if (ALL().some(l => l.id === h)) view = "detail";
   else view = "home";
   if (view === "detail") {

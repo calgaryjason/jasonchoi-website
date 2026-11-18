@@ -24,6 +24,8 @@ const CATEGORY_RULES = [
   ["gas-station",   /gas station|service station|fuel|petro|esso|shell|husky|co-op gas/i],
   ["grocery",       /grocery|convenience store|supermarket|mini[- ]?mart|c-store|food store|asian market|korean market|ethnic food/i],
   ["car-wash",      /car ?wash|auto ?wash|detailing/i],
+  ["laundry",       /dry ?clean|laundromat|coin laundry|\blaundry\b|alteration|tailor/i],
+  ["beauty",        /hair salon|beauty salon|nail salon|\bnails?\b|barber|\bspa\b|esthetic|lash/i],
   ["liquor-store",  /liquor|wine store|beer store|off[- ]sale/i],
   ["hotel",         /hotel|motel|inn\b|lodge|campground|rv park|hospitality/i],
   ["restaurant",    /restaurant|caf[eé]|coffee|bistro|pub\b|bar\b|pizza|sushi|food service|bakery|dessert/i],
@@ -89,10 +91,10 @@ function classify(p) {
 }
 const LABEL = { "gas-station": "Gas Station", grocery: "Grocery / Convenience Store", "car-wash": "Car Wash", "liquor-store": "Liquor Store",
   hotel: "Hotel / Motel", restaurant: "Restaurant", "multi-family": "Multi-Family Property", industrial: "Industrial Property",
-  land: "Land", "retail-office": "Retail / Office Property", "other-business": "Business" };
+  land: "Land", "retail-office": "Retail / Office Property", "other-business": "Business", laundry: "Dry Cleaning Business", beauty: "Salon & Spa Business" };
 const LABEL_KO = { "gas-station": "주유소", grocery: "식료품점·편의점", "car-wash": "세차장", "liquor-store": "리커스토어",
   hotel: "호텔·모텔", restaurant: "레스토랑", "multi-family": "다세대 건물", industrial: "산업용 부동산",
-  land: "토지", "retail-office": "상가·사무실", "other-business": "비즈니스" };
+  land: "토지", "retail-office": "상가·사무실", "other-business": "비즈니스", laundry: "세탁소·수선", beauty: "미용실·네일" };
 function cityOf(p) {
   if (p.City) return p.City;
   const m = (p.ListingURL || "").match(/real-estate\/\d+\/([^/?#]+)/);
