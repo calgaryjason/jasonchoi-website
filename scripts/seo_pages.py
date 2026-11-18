@@ -84,7 +84,7 @@ body{{background:#f4f4f5}}.sp{{max-width:1000px;margin:0 auto;padding:0 20px 50p
 .sp-hero h1{{font-size:clamp(26px,4vw,38px);margin:6px 0 12px;line-height:1.2}}.sp .sp-hero p{{color:#e4e5e8;max-width:640px;line-height:1.65;margin:0 0 20px}}
 .sp-hero .btns{{display:flex;gap:10px;flex-wrap:wrap}}
 .sp section{{margin:0 0 26px}}.sp h2{{font-size:22px;margin:0 0 12px}}.sp p,.sp li{{line-height:1.75;color:#3d4048}}
-.card{{background:#fff;border-radius:14px;padding:24px 26px}}.muted{{color:#6b6f78;margin-top:0}}
+.card{{background:#fff;border-radius:14px;padding:24px 26px}}.card ul{{margin:10px 0}}.muted{{color:#6b6f78;margin-top:0}}
 .mks{{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}}.mk{{background:#f7f7f8;border-radius:10px;padding:12px}}
 .mk small{{display:block;color:#6b6f78;font-size:12px}}.mk b{{display:block;font-size:18px;margin:4px 0}}.mk .up{{color:#2f7d4f;font-size:12.5px}}.mk .dn{{color:#C8282B;font-size:12.5px}}
 .src{{font-size:12.5px;color:#8a8d94;margin:12px 0 0}}
@@ -109,7 +109,7 @@ body{{background:#f4f4f5}}.sp{{max-width:1000px;margin:0 auto;padding:0 20px 50p
 {body}
 {form(subject, ko, msg_ph)}
 <section><h2>{L("More for Calgary-Area Buyers and Sellers", "더 알아보기")}</h2><div class="links">
-<a href="/calgary-home-buyers/">Calgary Home Buyers</a><a href="/calgary-home-sellers/">Calgary Home Sellers</a><a href="/airdrie-real-estate/">Airdrie</a><a href="/cochrane-real-estate/">Cochrane</a><a href="/okotoks-real-estate/">Okotoks</a><a href="/ko/calgary-korean-realtor/">캘거리 한인 부동산</a><a href="{home}#guides">{L("Free Guides", "무료 가이드")}</a><a href="{"/ko/faq/" if ko else "/faq/"}">FAQ</a></div></section>
+<a href="/calgary-home-buyers/">Calgary Home Buyers</a><a href="/calgary-home-sellers/">Calgary Home Sellers</a><a href="/airdrie-real-estate/">Airdrie</a><a href="/cochrane-real-estate/">Cochrane</a><a href="/okotoks-real-estate/">Okotoks</a><a href="/ko/calgary-korean-realtor/">캘거리 한인 부동산</a><a href="/ko/column/calgary-restaurant-purchase/">칼럼: 식당 인수 7가지</a><a href="{home}#guides">{L("Free Guides", "무료 가이드")}</a><a href="{"/ko/faq/" if ko else "/faq/"}">FAQ</a></div></section>
 <div class="sp-foot">{L("Jason Choi is a REALTOR® with First Place Realty (Alberta), #305, 1822 10th Avenue SW, Calgary AB T3C 0J8, and Maple Supreme Realty Inc. (British Columbia).", "최재봉(Jason Choi)은 First Place Realty(앨버타, #305, 1822 10th Avenue SW, Calgary AB T3C 0J8)와 Maple Supreme Realty Inc.(BC) 소속 REALTOR®입니다.")} {L("Market figures are for general information and are not an appraisal.", "시장 수치는 일반 정보이며 감정 평가가 아닙니다.")} <a href="{home}#privacy">{L("Privacy Policy", "개인정보 처리방침")}</a></div>
 </div>
 <script>
@@ -218,7 +218,55 @@ PAGES.append(("ko/calgary-korean-realtor", "ko", "캘거리 한인 부동산 | �
   "캘거리 한인 부동산 – 한국어로 편하게 상담하세요", "2007년부터 캘거리에서 활동한 최재봉 REALTOR®가 집 사기, 집 팔기, 투자, 비즈니스 매매를 한국어로 도와드립니다.",
   body, "캘거리 한인 부동산 문의 (Korean page)", "원하시는 지역, 주택 종류, 예산, 시기 등을 적어 주세요.", None, "uploads/sold/edgemont-detached-1.jpg"))
 
+# ---------- Korean column: buying a restaurant ----------
+body = f"""
+<section class="card"><p>캘거리에서 식당을 인수하려는 분들이 많습니다. 이미 손님이 있고 장비가 갖춰져 있어서 새로 여는 것보다 빠르게 시작할 수 있기 때문입니다. 하지만 <b>리스, 장부, 허가</b> 중 하나만 놓쳐도 큰돈을 잃을 수 있습니다. 2007년부터 캘거리에서 식당과 비즈니스 매매를 도와드리며 꼭 확인했던 내용을 7가지로 정리했습니다.</p></section>
+<section><h2>1. 리스(임대 계약)부터 확인하세요</h2><div class="card"><p>식당의 가치는 <b>그 자리에서 계속 영업할 수 있는지</b>에 달려 있습니다. 리스가 짧거나 넘겨받을 수 없으면 아무리 장사가 잘되는 식당도 가치가 떨어집니다.</p><ul>
+<li><b>남은 기간과 갱신 옵션:</b> 투자금을 회수할 만큼 기간이 남아 있는지 보세요. 보통 갱신 포함 5~10년 이상을 권합니다.</li>
+<li><b>건물주 동의:</b> 리스 양도(Assignment)에는 대부분 건물주의 서면 동의가 필요합니다. 오퍼 조건에 꼭 넣으세요.</li>
+<li><b>임대료 구성:</b> 기본 임대료와 추가 임대료(CAM, 재산세, 보험)를 합한 실제 월 비용을 확인하세요.</li>
+<li><b>개인 보증:</b> 건물주가 새 오너에게 개인 보증을 요구하는지 확인하세요.</li>
+<li><b>위험 조항:</b> 철거·재개발 조항, 업종 제한, 영업시간 제한이 있는지 보세요.</li></ul></div></section>
+<section><h2>2. 장부와 실제 매출이 맞는지 확인하세요</h2><div class="card"><p>판매자가 말하는 매출이 아니라 <b>증빙되는 매출</b>로 가격을 판단해야 합니다.</p><ul>
+<li>최근 2~3년 재무제표와 법인세 신고서</li>
+<li>GST 신고서, POS(계산대) 월별 보고서, 은행 입금 내역 → 세 가지 숫자가 서로 맞는지 확인</li>
+<li>배달앱(Uber Eats, DoorDash, SkipTheDishes) 매출 보고서와 수수료</li>
+<li>식자재 원가율과 인건비 비율 → 보통 각각 매출의 약 30% 안팎을 기준으로 비교합니다</li></ul>
+<p>"현금 매출이 더 있다"는 말은 가격에 반영하지 마세요. 은행이 대출 심사에서 인정하지 않고, 증빙이 없는 매출은 구매자의 위험입니다.</p></div></section>
+<section><h2>3. 적정 가격은 "오너 수익 × 멀티플"로 보세요</h2><div class="card"><p>소규모 식당은 보통 <b>오너가 실제로 가져가는 수익(SDE)</b>에 업종별 배수(멀티플)를 곱해 가치를 봅니다. 개인 식당은 대략 1.5~2.5배, 검증된 프랜차이즈는 2~3배 정도에서 거래되는 경우가 많습니다. 리스 조건, 매출 추세, 장비 상태에 따라 달라집니다.</p>
+<p><a href="/uploads/guides/Business_Valuation_Multiplier_Guide_KO.pdf" target="_blank" rel="noopener">→ 무료 가이드: 비즈니스 가치 평가, 멀티플 쉽게 이해하기 (한국어 PDF)</a></p></div></section>
+<section><h2>4. 허가와 면허는 새 오너 이름으로 다시 받아야 합니다</h2><div class="card"><ul>
+<li><b>AHS 식품 취급 허가(Food Handling Permit):</b> 주인이 바뀌면 새 오너가 "Change of Ownership"으로 신청해야 합니다. 허가 없이 영업하면 바로 영업 정지 명령을 받을 수 있습니다.</li>
+<li><b>식품 안전 교육:</b> 앨버타 승인 Food Safety 과정을 이수한 사람이 있어야 합니다. 오너가 미리 이수해 두세요.</li>
+<li><b>캘거리 시 사업자 면허(Business Licence):</b> 새 오너 이름으로 신청합니다. 소방 점검이 포함될 수 있습니다.</li>
+<li><b>주류 면허(AGLC):</b> 자산 매매(Asset Sale)로 인수하면 새 면허를 받아야 하고, 주식 매매(Share Sale)는 주주 변경을 신고합니다. 신청 공고와 점검에 시간이 걸리므로 클로징 날짜를 여유 있게 잡으세요.</li></ul></div></section>
+<section><h2>5. 주방 장비와 시설 상태를 점검하세요</h2><div class="card"><ul>
+<li>후드와 소화 시스템(Ansul) 점검 기록, 그리스 트랩 청소 기록</li>
+<li>워크인 쿨러·냉동고, 냉장고, 오븐, 튀김기, 식기세척기 작동 상태와 나이</li>
+<li>장비 목록(Equipment List): <b>판매자 소유인지, 리스 장비인지</b> 구분하세요. 리스 장비는 가격에 포함되지 않습니다.</li>
+<li>지붕, HVAC(냉난방) 수리 책임이 건물주와 세입자 중 누구에게 있는지 리스에서 확인하세요.</li></ul></div></section>
+<section><h2>6. 자산 매매로 할지, 주식 매매로 할지 정하세요</h2><div class="card"><p>대부분의 식당은 <b>자산 매매</b>로 인수합니다. 판매자 회사의 과거 세금이나 부채를 떠안지 않기 때문입니다. 자산 매매에서는 GST가 붙을 수 있으니, 회계사와 <b>GST 167조 선택(Section 167 Election)</b>을 미리 상의하세요.</p>
+<p><a href="/uploads/guides/Asset_vs_Share_Sale_Guide_KO.pdf" target="_blank" rel="noopener">→ 무료 가이드: 자산 매매 vs 주식 매매 (한국어 PDF)</a></p></div></section>
+<section><h2>7. 오퍼에 꼭 넣어야 할 조건</h2>{steps([
+ ("재무 자료 검토", "회계사가 장부, 세금 신고서, POS 자료를 확인할 기간 (보통 10~21일)."),
+ ("리스 양도 승인", "건물주가 새 오너에게 리스 양도를 승인하는 것."),
+ ("대출 승인", "은행이나 BDC 대출이 필요하면 대출 승인 조건."),
+ ("허가와 면허", "AHS 허가, 사업자 면허, 주류 면허를 받을 수 있는 것."),
+ ("교육과 인수인계", "판매자가 레시피, 공급업체, 운영 방법을 가르쳐 주는 기간 (보통 2~4주)."),
+ ("재고 정산과 경업 금지", "클로징 날 재고를 원가로 계산하고, 판매자가 근처에서 같은 업종을 하지 않는다는 약속.")])}</section>
+<section class="card"><h2>마무리</h2><p>좋은 식당 인수는 <b>좋은 매물을 찾는 것</b>보다 <b>나쁜 매물을 거르는 것</b>에서 시작합니다. 리스와 장부를 먼저 확인하고, 허가와 클로징 일정을 여유 있게 잡으세요. 계약 전에는 반드시 변호사와 회계사의 자문을 받으세요.</p>
+<p><a class="btn btn-red" href="/ko/#business-restaurant">캘거리 식당 매물 보기</a> <a class="btn btn-outline" href="/uploads/guides/Business_Purchase_Checklist_KO.pdf" target="_blank" rel="noopener">비즈니스 인수 체크리스트 (PDF)</a></p>
+<p class="muted" style="font-size:13px;margin-top:14px">이 글은 일반 정보이며 법률, 세무, 회계 자문이 아닙니다. 규정과 절차는 바뀔 수 있으니 진행 전에 해당 기관과 전문가에게 확인하세요. 작성: 최재봉 REALTOR®, 2026년 11월.</p></section>
+"""
+PAGES.append(("ko/column/calgary-restaurant-purchase", "ko", "캘거리 식당 인수할 때 꼭 확인할 7가지 | 최재봉 부동산 칼럼",
+  "캘거리에서 식당을 인수할 때 리스, 장부, 가격, AHS 허가, 주류 면허, 장비, 오퍼 조건까지 꼭 확인할 7가지를 한국어로 정리했습니다. 최재봉 REALTOR®.",
+  "캘거리 식당 인수할 때 꼭 확인할 7가지", "리스, 장부, 허가부터 오퍼 조건까지 – 2007년부터 캘거리 비즈니스 매매를 도와온 최재봉 리얼터가 정리했습니다.",
+  body, "식당 인수 상담 (칼럼)", "관심 있는 지역, 업종, 예산을 적어 주세요.", None, "uploads/listings/korean-food-mission-4-street-1.jpg"))
+
 for path, lang, title, desc, h1, lead, body, subj, ph, alt, hero in PAGES:
     out = ROOT / path / "index.html"; out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(page(path, lang, title, desc, h1, lead, body, subj, ph, alt, hero), encoding="utf-8")
+    html_out = page(path, lang, title, desc, h1, lead, body, subj, ph, alt, hero)
+    if "/column/" in path:
+        html_out = html_out.replace('href="/ko/#home-evaluation">내 집 가치 알아보기', 'href="/ko/#business-restaurant">식당 매물 보기')
+    out.write_text(html_out, encoding="utf-8")
 print("SEO pages written:", len(PAGES))

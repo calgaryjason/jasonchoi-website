@@ -122,7 +122,7 @@ body{background:#f4f4f5}.lp{max-width:980px;margin:0 auto;padding:28px 20px 60px
 }
 
 const today = new Date().toISOString().slice(0, 10);
-const urls = [`${SITE}/`, `${SITE}/ko/`, `${SITE}/faq/`, `${SITE}/ko/faq/`, `${SITE}/calgary-home-buyers/`, `${SITE}/calgary-home-sellers/`, `${SITE}/airdrie-real-estate/`, `${SITE}/cochrane-real-estate/`, `${SITE}/okotoks-real-estate/`, `${SITE}/ko/calgary-korean-realtor/`, ...listings.map(l => `${SITE}/listing/${l.id}/`)];
+const urls = [`${SITE}/`, `${SITE}/ko/`, `${SITE}/faq/`, `${SITE}/ko/faq/`, `${SITE}/calgary-home-buyers/`, `${SITE}/calgary-home-sellers/`, `${SITE}/airdrie-real-estate/`, `${SITE}/cochrane-real-estate/`, `${SITE}/okotoks-real-estate/`, `${SITE}/ko/calgary-korean-realtor/`, `${SITE}/ko/column/calgary-restaurant-purchase/`, ...listings.map(l => `${SITE}/listing/${l.id}/`)];
 fs.writeFileSync(path.join(root, "sitemap.xml"),
   `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
   urls.map(u => `  <url><loc>${u}</loc><lastmod>${today}</lastmod></url>`).join("\n") + `\n</urlset>\n`);
