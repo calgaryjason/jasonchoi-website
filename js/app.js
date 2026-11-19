@@ -260,6 +260,7 @@ const CAT_PHOTO = {   /* chosen photos per category; others are picked automatic
   "car-wash": "uploads/listings/car-wash-category.jpg",
   "land": "uploads/listings/land-category.jpg",
   "laundry": "uploads/listings/dry-cleaning-depot-chestermere-1.jpg",
+  "beauty": "uploads/listings/nail-spa-category.jpg",
   "other-business": "uploads/listings/shoe-care-alterations-mission-1.jpg"
 };
 function catPhoto(c) {
