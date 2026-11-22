@@ -1,0 +1,44 @@
+name: Monthly newsletter
+
+on:
+  schedule:
+    # 15th of every month, 16:07 UTC (about 9 am Calgary time).
+    # CREB releases its numbers in the first days of the month, so market.json is ready by then.
+    - cron: "7 16 15 * *"
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Send even if market data is not last month's (true/false)"
+        required: false
+        default: "false"
+
+permissions:
+  contents: write
+
+jobs:
+  newsletter:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pillow
+      - name: Build newsletter
+        run: python3 scripts/newsletter.py
+      - name: Save web copy
+        run: |
+          git config user.name "newsletter-bot"
+          git config user.email "newsletter-bot@users.noreply.github.com"
+          git add newsletter
+          git diff --cached --quiet || git commit -m "Newsletter $(date +%Y-%m)"
+          git pull --rebase -q origin main && git push -q origin HEAD:main || echo "push skipped"
+      - name: Send with Brevo
+        env:
+          BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
+          BREVO_LIST_EN: ${{ vars.BREVO_LIST_EN }}
+          BREVO_LIST_KO: ${{ vars.BREVO_LIST_KO }}
+          NEWSLETTER_SENDER: ${{ vars.NEWSLETTER_SENDER }}
+          AUTO_SEND: ${{ vars.AUTO_SEND }}
+          FORCE_SEND: ${{ github.event.inputs.force }}
+        run: python3 scripts/newsletter_send.py

@@ -115,3 +115,12 @@ content:
       - { name: highlights_en, label: "Highlights (English) – short, no identifying details", type: text }
       - { name: highlights_ko, label: "Highlights (한국어)", type: text }
       - { name: photos, label: "Photo (optional – only photos that do not identify the business)", type: image, list: { max: 5 } }
+
+  - name: newsletter
+    label: Newsletter · 월간 뉴스레터
+    type: file
+    path: data/newsletter.json
+    fields:
+      - { name: note_en, label: "This month's note (English)", type: text }
+      - { name: note_ko, label: "이번 달 인사말 (한국어)", type: text }
+      - { name: maxListings, label: "How many listings to show · 보여줄 매물 수", type: number, default: 6 }
