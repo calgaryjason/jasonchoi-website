@@ -285,7 +285,7 @@ def main():
     os.makedirs(OUT, exist_ok=True)
     meta = {"issue": issue, "dataMonth": market["month"], "subjects": {}}
     for lang in ("en", "ko"):
-        web_url = f"{SITE}/newsletter/{issue}-{lang}.html"
+        web_url = f"{SITE}/newsletter/{issue}-{lang}"
         doc = build(lang == "ko", market, listings, cfg, labels[lang][0], labels[lang][1], web_url)
         for name in (f"latest-{lang}.html", f"{issue}-{lang}.html"):
             with open(os.path.join(OUT, name), "w", encoding="utf-8") as f:
