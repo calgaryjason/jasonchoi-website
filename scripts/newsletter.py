@@ -234,7 +234,7 @@ def build(ko, market, listings, cfg, issue_label, data_label, web_url):
     # Signature + footer (CASL: name, mailing address, contact, unsubscribe)
     rows.append(f"""<tr><td style="padding:22px 28px 10px;font-family:Arial,Helvetica,sans-serif">
   <table role="presentation" cellpadding="0" cellspacing="0"><tr>
-    <td valign="top" style="padding-right:14px"><img src="{SITE}/assets/jason-choi.jpg" width="72" alt="Jason Choi" style="display:block;border-radius:50%;width:72px;height:72px;object-fit:cover"></td>
+    <td valign="top" style="padding-right:14px"><img src="{SITE}/newsletter/img/jason-choi-square.jpg" width="72" height="72" alt="Jason Choi" style="display:block;border-radius:50%;width:72px;height:72px"></td>
     <td valign="top" style="font-size:14px;line-height:21px;color:{DARK}">
       <b>Jason Choi (최재봉), REALTOR®</b><br>
       <span style="color:{GREY}">{"주거용 · 상업용 부동산 전문 · 2007년부터" if ko else "Residential &amp; Commercial · Since 2007"}</span><br>
