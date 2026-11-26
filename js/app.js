@@ -32,7 +32,7 @@ const D = {
   call:["Call","전화하기"], ask:["Ask About This Listing","이 매물 문의하기"], ndaBtn:["Request NDA & Financials","NDA 및 재무 자료 요청"],
   nda:["🔒 Financial details are shared after a signed NDA.","🔒 재무 자료는 NDA 서명 후 제공됩니다."],
   askMsg:["I am interested in this listing: ","다음 매물에 대해 문의드립니다: "], ndaMsg:["Please send me the NDA and financial details for: ","다음 매물의 NDA와 재무 자료를 요청합니다: "],
-  brochure:["Download Brochure (PDF)","브로슈어 PDF 다운로드"], sheet:["Print Feature Sheet","매물 안내서 인쇄"], loc:["Location","위치"], locNote:["Approximate area. The exact address is shared with qualified buyers.","대략적인 위치입니다. 정확한 주소는 확인된 구매자에게 알려드립니다."], gbp:["Find Me on Google Maps","구글 지도에서 보기"], review:["Leave a Google Review","구글 리뷰 남기기"], qrT:["Listing QR Code","매물 QR 코드"], qrDl:["Download QR","QR 다운로드"], scan:["Scan for photos & details","스캔하면 사진과 상세 정보를 볼 수 있습니다"], realtor:["View on REALTOR.ca","REALTOR.ca에서 보기"], map:["View on Google Maps","구글 지도에서 보기"],
+  brochure:["Download Brochure (PDF)","브로슈어 PDF 다운로드"], sheet:["Print Feature Sheet","매물 안내서 인쇄"], loc:["Location","위치"], locNote:["Approximate area. The exact address is shared with qualified buyers.","대략적인 위치입니다. 정확한 주소는 확인된 구매자에게 알려드립니다."], gbp:["My Google Business Profile","구글 비즈니스 프로필"], review:["Leave a Google Review","구글 리뷰 남기기"], qrT:["Listing QR Code","매물 QR 코드"], qrDl:["Download QR","QR 다운로드"], scan:["Scan for photos & details","스캔하면 사진과 상세 정보를 볼 수 있습니다"], realtor:["View on REALTOR.ca","REALTOR.ca에서 보기"], map:["View on Google Maps","구글 지도에서 보기"],
   share:["Share This Listing","이 매물 공유하기"], copy:["Copy Link","링크 복사"], copied:["Link copied!","링크가 복사되었습니다!"],
   igTip:["Instagram: copy the link and add it to your story or bio.","인스타그램: 링크를 복사해 스토리나 프로필에 넣으세요."],
   ddf:["This listing is provided through REALTOR.ca DDF®. This REALTOR.ca listing content is owned and licensed by REALTOR® members of The Canadian Real Estate Association.",
@@ -605,7 +605,10 @@ function renderTrack() {
   bindSold($("trackAll"), items);
 }
 function renderReviews() {
-  $("testimonials").style.display = REVIEWS.length ? "" : "none";
+  $("testimonials").style.display = (REVIEWS.length || SITE.googleReview) ? "" : "none";
+  const rc = $("reviewCta");
+  if (rc) rc.innerHTML = SITE.googleReview ? `<p>${lang === "ko" ? "저와 함께 거래하셨나요? 구글에 짧은 후기를 남겨 주시면 큰 힘이 됩니다." : "Worked with me? A short Google review means a lot."}</p>
+    <a class="btn btn-red" target="_blank" rel="noopener" href="${SITE.googleReview}">★ ${t("review")}</a>${SITE.googleMaps ? ` <a class="btn btn-outline" target="_blank" rel="noopener" href="${SITE.googleMaps}">${lang === "ko" ? "구글 리뷰 읽기" : "Read Google Reviews"}</a>` : ""}` : "";
   $("quotesGrid").innerHTML = REVIEWS.map(r => `<div class="quote"><div class="stars">${"★".repeat(r.stars || 5)}</div>
     <p>${tr(r, "text")}</p><cite>— ${r.name || ""}${tr(r, "role") ? ", " + tr(r, "role") : ""}</cite></div>`).join("");
 }

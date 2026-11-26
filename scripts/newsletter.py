@@ -240,7 +240,8 @@ def build(ko, market, listings, cfg, issue_label, data_label, web_url):
       <span style="color:{GREY}">{"주거용 · 상업용 부동산 전문 · 2007년부터" if ko else "Residential &amp; Commercial · Since 2007"}</span><br>
       <a href="tel:+14033998124" style="color:{RED};text-decoration:none">403-399-8124</a> ·
       <a href="mailto:CalgaryJason@gmail.com" style="color:{RED};text-decoration:none">CalgaryJason@gmail.com</a><br>
-      <a href="{SITE}/" style="color:{RED};text-decoration:none">JasonChoiRealEstate.com</a>
+      <a href="{SITE}/" style="color:{RED};text-decoration:none">JasonChoiRealEstate.com</a><br>
+      <a href="https://g.page/r/Cc_kCt8Nhvc-EBM/review" style="color:{RED};text-decoration:none">★ {"구글 리뷰 남기기" if ko else "Leave a Google review"}</a>
     </td></tr></table></td></tr>""")
     if ko:
         foot = ("이 메일은 Jason Choi와 거래하셨거나 문의하셨던 분, 또는 소식 받기에 동의하신 분께 보내 드립니다. "

@@ -32,8 +32,8 @@ window.SITE = {
      googleMaps:   your profile link (Google Maps → your business → Share → Copy link)
      googleReview: your "Ask for reviews" link (Business Profile → Ask for reviews)
      Empty = button hidden. */
-  googleMaps: "",
-  googleReview: "",
+  googleMaps: "https://share.google/od7yXlkAVo6mmIJkq",
+  googleReview: "https://g.page/r/Cc_kCt8Nhvc-EBM/review",
 
   /* Visitor statistics (free): Cloudflare Web Analytics token.
      Cloudflare → Analytics & Logs → Web Analytics → Add a site → copy the "token" value.
